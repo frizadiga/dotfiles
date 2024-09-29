@@ -1,3 +1,4 @@
 # dotfiles
 
 - alacritty
+- tmux
