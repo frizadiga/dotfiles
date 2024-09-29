@@ -1,0 +1,57 @@
+[font]
+size = 14
+
+[font.bold]
+family = "MesloLGS NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "MesloLGS NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "MesloLGS NF"
+style = "Italic"
+
+[font.normal]
+family = "MesloLGS NF"
+style = "Regular"
+
+[window]
+blur = false
+opacity = 0.9
+padding = { x = 16, y = 8 }
+decorations = "None"
+# decorations = "Buttonless"
+dynamic_padding = true
+# startup_mode = "Maximized"
+# startup_mode = "SimpleFullscreen"
+dimensions.columns = 100
+dimensions.lines = 40
+
+# dynamic title
+dynamic_title = true
+
+# cursor to red
+[colors.cursor]
+text = "#ffffff"
+cursor = "#d25858"
+
+[keyboard]
+bindings = [
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+  # cmd + backspace to delete all line
+  { key = "Backspace", mods = "Command", chars = "\u0015" },
+  # Command + left/right to move to beginning/end of line
+  { key = "Left", mods = "Command", chars = "\u0001" },
+  { key = "Right", mods = "Command", chars = "\u0005" },
+  # Command + up/down to move to beginning/end of buffer
+  { key = "Up", mods = "Command", chars = "\u0001" },
+  { key = "Down", mods = "Command", chars = "\u0005" },
+]
+
+# [[keyboard.bindings]]
+# key = "Back"
+# mods = "Command"
+# chars = "\u0015"
