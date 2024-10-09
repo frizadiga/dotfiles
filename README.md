@@ -2,3 +2,5 @@
 
 - alacritty
 - tmux
+- nvim
+
