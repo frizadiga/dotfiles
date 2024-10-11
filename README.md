@@ -1,6 +1,6 @@
 # dotfiles
 
-- alacritty
+- alacritty (done)
 - tmux
 - nvim
 
