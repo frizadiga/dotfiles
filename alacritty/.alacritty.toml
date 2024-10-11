@@ -19,7 +19,7 @@ style = "Regular"
 
 [window]
 blur = false
-opacity = 0.8
+opacity = 0.77
 padding = { x = 16, y = 8 }
 decorations = "None"
 # decorations = "Buttonless"
