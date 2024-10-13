@@ -1,5 +1,5 @@
 [font]
-size = 16
+size = 16 # normal: 16 broadcast: 22
 
 [font.bold]
 family = "MesloLGS NF"
