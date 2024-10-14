@@ -1,5 +1,5 @@
 [font]
-size = 16 # normal: 16 broadcast: 22
+size = 17 # normal: 17 broadcast: 23
 
 [font.bold]
 family = "MesloLGS NF"
@@ -19,8 +19,9 @@ style = "Regular"
 
 [window]
 blur = false
-opacity = 0.77
+opacity = 0.77 # default: 0.77
 padding = { x = 16, y = 8 }
+# padding = { x = 0, y = 0 }
 decorations = "None"
 # decorations = "Buttonless"
 dynamic_padding = true
