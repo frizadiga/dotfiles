@@ -7,7 +7,7 @@ vim.keymap.set("i", "kj", "<Esc>", {})
 -- vim.api.nvim_set_keymap("n","<leader>s",":/", {}) -- conflict with spectre
 
 -- clear search highlight
-vim.api.nvim_set_keymap("n","<leader>cs",":nohlsearch<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n","<leader>cs",":nohlsearch<CR>", { noremap = true })
 
 -- quit alias
 vim.api.nvim_set_keymap("n","<leader>qq",":q<CR>", { noremap = true })
