@@ -2,5 +2,5 @@
 
 - alacritty (done)
 - tmux (done)
-- nvim
+- nvim (wip)
 
