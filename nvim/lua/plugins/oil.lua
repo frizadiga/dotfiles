@@ -6,6 +6,13 @@ return {
     local oil = require("oil")
     oil.setup({
   	  default_file_explorer = true,
+		 -- See :help oil-columns
+			columns = {
+				"icon",
+				-- "permissions",
+				-- "size",
+				-- "mtime",
+			},
 			view_options = {
 			  -- Show files and directories that start with "."
 				show_hidden = true,
@@ -28,8 +35,12 @@ return {
         border = "rounded",
       },
   })
+		-- Open floating window
     vim.keymap.set("n", "e", oil.toggle_float, {})
-		vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+		-- Open Oil in the path it was opened with `nvim .`
+		vim.keymap.set("n", "<leader>e", "<CMD>Oil .<CR>", { desc = "Open Oil in current directory" })
+
 		-- Close the Oil buffer with ESC, only react to ESC in oil buffers
 		vim.api.nvim_create_autocmd('FileType', {
 			pattern = 'oil',
