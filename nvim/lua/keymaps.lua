@@ -21,7 +21,7 @@ vim.api.nvim_set_keymap(
   { noremap = true }
 )
 
-vim.keymap.set("n", "<leader>awf", vim.lsp.buf.add_workspace_folder)
+-- vim.keymap.set("n", "<leader>awf", vim.lsp.buf.add_workspace_folder)
 
 -- find files
 vim.api.nvim_set_keymap('n', ';',
@@ -30,7 +30,7 @@ vim.api.nvim_set_keymap('n', ';',
 })
 
 -- buffers
-vim.api.nvim_set_keymap('n', '<leader>;', ':Telescope buffers<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>;', ':Telescope buffers<CR>', { noremap = true, silent = true })
 
 -- write alias
 vim.api.nvim_set_keymap("n","<Space><Space>",":w<CR>", { noremap = true, silent = true })

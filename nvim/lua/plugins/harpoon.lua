@@ -50,11 +50,7 @@ return {
 					}):find()
 			end
 
-  		vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-      vim.keymap.set("n", "<leader>h",
-				function() require("telescope").extensions.harpoon.marks() end,
-			  { desc = "Open harpoon window" }
-		  )
-      vim.keymap.set("n", "<leader>l", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
+  		vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+      vim.keymap.set("n", "<leader>hl", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
     end,
 }
