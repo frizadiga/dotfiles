@@ -45,7 +45,7 @@ return {
 		vim.api.nvim_create_autocmd('FileType', {
 			pattern = 'oil',
 			callback = function()
-				vim.api.nvim_buf_set_keymap(0, 'n', '<Esc>', '<Cmd>lua require("oil").close()<CR>', { noremap = true, silent = true })
+				vim.api.nvim_buf_set_keymap(0, 'n', '<Esc>', '<CMD>lua require("oil").close()<CR>', { noremap = true, silent = true })
 			end,
 		})
   end,
