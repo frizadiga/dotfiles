@@ -3,13 +3,13 @@
 -- esc composite
 vim.keymap.set("i", "kj", "<Esc>", {})
 
--- local search/find alias
+-- local search/find 
 -- vim.api.nvim_set_keymap("n","<leader>s",":/", {}) -- conflict with spectre
 
 -- clear search highlight
 -- vim.api.nvim_set_keymap("n","<leader>cs",":nohlsearch<CR>", { noremap = true })
 
--- quit alias
+-- quit 
 vim.api.nvim_set_keymap("n","<leader>qq",":q<CR>", { noremap = true })
 -- vim.api.nvim_set_keymap("n","<leader>q",":q<CR>", { noremap = true })
 
@@ -32,6 +32,14 @@ vim.api.nvim_set_keymap('n', ';',
 -- buffers
 -- vim.api.nvim_set_keymap('n', '<leader>;', ':Telescope buffers<CR>', { noremap = true, silent = true })
 
--- write alias
+-- fzf
+-- vim.keymap.set("n", "<c-P>", require('fzf-lua').files, { desc = "Fzf Files" })
+-- Or, with args
+-- vim.keymap.set("n", "<c-P>", function() require('fzf-lua').files({ ... }) end, { desc = "Fzf Files" })
+
+-- write 
 vim.api.nvim_set_keymap("n","<Space><Space>",":w<CR>", { noremap = true, silent = true })
+
+-- replace 
+vim.api.nvim_set_keymap("n","<leader>r",":%s//g<Left><Left>", { noremap = true, silent = true })
 
