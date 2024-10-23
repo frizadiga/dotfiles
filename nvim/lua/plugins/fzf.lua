@@ -7,20 +7,20 @@ return {
     require("fzf-lua").setup({
 			 winopts = {
           -- Window layout
-          height     = 0.8,
-          width      = 80,
+          fullscreen = true,
+          -- height     = 0.8,
+          -- width      = 80,
+          -- Position the results in the middle
+          row     = 0.35,
+          col     = 0.50,
+          -- Border style
+          border     = 'none',
           preview    = {
             vertical   = 'up:65%',   -- Preview window on top
             horizontal = 'right:50%', -- For horizontal preview
             layout     = 'vertical',
             flip_columns = 120,
           },
-          -- Position the results in the middle
-          row     = 0.35,
-          col     = 0.50,
-          -- Border style
-          border     = 'rounded',
-          fullscreen = false,
         },
 		})
 
