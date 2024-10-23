@@ -21,16 +21,13 @@ style = "Regular"
 blur = false
 opacity = 0.85 # default: 0.85
 padding = { x = 16, y = 8 }
-# padding = { x = 0, y = 0 }
 decorations = "None"
-# decorations = "Buttonless"
 dynamic_padding = true
 startup_mode = "Maximized"
 dimensions.columns = 100
 dimensions.lines = 40
-
-# dynamic title
-dynamic_title = true
+title="sh-0"
+dynamic_title = false
 
 # cursor to red
 [colors.cursor]

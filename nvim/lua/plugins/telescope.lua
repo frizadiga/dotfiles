@@ -9,6 +9,10 @@ return {
     config = function()
       require('telescope').setup({
         defaults = {
+					preview = {
+            timeout = 150, -- ms #performance improvement
+            filesize_limit = 1, -- MB #performance improvement
+					},
 					path_display = {
 						'truncate',
 					},
@@ -17,19 +21,23 @@ return {
           layout_strategy = 'vertical',
           layout_config = {
             vertical = { width = 80, preview_cutoff = 0 },
-            -- other layout configuration here
           },
-          -- other defaults configuration here
+					cache_picker = {
+						num_pickers = 5, -- #performance improvement
+						limit_entries = 1000 -- #performance improvement
+					},
+					file_ignore_patterns = {"%.git/", "node_modules/"}, -- #performance improvement
         },
         -- other configuration values here
-          pickers = {
-            find_files = {
-              follow = true
-            },
-					  -- live_grep = {
-						-- 	follow = true
-						-- },
-          },
+				pickers = {
+					find_files = {
+						follow = true,
+						find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'} -- #performance improvement
+					},
+					-- live_grep = {
+					-- 	follow = true
+					-- },
+				},
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown({}),
@@ -54,8 +62,8 @@ return {
 			-- live grep
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
 
-			require('telescope').load_extension('fzf')
       require('telescope').load_extension('ui-select')
+			require('telescope').load_extension('fzf') -- #performance improvement
     end,
   },
 }
