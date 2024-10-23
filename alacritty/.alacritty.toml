@@ -29,10 +29,9 @@ dimensions.lines = 40
 title="sh-0"
 dynamic_title = false
 
-# cursor to red
 [colors.cursor]
 text = "#ffffff"
-cursor = "#d25858"
+cursor = "#d25858" # cursor to red
 
 [keyboard]
 bindings = [
@@ -48,7 +47,3 @@ bindings = [
   { key = "Down", mods = "Command", chars = "\u0005" },
 ]
 
-# [[keyboard.bindings]]
-# key = "Back"
-# mods = "Command"
-# chars = "\u0015"
