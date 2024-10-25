@@ -20,15 +20,18 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local lspconfig = require("lspconfig")
+
+			-- JavaScript/TypeScript
       lspconfig.ts_ls.setup({
         capabilities = capabilities
       })
-      lspconfig.solargraph.setup({
-        capabilities = capabilities
-      })
+
+			-- HTML
       lspconfig.html.setup({
         capabilities = capabilities
       })
+
+			-- Lua
 			lspconfig.lua_ls.setup({
 				settings = {
 					Lua = {
@@ -39,6 +42,11 @@ return {
 				},
         capabilities = capabilities,
 			})
+
+			-- Ruby
+      -- lspconfig.solargraph.setup({
+      --   capabilities = capabilities
+      -- })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gn", vim.lsp.buf.rename, {})
