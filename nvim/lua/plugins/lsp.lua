@@ -21,6 +21,16 @@ return {
 
       local lspconfig = require("lspconfig")
 
+      -- C/C++
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+      })
+
+			-- Bash
+			lspconfig.bashls.setup({
+				capabilities = capabilities
+			})
+
 			-- JavaScript/TypeScript
       lspconfig.ts_ls.setup({
         capabilities = capabilities
