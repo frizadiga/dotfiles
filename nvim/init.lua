@@ -15,5 +15,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("vim-opt")
 require("keymaps")
-require("lazy").setup("plugins")
+
+-- Lazy setup
+require("lazy").setup("plugins", {
+	install = { colorscheme = { "kanagawa-dragon" } },
+	ui = {
+		pills = true, size = { width = 1, height = 1 }, border = "single", checker = { enabled = true },
+  }
+})
 
