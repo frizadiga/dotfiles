@@ -53,13 +53,18 @@ return {
 				noremap = true, silent = true
 			})
 
+			-- grep_string
+			vim.keymap.set('n', '<leader>fs', function()
+				builtin.grep_string({ search = vim.fn.input("Grep > ")})
+			end, { desc = 'Telescope Grep string' })
+
 			-- marks
 			vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })
 
 			-- buffers
 			vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope Buffers' })
 
-			-- live grep
+			-- live_grep
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
 
       require('telescope').load_extension('ui-select')

@@ -33,6 +33,8 @@ return {
         max_width = 55,
         max_height = 25,
         border = "rounded",
+				-- make title empty to disable the title
+				get_win_title = function() return "" end,
       },
   })
 		-- Open floating window
