@@ -16,8 +16,11 @@ return {
 					path_display = {
 						'truncate',
 					},
-					prompt_prefix = ' ▶ ⇢ ',
-          selection_caret = '▸ ',
+					prompt_prefix = ' ▶ ',
+					-- prompt_prefix = ' ▶ ⇢ ',
+          selection_caret = '·',
+          -- selection_caret = '⇢ ',
+          -- selection_caret = '▸ ',
           layout_strategy = 'vertical',
           layout_config = {
             vertical = { width = 80, preview_cutoff = 0 },
