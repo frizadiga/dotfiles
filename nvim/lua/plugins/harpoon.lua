@@ -50,7 +50,13 @@ return {
 					}):find()
 			end
 
-  		vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+  		vim.keymap.set("n", "<leader>ha",
+			  function()
+				  harpoon:list():add()
+				  print("Added current file to harpoon")
+			  end,
+			{ desc = "Add current file to harpoon" }
+		  )
       vim.keymap.set("n", "<leader>hh", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
     end,
 }
