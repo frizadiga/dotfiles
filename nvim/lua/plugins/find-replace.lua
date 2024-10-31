@@ -51,6 +51,10 @@ return {
 				-- swapReplacementInterpreter = { n = '<localleader>x' },
 				previewLocation = { n = '<enter>' },
 			},
+			icons = {
+         actionEntryBullet = '',
+         -- actionEntryBullet = '•',
+			},
 		});
 		-- require('grug-far').open(opts)
   	vim.keymap.set('n', '<leader>ss', '<cmd>GrugFar<CR>', {
