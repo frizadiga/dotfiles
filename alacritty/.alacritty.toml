@@ -1,21 +1,25 @@
 [font]
 size = 16 # normal: 16 broadcast: 22
 
+[font.normal]
+# family = "Fira Code"
+family = "MesloLGS NF"
+style = "Regular"
+
 [font.bold]
+# family = "Fira Code"
 family = "MesloLGS NF"
 style = "Bold"
 
 [font.bold_italic]
+# family = "Fira Code"
 family = "MesloLGS NF"
 style = "Bold Italic"
 
 [font.italic]
+# family = "Fira Code"
 family = "MesloLGS NF"
 style = "Italic"
-
-[font.normal]
-family = "MesloLGS NF"
-style = "Regular"
 
 [window]
 blur = false

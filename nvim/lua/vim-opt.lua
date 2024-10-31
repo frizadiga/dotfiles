@@ -9,7 +9,8 @@ vim.opt.autoread = true
 
 -- Set mapleader to space
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
+vim.g.maplocalleader = "," -- Same for `maplocalleader`
+-- vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
 
 -- Cursor
 -- Hide GUI cursor

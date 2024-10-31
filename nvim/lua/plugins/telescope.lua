@@ -49,12 +49,12 @@ return {
       })
 
       local builtin = require('telescope.builtin')
+			local default_opts = {noremap = true, silent = true}
 
 		  -- find files
       vim.api.nvim_set_keymap('n', '<leader>ff',
-				":lua require'telescope.builtin'.find_files({ hidden = true })<CR>", {
-				noremap = true, silent = true
-			})
+				":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
+			default_opts)
 
 			-- grep_string
 			vim.keymap.set('n', '<leader>fs', function()
@@ -69,6 +69,7 @@ return {
 
 			-- live_grep
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
+			vim.api.nvim_set_keymap('v', '<leader>fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', default_opts)
 
       require('telescope').load_extension('ui-select')
 			require('telescope').load_extension('fzf') -- #performance improvement
