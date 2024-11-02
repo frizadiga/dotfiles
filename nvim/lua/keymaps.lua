@@ -30,7 +30,7 @@ vim.api.nvim_set_keymap('n', ';',
 })
 
 -- buffers
--- vim.api.nvim_set_keymap('n', '<leader>;', ':Telescope buffers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "'", ':Telescope buffers<CR>', { noremap = true, silent = true })
 
 -- fzf
 -- vim.keymap.set("n", "<c-P>", require('fzf-lua').files, { desc = "Fzf Files" })

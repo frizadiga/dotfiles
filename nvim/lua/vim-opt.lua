@@ -64,3 +64,9 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {f
 -- sign column
 vim.wo.signcolumn = "yes"
 
+-- code folding
+-- vim.opt.foldmethod = "indent"
+-- vim.opt.foldlevel = 99
+-- vim.wo.foldmethod = 'expr'
+-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
