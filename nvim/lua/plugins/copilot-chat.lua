@@ -8,16 +8,22 @@ return {
       -- { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
     },
     build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
+    -- see commands section for default commands if you want to lazy load on them
+		config = function()
+			require("CopilotChat").setup({
       debug = false, -- enable debugging
       -- see configuration section for rest
-			-- https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua
-			window = {
-				title = '',
-				layout = "float", -- horizontal, vertical, float, replace,
-				border = 'rounded', -- 'none', single', 'double', 'rounded', 'solid', 'shadow',
-			}
-    },
-    -- see commands section for default commands if you want to lazy load on them
-  },
+			-- https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
+      window = {
+        title = '',
+        layout = "float", -- horizontal, vertical, float, replace,
+        border = 'rounded', -- 'none', 'single', 'double', 'rounded', 'solid', 'shadow',
+		    width = 0.6, -- fractional width of parent, or absolute width in columns when > 1
+				height = 0.6, -- fractional height of parent, or absolute height in rows when > 1
+      }
+    })
+			-- keymap CopilotChatExplain
+			vim.api.nvim_set_keymap("v", "<leader>ce", "<cmd>CopilotChatExplain<CR>", { noremap = true, silent = true })
+	  end,
+	},
 }
