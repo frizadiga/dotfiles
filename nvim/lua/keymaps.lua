@@ -43,3 +43,6 @@ vim.api.nvim_set_keymap("n","<Space><Space>",":w<CR>", { noremap = true, silent 
 -- replace 
 vim.api.nvim_set_keymap("n","<leader>r",":%s//g<Left><Left>", { noremap = true, silent = true })
 
+-- copy selected text to search input when pressing `/`
+vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]], { noremap = true, silent = true })
+
