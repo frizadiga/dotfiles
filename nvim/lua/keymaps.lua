@@ -31,7 +31,9 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap("n","<Space><Space>","<cmd>w<CR>", { noremap = true, silent = true })
 
 -- replace 
-vim.api.nvim_set_keymap("n","<leader>r","<cmd>%s//g<Left><Left>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n","<leader>r",":%s//g<Left><Left>", { noremap = true, silent = true })
+-- in visual mode prefill search with selected text
+vim.api.nvim_set_keymap("v","<leader>r",":s/<C-r><C-w>//g<Left><Left>", { noremap = true, silent = true })
 
 -- copy selected text to search input when pressing `/`
 vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]], { noremap = true, silent = true })
