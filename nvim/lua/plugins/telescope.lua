@@ -49,12 +49,21 @@ return {
       })
 
       local builtin = require('telescope.builtin')
-			local default_opts = {noremap = true, silent = true}
+			local default_opts = { noremap = true, silent = true }
 
 		  -- find files
-      vim.api.nvim_set_keymap('n', '<leader>ff',
-				":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
-			default_opts)
+			-- vim.api.nvim_set_keymap('n', ';',
+			-- 	":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
+			-- default_opts)
+			--    vim.api.nvim_set_keymap('n', '<leader>ff',
+			-- 	":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
+			-- default_opts)
+			local find_files_keymaps = { ';', '<leader>ff' }
+			for _, key in ipairs(find_files_keymaps) do
+				vim.api.nvim_set_keymap(
+					'n', key, ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>", default_opts
+				)
+			end
 
 			-- grep_string
 			vim.keymap.set('n', '<leader>fs', function()
@@ -68,7 +77,7 @@ return {
 			local action_state = require('telescope.actions.state')
 			local actions = require('telescope.actions')
 
-			buffer_searcher = function()
+			Buffer_searcher = function()
 					builtin.buffers {
 							sort_mru = true,
 							ignore_current_buffer = true,
@@ -76,7 +85,7 @@ return {
 							attach_mappings = function(prompt_bufnr, map)
 									local refresh_buffer_searcher = function()
 											actions.close(prompt_bufnr)
-											vim.schedule(buffer_searcher)
+											vim.schedule(Buffer_searcher)
 									end
 
 									local delete_buf = function()
@@ -103,7 +112,14 @@ return {
 					}
 			end
 
-			vim.keymap.set('n', '<leader>fb', buffer_searcher, {})
+			-- vim.keymap.set('n', "'", Buffer_searcher, {})
+			-- vim.keymap.set('n', '<leader>fb', Buffer_searcher, {})
+			local buffer_keymaps = { "'", '<leader>fb' }
+			for _, key in ipairs(buffer_keymaps) do
+				vim.api.nvim_set_keymap(
+					'n', key, ":lua Buffer_searcher()<CR>", default_opts
+				)
+			end
 			-- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope Buffers' })
 
 			-- live_grep

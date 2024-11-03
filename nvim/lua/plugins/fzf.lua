@@ -27,7 +27,7 @@ return {
 		-- navigate on result using <CTRL> + hjkl keys
 
 		vim.api.nvim_set_keymap('n', '<leader>fz',
-			":lua require('fzf-lua').files({ fzf_opts = {['--layout'] = 'reverse-list'} })<CR>",
+			"<cmd>lua require('fzf-lua').files({ fzf_opts = {['--layout'] = 'reverse-list'} })<CR>",
 			{ noremap = true, silent = true }
 		)
   end
