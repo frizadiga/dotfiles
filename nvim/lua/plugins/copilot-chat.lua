@@ -22,8 +22,10 @@ return {
 				height = 0.6, -- fractional height of parent, or absolute height in rows when > 1
       }
     })
+			-- keymap CopilotChatToggle
+			vim.api.nvim_set_keymap("n", "<leader>ccc", "<cmd>CopilotChatToggle<CR>", { noremap = true, silent = true })
 			-- keymap CopilotChatExplain
-			vim.api.nvim_set_keymap("v", "<leader>ce", "<cmd>CopilotChatExplain<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("v", "<leader>cce", "<cmd>CopilotChatExplain<CR>", { noremap = true, silent = true })
 	  end,
 	},
 }
