@@ -1,13 +1,23 @@
 -- keymaps configurations
 
--- esc composite
-vim.keymap.set("i", "kj", "<Esc>", {})
+-- add workspace folder
+-- vim.keymap.set("n", "<leader>awf", vim.lsp.buf.add_workspace_folder)
 
 -- local search/find 
 -- vim.api.nvim_set_keymap("n","<leader>s","<cmd>/", {}) -- conflict with spectre
 
 -- clear search highlight
 -- vim.api.nvim_set_keymap("n","<leader>cs","<cmd>nohlsearch<CR>", { noremap = true })
+
+-- vim.keymap.set("n", "<leader>awf", vim.lsp.buf.add_workspace_folder)
+
+-- fzf
+-- vim.keymap.set("n", "<c-P>", require('fzf-lua').files, { desc = "Fzf Files" })
+-- Or, with args
+-- vim.keymap.set("n", "<c-P>", function() require('fzf-lua').files({ ... }) end, { desc = "Fzf Files" })
+
+-- esc composite
+vim.keymap.set("i", "kj", "<Esc>", {})
 
 -- quit 
 vim.api.nvim_set_keymap("n","<leader>qq","<cmd>q<CR>", { noremap = true })
@@ -19,13 +29,6 @@ vim.api.nvim_set_keymap(
   "<cmd>let @+=expand('%:p')<CR>:echo 'Copied: ' . expand('%:p')<CR>",
   { noremap = true }
 )
-
--- vim.keymap.set("n", "<leader>awf", vim.lsp.buf.add_workspace_folder)
-
--- fzf
--- vim.keymap.set("n", "<c-P>", require('fzf-lua').files, { desc = "Fzf Files" })
--- Or, with args
--- vim.keymap.set("n", "<c-P>", function() require('fzf-lua').files({ ... }) end, { desc = "Fzf Files" })
 
 -- write 
 vim.api.nvim_set_keymap("n","<Space><Space>","<cmd>w<CR>", { noremap = true, silent = true })

@@ -53,8 +53,6 @@ vim.opt.termguicolors = true
 -- vim.api.nvim_set_hl(0, 'NormalFloat', {fg = LightGrey})
 -- vim.api.nvim_set_hl(0, "TelescopeBorder", {bg="#ffffff", fg="#ffffff"})
 
-vim.keymap.set("n", "<leader>awf", vim.lsp.buf.add_workspace_folder)
-
 -- show lsp diagnostics on popup
 -- ref: https://stackoverflow.com/a/70760302/6893303
 vim.diagnostic.config({
