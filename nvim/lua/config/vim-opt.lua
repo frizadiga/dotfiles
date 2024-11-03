@@ -1,8 +1,11 @@
 -- main settings
 
+-- startup screen
 -- disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+-- Disable default intro
+vim.opt.shortmess:append("I")
 
 -- set autoread
 vim.opt.autoread = true
