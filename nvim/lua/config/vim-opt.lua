@@ -4,7 +4,7 @@
 -- disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
--- Disable default intro
+-- disable default intro
 vim.opt.shortmess:append("I")
 
 -- set autoread
