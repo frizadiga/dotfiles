@@ -39,7 +39,7 @@ vim.opt.shiftwidth = 2
 vim.opt.timeoutlen = 1000 -- default is 1000
 
 -- transparent popup border
-vim.api.nvim_set_hl(0, "NormalFloat", {bg="#3B4252"})
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B4252" })
 
 
 -- status bar color to transparent
@@ -56,7 +56,7 @@ vim.opt.termguicolors = true
 -- show lsp diagnostics on popup
 -- ref: https://stackoverflow.com/a/70760302/6893303
 vim.diagnostic.config({
-  virtual_text = false
+	virtual_text = false
 })
 -- show line diagnostics automatically in hover window
 vim.o.updatetime = 250
@@ -71,3 +71,55 @@ vim.wo.signcolumn = "yes"
 -- vim.wo.foldmethod = 'expr'
 -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
+-- global indent settings
+vim.opt.expandtab = true -- Convert tabs to spaces
+vim.opt.shiftwidth = 2   -- Default spaces for auto indent
+vim.opt.tabstop = 2      -- Default spaces for tab
+vim.opt.softtabstop = 2  -- Default spaces when editing
+
+-- language specific settings
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "python",
+	callback = function()
+		vim.opt_local.expandtab = true
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.tabstop = 4
+		vim.opt_local.softtabstop = 4
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "javascript,typescript,javascriptreact,typescriptreact",
+	callback = function()
+		vim.opt_local.expandtab = true
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "go",
+	callback = function()
+		vim.opt_local.expandtab = false -- Use tabs for Go
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.tabstop = 4
+		vim.opt_local.softtabstop = 4
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "c,cpp",
+  callback = function()
+    vim.opt_local.expandtab = false -- Use tabs for C and C++
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+  end,
+})
+
+-- you can add more languages following the same pattern
+
+-- optional: add indent detection for better results
+vim.g.detect_indent = true
+vim.g.detect_indent_max_lines = 1000

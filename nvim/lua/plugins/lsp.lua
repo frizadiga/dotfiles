@@ -31,6 +31,11 @@ return {
 				capabilities = capabilities
 			})
 
+      -- Go
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
+
 			-- JavaScript/TypeScript
       lspconfig.ts_ls.setup({
         capabilities = capabilities
