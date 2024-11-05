@@ -14,6 +14,13 @@ return {
         debug = false, -- enable debugging
         -- see configuration section for rest
         -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
+        mappings = {
+          complete = {
+            insert ='<S-Tab>',
+            detail = 'Use @<Tab> or /<Tab> for options.',
+            -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/issues/324#issuecomment-2118551487
+          }
+        },
         window = {
           title = '',
           layout = "float", -- horizontal, vertical, float, replace,

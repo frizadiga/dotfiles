@@ -41,7 +41,6 @@ vim.opt.timeoutlen = 1000 -- default is 1000
 -- transparent popup border
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B4252" })
 
-
 -- status bar color to transparent
 vim.cmd('hi StatusLine ctermbg=235 cterm=NONE')
 
