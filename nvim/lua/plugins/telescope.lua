@@ -120,6 +120,9 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
       vim.api.nvim_set_keymap('v', '<leader>fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', default_opts)
 
+      -- commands
+      vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
+
       require('telescope').load_extension('ui-select')
       require('telescope').load_extension('fzf') -- #performance improvement
     end,
