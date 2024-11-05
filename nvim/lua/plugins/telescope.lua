@@ -52,12 +52,6 @@ return {
       local default_opts = { noremap = true, silent = true }
 
       -- find files
-      -- vim.api.nvim_set_keymap('n', ';',
-      -- 	":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
-      -- default_opts)
-      --    vim.api.nvim_set_keymap('n', '<leader>ff',
-      -- 	":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
-      -- default_opts)
       local find_files_keymaps = { ';', '<leader>ff' }
       for _, key in ipairs(find_files_keymaps) do
         vim.api.nvim_set_keymap(
