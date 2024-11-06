@@ -123,6 +123,9 @@ return {
       -- commands
       vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
 
+      -- highlights groups
+      vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
+
       require('telescope').load_extension('ui-select')
       require('telescope').load_extension('fzf') -- #performance improvement
     end,
