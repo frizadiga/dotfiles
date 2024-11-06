@@ -120,6 +120,9 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
       vim.api.nvim_set_keymap('v', '<leader>fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', default_opts)
 
+      -- keymaps
+      vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope Keymaps' })
+
       -- commands
       vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
 

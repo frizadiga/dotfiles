@@ -33,7 +33,7 @@ return {
         },
       },
       overrides = function() -- add/modify highlights
-        -- overrides = function(colors) -- add/modify highlights
+      -- overrides = function(colors) -- add/modify highlights
         -- return {
         --   -- telescope border
         --   TelescopeBorder = { fg = "none", bg = "none" },
@@ -44,6 +44,8 @@ return {
           FloatBorder = { bg = "none" },
           FloatTitle = { bg = "none" },
           TelescopeBorder = { fg = "none", bg = "none" },
+          -- GitSignsAddPreview = { bg = "NONE" },
+          -- GitSignsDeletePreview = { bg = "NONE" },
 
           -- Save an hlgroup with dark background and dimmed foreground
           -- so that you can use it where your still want darker windows.
