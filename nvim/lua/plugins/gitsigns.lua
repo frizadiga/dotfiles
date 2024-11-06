@@ -5,6 +5,9 @@ return {
       diff_opts = {
         vertical = false,
       },
+      preview_config = {
+        border = 'rounded',
+      },
       numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
       linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
