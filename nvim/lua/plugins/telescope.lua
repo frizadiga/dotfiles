@@ -7,8 +7,18 @@ return {
     branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
+      local actions = require("telescope.actions")
+
       require('telescope').setup({
         defaults = {
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close,
+            },
+            n = {
+              ["KJ"] = actions.close,
+            },
+          },
           preview = {
             timeout = 150, -- ms #performance improvement
             filesize_limit = 1, -- MB #performance improvement
@@ -17,10 +27,7 @@ return {
             'truncate',
           },
           prompt_prefix = ' ▶ ',
-          -- prompt_prefix = ' ▶ ⇢ ',
           selection_caret = '·',
-          -- selection_caret = '⇢ ',
-          -- selection_caret = '▸ ',
           layout_strategy = 'vertical',
           layout_config = {
             vertical = { width = 80, preview_cutoff = 0 },
@@ -55,7 +62,8 @@ return {
       local find_files_keymaps = { ';', '<leader>ff' }
       for _, key in ipairs(find_files_keymaps) do
         vim.api.nvim_set_keymap(
-          'n', key, ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>", default_opts
+          'n', key, ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
+          { noremap = true, silent = true, desc = 'Telescope Find files' }
         )
       end
 

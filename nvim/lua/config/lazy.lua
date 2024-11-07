@@ -1,14 +1,14 @@
 -- start bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   local out = vim.fn.system({
-    "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath
+    'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath
   })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
-      {("Failed to clone lazy.nvim:\n"),"ErrorMsg"},
-      {out,"WarningMsg"},{"\nPress any key to exit..."}},
+      {('Failed to clone lazy.nvim:\n'),'ErrorMsg'},
+      {out,'WarningMsg'},{'\nPress any key to exit...'}},
       true, {}
     )
     vim.fn.getchar()
@@ -18,23 +18,23 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- end bootstrap lazy.nvim
 
--- Vim options
-require("config.vim-opt") -- make sure load this before lazy plugins setup
+-- vim options
+require('config.vim-opt') -- make sure loaded before lazy plugins setup
 
--- Keybindings
-require("config.keymaps") -- make sure load this before lazy plugins setup
+-- keybindings
+require('config.keymaps') -- make sure loaded before lazy plugins setup
 
--- Lazy plugins setup
-require("lazy").setup({
+-- lazy plugins setup
+require('lazy').setup({
   spec = {
     -- load from dir /plugins
-    { import = "plugins" },
+    { import = 'plugins' },
   },
-  install = { colorscheme = { "kanagawa-dragon" } },
+  install = { colorscheme = { 'kanagawa-dragon' } },
   -- automatically check for plugin updates
   checker = { enabled = true },
   ui = {
-    pills = false, size = { width = 1, height = 1 }, border = "single",
+    pills = false, size = { width = 1, height = 1 }, border = 'single',
   }
 })
 
