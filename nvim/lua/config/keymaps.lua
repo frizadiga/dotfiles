@@ -16,6 +16,7 @@
 
 -- esc composite
 vim.keymap.set("i", "kj", "<Esc>", {})
+vim.keymap.set("v", "KJ", "<Esc>", {})
 
 -- quit
 vim.api.nvim_set_keymap("n", "<leader>qq", "<cmd>q<CR>", { noremap = true })

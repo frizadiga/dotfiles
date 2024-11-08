@@ -13,10 +13,11 @@ return {
         defaults = {
           mappings = {
             i = {
-              ["<esc>"] = actions.close,
+              ['<esc>'] = actions.close,
             },
             n = {
-              ["KJ"] = actions.close,
+              ['q'] = actions.close,
+              ['KJ'] = actions.close,
             },
           },
           preview = {
@@ -136,6 +137,15 @@ return {
 
       -- highlights groups
       vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
+
+      -- resume
+      local resume_keymaps = { 'f', '<leader>fr' }
+      for _, key in ipairs(resume_keymaps) do
+        vim.api.nvim_set_keymap(
+          'n', key, "<cmd>lua require'telescope.builtin'.resume()<CR>",
+          { noremap = true, silent = true, desc = 'Telescope Resume' }
+        )
+     end
 
       require('telescope').load_extension('ui-select')
       require('telescope').load_extension('fzf') -- #performance improvement
