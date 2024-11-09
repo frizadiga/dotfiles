@@ -78,7 +78,6 @@ return {
 
       -- buffers
       local action_state = require('telescope.actions.state')
-      local actions = require('telescope.actions')
 
       Buffer_searcher = function()
         builtin.buffers {

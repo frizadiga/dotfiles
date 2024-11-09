@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 -- end bootstrap lazy.nvim
 
 -- vim options
-require('config.vim-opt') -- make sure loaded before lazy plugins setup
+require('config.vim') -- make sure loaded before lazy plugins setup
 
 -- keybindings
 require('config.keymaps') -- make sure loaded before lazy plugins setup

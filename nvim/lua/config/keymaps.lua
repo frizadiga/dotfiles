@@ -19,13 +19,13 @@ vim.keymap.set("i", "kj", "<Esc>", {})
 vim.keymap.set("v", "KJ", "<Esc>", {})
 
 -- quit
-vim.api.nvim_set_keymap("n", "<leader>qq", "<cmd>q<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>qq", "<CMD>q<CR>", { noremap = true })
 
 -- copy to clipboard current file path
 vim.api.nvim_set_keymap(
   "n",
   "<leader>cp",
-  "<cmd>let @+=expand('%:p')<CR>:echo 'Copied: ' . expand('%:p')<CR>",
+  "<CMD>let @+=expand('%:p')<CR>:echo 'Copied: ' . expand('%:p')<CR>",
   { noremap = true }
 )
 
