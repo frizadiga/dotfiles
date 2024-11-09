@@ -15,14 +15,14 @@ return {
         },
       },
       winopts = {
-        -- Window layout
+        -- window layout
         fullscreen = true,
         -- height     = 0.8,
         -- width      = 80,
         -- Position the results in the middle
         row     = 0.35,
         col     = 0.50,
-        -- Border style
+        -- border style
         border     = 'none',
         preview    = {
           vertical   = 'up:65%',   -- Preview window on top

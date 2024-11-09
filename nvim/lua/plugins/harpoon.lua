@@ -42,7 +42,6 @@ return {
             -- https://github.com/Kristina-Pianykh/neovim-config/issues/12#issuecomment-2256096511
             table.remove(harpoon_files.items, selected_entry.index)
 
-
             current_picker:refresh(make_finder())
           end)
           return true

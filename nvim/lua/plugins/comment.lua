@@ -1,5 +1,3 @@
--- return {}
-
 return {
   -- treesitter based
   'folke/ts-comments.nvim',

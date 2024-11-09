@@ -4,6 +4,7 @@ return {
   },
   {
     -- c implementation of fzf sorter for telescope
+    -- benchmark: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
   },
@@ -64,6 +65,18 @@ return {
       local builtin = require('telescope.builtin')
       local default_opts = { noremap = true, silent = true }
 
+      -- resume
+      local resume_keymaps = { 'f', '<leader>fr' }
+      for _, key in ipairs(resume_keymaps) do
+        vim.api.nvim_set_keymap(
+          'n', key, "<cmd>lua require'telescope.builtin'.resume()<CR>",
+          { noremap = true, silent = true, desc = 'Telescope Resume' }
+        )
+      end
+
+      -- builtin list
+      vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope Builtin' })
+
       -- find files
       local find_files_keymaps = { ';', '<leader>ff' }
       for _, key in ipairs(find_files_keymaps) do
@@ -119,8 +132,6 @@ return {
         }
       end
 
-      -- vim.keymap.set('n', "'", Buffer_searcher, {})
-      -- vim.keymap.set('n', '<leader>fb', Buffer_searcher, {})
       local buffer_keymaps = { "'", '<leader>fb' }
       for _, key in ipairs(buffer_keymaps) do
         vim.api.nvim_set_keymap(
@@ -139,17 +150,11 @@ return {
       -- commands
       vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
 
+      -- diagnostics
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
+
       -- highlights groups
       vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
-
-      -- resume
-      local resume_keymaps = { 'f', '<leader>fr' }
-      for _, key in ipairs(resume_keymaps) do
-        vim.api.nvim_set_keymap(
-          'n', key, "<cmd>lua require'telescope.builtin'.resume()<CR>",
-          { noremap = true, silent = true, desc = 'Telescope Resume' }
-        )
-      end
 
       require('telescope').load_extension('ui-select')
       require('telescope').load_extension('fzf') -- #performance improvement
