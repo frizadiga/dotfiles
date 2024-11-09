@@ -44,17 +44,6 @@ vim.keymap.set('n', '=', '==', { desc = 'Fix indentation for current line' })
 -- visual mode specific
 vim.keymap.set('v', '=', '=', { desc = 'Fix indentation for selected lines' })
 
--- toggle between tabs and spaces
-vim.keymap.set('n', '<leader>tt', function()
-  if vim.opt_local.expandtab:get() then
-    vim.opt_local.expandtab = false
-    print('Using tabs')
-  else
-    vim.opt_local.expandtab = true
-    print('Using spaces')
-  end
-end, { desc = 'Toggle tabs/spaces' })
-
 -- fix/adjust indentation for entire file
 vim.keymap.set('n', '<leader>i', 'gg=G<C-o>', { desc = 'Fix indentation for entire file' })
 -- @end indentation
