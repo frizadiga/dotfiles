@@ -3,6 +3,11 @@ return {
     'nvim-telescope/telescope-ui-select.nvim',
   },
   {
+    -- c implementation of fzf sorter for telescope
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+  },
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -144,7 +149,7 @@ return {
           'n', key, "<cmd>lua require'telescope.builtin'.resume()<CR>",
           { noremap = true, silent = true, desc = 'Telescope Resume' }
         )
-     end
+      end
 
       require('telescope').load_extension('ui-select')
       require('telescope').load_extension('fzf') -- #performance improvement
