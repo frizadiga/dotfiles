@@ -5,7 +5,7 @@ return {
       open_cmd = 'enew',
     })
 
-    vim.keymap.set('n', '<leader>ss', '<cmd>lua require("spectre").toggle()<CR>', {
+    vim.keymap.set('n', '<leader>ss', '<CMD>lua require("spectre").toggle()<CR>', {
       desc = "Toggle Spectre"
     })
     -- open in custom search path
@@ -13,13 +13,13 @@ return {
       local search = vim.fn.input("Search Path > ")
       require("spectre").open({cwd = search})
     end, {desc = "Search on custom path"})
-    vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    vim.keymap.set('n', '<leader>sw', '<CMD>lua require("spectre").open_visual({select_word=true})<CR>', {
       desc = "Search current word"
     })
-    vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    vim.keymap.set('v', '<leader>sw', '<esc><CMD>lua require("spectre").open_visual()<CR>', {
       desc = "Search current word"
     })
-    vim.keymap.set('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    vim.keymap.set('n', '<leader>sf', '<CMD>lua require("spectre").open_file_search({select_word=true})<CR>', {
       desc = "Search on current file"
     })
   end,
@@ -78,11 +78,11 @@ return {
 -- 			},
 -- 		});
 -- 		-- require('grug-far').open(opts)
---   	vim.keymap.set('n', '<leader>ss', '<cmd>GrugFar<CR>', {
+--   	vim.keymap.set('n', '<leader>ss', '<CMD>GrugFar<CR>', {
 --   		desc = "Toggle Grug"
 -- 		})
 -- 		-- :lua require('grug-far').open({ prefills = { search = vim.fn.expand("<cword>") } })
--- 		vim.keymap.set('v', '<leader>sw', '<cmd>lua require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })<CR>', {
+-- 		vim.keymap.set('v', '<leader>sw', '<CMD>lua require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })<CR>', {
 -- 				desc = "Search current word"
 -- 		})
 -- 		-- auto close

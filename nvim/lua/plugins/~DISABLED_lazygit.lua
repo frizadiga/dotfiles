@@ -19,6 +19,6 @@ return {}
 -- 			require("telescope").load_extension("lazygit")
 -- 	end,
 --   keys = {
---     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
+--     { "<leader>lg", "<CMD>LazyGit<CR>", desc = "Open lazy git" },
 --   },
 -- }

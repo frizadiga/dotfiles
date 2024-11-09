@@ -14,7 +14,7 @@ return {}
 -- 			}
 --     })
 --
---     vim.keymap.set('n', '<leader>nnn', '<cmd>NoNeckPain<CR>', { noremap = true, silent = true })
+--     vim.keymap.set('n', '<leader>nnn', '<CMD>NoNeckPain<CR>')
 --   end,
 -- }
 

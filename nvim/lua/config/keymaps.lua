@@ -1,44 +1,32 @@
--- keymaps configurations
+-- global keymaps
 
 -- add workspace folder
 -- vim.keymap.set("n", "<leader>awf", vim.lsp.buf.add_workspace_folder)
-
--- local search/find
--- vim.api.nvim_set_keymap("n","<leader>s","<cmd>/", {}) -- conflict with spectre
-
--- clear search highlight
--- vim.api.nvim_set_keymap("n","<leader>cs","<cmd>nohlsearch<CR>", { noremap = true })
-
--- fzf
--- vim.keymap.set("n", "<c-P>", require('fzf-lua').files, { desc = "Fzf Files" })
--- Or, with args
--- vim.keymap.set("n", "<c-P>", function() require('fzf-lua').files({ ... }) end, { desc = "Fzf Files" })
 
 -- esc composite
 vim.keymap.set("i", "kj", "<Esc>", {})
 vim.keymap.set("v", "KJ", "<Esc>", {})
 
 -- quit
-vim.api.nvim_set_keymap("n", "<leader>qq", "<CMD>q<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>qq", "<CMD>q<CR>")
 
 -- copy to clipboard current file path
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   "n",
   "<leader>cp",
-  "<CMD>let @+=expand('%:p')<CR>:echo 'Copied: ' . expand('%:p')<CR>",
-  { noremap = true }
+  "<CMD>let @+=expand('%:p')<CR>:echo 'Copied: ' . expand('%:p')<CR>"
 )
 
 -- write
-vim.api.nvim_set_keymap("n", "<Space><Space>", "<cmd>w<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Space><Space>", "<CMD>w<CR>")
 
 -- replace
-vim.api.nvim_set_keymap("n", "<leader>r", ":%s//g<Left><Left>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>r", ":%s//g<Left><Left>")
 -- in visual mode prefill search with selected text
-vim.api.nvim_set_keymap("v", "<leader>r", ":s/<C-r><C-w>//g<Left><Left>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>r", ":s/<C-r><C-w>//g<Left><Left>")
 
 -- copy selected text to search input when pressing `/`
-vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]], { noremap = true, silent = true })
+vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
 
 -- start indentation
 -- basic indentation

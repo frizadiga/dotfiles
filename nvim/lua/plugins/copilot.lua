@@ -38,13 +38,13 @@ return {
         }
       })
       -- CopilotChatToggle
-      vim.api.nvim_set_keymap("n", "<leader>ccc", "<cmd>CopilotChatToggle<CR>", { noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>ccc", "<CMD>CopilotChatToggle<CR>")
       -- CopilotChatFix
-      vim.api.nvim_set_keymap("v", "<leader>ccf", "<cmd>CopilotChatFix<CR>", { noremap = true, silent = true })
+      vim.keymap.set("v", "<leader>ccf", "<CMD>CopilotChatFix<CR>")
       -- CopilotChatExplain
-      vim.api.nvim_set_keymap("v", "<leader>cce", "<cmd>CopilotChatExplain<CR>", { noremap = true, silent = true })
+      vim.keymap.set("v", "<leader>cce", "<CMD>CopilotChatExplain<CR>")
       -- CopilotChatReview
-      vim.api.nvim_set_keymap("v", "<leader>ccr", "<cmd>CopilotChatReview<CR>", { noremap = true, silent = true })
+      vim.keymap.set("v", "<leader>ccr", "<CMD>CopilotChatReview<CR>")
       -- impl more: https://github.com/CopilotC-Nvim/CopilotChat.nvim?tab=readme-ov-file#commands-coming-from-default-prompts
     end,
   },

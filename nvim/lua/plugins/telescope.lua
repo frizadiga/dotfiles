@@ -68,8 +68,8 @@ return {
       -- resume
       local resume_keymaps = { 'f', '<leader>fr' }
       for _, key in ipairs(resume_keymaps) do
-        vim.api.nvim_set_keymap(
-          'n', key, "<cmd>lua require'telescope.builtin'.resume()<CR>",
+        vim.keymap.set(
+          'n', key, "<CMD>lua require'telescope.builtin'.resume()<CR>",
           { noremap = true, silent = true, desc = 'Telescope Resume' }
         )
       end
@@ -80,19 +80,20 @@ return {
       -- find files
       local find_files_keymaps = { ';', '<leader>ff' }
       for _, key in ipairs(find_files_keymaps) do
-        vim.api.nvim_set_keymap(
+        vim.keymap.set(
           'n', key, ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
           { noremap = true, silent = true, desc = 'Telescope Find files' }
         )
       end
 
       -- grep_string
-      vim.keymap.set('n', '<leader>fs', function()
+      vim.keymap.set('n', '<leader>f/', function()
         builtin.grep_string({ search = vim.fn.input("Grep > ")})
       end, { desc = 'Telescope Grep string' })
 
-      -- marks
-      vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })
+      -- live_grep
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
+      vim.keymap.set('v', '<leader>fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>')
 
       -- buffers
       local action_state = require('telescope.actions.state')
@@ -134,15 +135,11 @@ return {
 
       local buffer_keymaps = { "'", '<leader>fb' }
       for _, key in ipairs(buffer_keymaps) do
-        vim.api.nvim_set_keymap(
-          'n', key, ":lua Buffer_searcher()<CR>", default_opts
-        )
+        vim.keymap.set('n', key, ":lua Buffer_searcher()<CR>")
       end
-      -- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope Buffers' })
 
-      -- live_grep
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
-      vim.api.nvim_set_keymap('v', '<leader>fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', default_opts)
+      -- marks
+      vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })
 
       -- keymaps
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope Keymaps' })
@@ -152,6 +149,9 @@ return {
 
       -- diagnostics
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
+
+      -- LSP symbols
+      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope LSP Symbols' })
 
       -- highlights groups
       vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
