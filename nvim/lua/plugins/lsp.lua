@@ -1,8 +1,8 @@
 return {
   {
-    "williamboman/mason.nvim",
+    'williamboman/mason.nvim',
     config = function()
-      require("mason").setup({
+      require('mason').setup({
         ui = {
           width = 1,
           height = 1,
@@ -14,25 +14,25 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    'williamboman/mason-lspconfig.nvim',
     opts = {
       auto_install = true,
       ensure_installed = {
-        "bashls",
-        "clangd",
-        "zls",
-        "gopls",
-        "html",
-        "ts_ls",
-        "lua_ls",
-        "rust_analyzer",
+        'bashls',
+        'clangd',
+        'zls',
+        'gopls',
+        'html',
+        'ts_ls',
+        'lua_ls',
+        'rust_analyzer',
       },
     },
   },
   {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     config = function()
-      local lspconfig = require("lspconfig")
+      local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       -- c/c++
@@ -87,11 +87,11 @@ return {
         capabilities = capabilities,
       })
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, {})
-      vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, {})
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+      vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, {})
+      vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, {})
+      vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, {})
+      vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, {})
     end,
   },
 }

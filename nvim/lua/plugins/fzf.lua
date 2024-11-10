@@ -1,10 +1,10 @@
 return {
-  "ibhagwan/fzf-lua",
+  'ibhagwan/fzf-lua',
   -- optional for icon support
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     -- calling `setup` is optional for customization
-    require("fzf-lua").setup({
+    require('fzf-lua').setup({
       'fzf-native', -- profile
       -- 'telescope', -- profile
       files = {
@@ -35,6 +35,6 @@ return {
 
     -- navigate on result using <CTRL> + hjkl keys
 
-    vim.keymap.set('n', '<leader>fz', "<CMD>lua require('fzf-lua').files()<CR>")
+    vim.keymap.set('n', '<leader>fz', '<CMD>lua require("fzf-lua").files()<CR>')
   end
 }

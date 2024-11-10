@@ -11,7 +11,7 @@ return {
       numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
       linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-      -- doc: https://github.com/lewis6991/gitsigns.nvim/blob/4daf7022f1481edf1e8fb9947df13bb07c18e89a/lua/gitsigns/config.lua#L212
+      -- doc: https://github.com/lewis6991/gitsigns.nvim/blob/master/lua/gitsigns/config.lua#L212
     }
 
     -- show diff
@@ -65,8 +65,8 @@ return {
       return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
     end
 
-    vim.api.nvim_set_hl(0, "GitSignsAddPreview", { fg = get_color("GitSignsAddPreview", "fg"), bg = "none" })
-    vim.api.nvim_set_hl(0, "GitSignsDeletePreview", { fg = get_color("GitSignsDeletePreview", "fg"), bg = "none" })
+    vim.api.nvim_set_hl(0, 'GitSignsAddPreview', { fg = get_color('GitSignsAddPreview', 'fg'), bg = 'none' })
+    vim.api.nvim_set_hl(0, 'GitSignsDeletePreview', { fg = get_color('GitSignsDeletePreview', 'fg'), bg = 'none' })
   end,
 }
 

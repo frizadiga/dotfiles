@@ -37,14 +37,19 @@ return {
         -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
         -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
+        local ColorMainRed = '#D25858'
+        local ColorCursorLine = '#9c3333' -- default: '#393836' red: '#ab5238'
+
         return {
-          Visual = { bg = '#3E4451' },
+          CursorLine = { bg = ColorCursorLine },
+          -- Visual = { bg = '#4f3333' },
+          Visual = { fg = 'white', bg = ColorMainRed },
           NormalFloat = { bg = 'none' },
           FloatBorder = { bg = 'none' },
           FloatTitle = { bg = 'none' },
           TelescopeBorder = { fg = 'none', bg = 'none' },
-          TelescopePromptPrefix = { fg = '#D75F00', bg = 'none' },
-          TelescopeSelectionCaret = { fg = '#393836', bg = '#393836' }, -- hlgroup: `CursorLine`
+          TelescopePromptPrefix = { fg = ColorMainRed, bg = 'none' },
+          TelescopeSelectionCaret = { fg = ColorCursorLine, bg = ColorCursorLine }, -- hlgroup: `CursorLine`
         }
       end,
     })

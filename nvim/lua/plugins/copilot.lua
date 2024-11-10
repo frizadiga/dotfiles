@@ -1,23 +1,23 @@
 return {
-  "github/copilot.vim",
+  'github/copilot.vim',
   -- 	'zbirenbaum/copilot.lua',
-  -- 	cmd = "Copilot",
-  --   event = "InsertEnter",
+  -- 	cmd = 'Copilot',
+  --   event = 'InsertEnter',
   --   config = function()
-  --     require("copilot").setup({})
+  --     require('copilot').setup({})
   --   end,
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'canary',
     dependencies = {
-      { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-      -- { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { 'github/copilot.vim' },
+      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+      -- { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
+    build = 'make tiktoken', -- Only on MacOS or Linux
     -- see commands section for default commands if you want to lazy load on them
     config = function()
-      require("CopilotChat").setup({
+      require('CopilotChat').setup({
         debug = false, -- enable debugging
         -- see configuration section for rest
         -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
@@ -30,7 +30,7 @@ return {
         },
         window = {
           title = '',
-          layout = "float", -- horizontal, vertical, float, replace,
+          layout = 'float', -- horizontal, vertical, float, replace,
           relative = 'win', -- 'editor', 'win', 'cursor', 'mouse'
           border = 'single', -- 'none', 'single', 'double', 'rounded', 'solid', 'shadow',
           width = 0.6, -- fractional width of parent, or absolute width in columns when > 1
@@ -38,13 +38,13 @@ return {
         }
       })
       -- CopilotChatToggle
-      vim.keymap.set("n", "<leader>ccc", "<CMD>CopilotChatToggle<CR>")
+      vim.keymap.set('n', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
       -- CopilotChatFix
-      vim.keymap.set("v", "<leader>ccf", "<CMD>CopilotChatFix<CR>")
+      vim.keymap.set('v', '<leader>ccf', '<CMD>CopilotChatFix<CR>')
       -- CopilotChatExplain
-      vim.keymap.set("v", "<leader>cce", "<CMD>CopilotChatExplain<CR>")
+      vim.keymap.set('v', '<leader>cce', '<CMD>CopilotChatExplain<CR>')
       -- CopilotChatReview
-      vim.keymap.set("v", "<leader>ccr", "<CMD>CopilotChatReview<CR>")
+      vim.keymap.set('v', '<leader>ccr', '<CMD>CopilotChatReview<CR>')
       -- impl more: https://github.com/CopilotC-Nvim/CopilotChat.nvim?tab=readme-ov-file#commands-coming-from-default-prompts
     end,
   },
