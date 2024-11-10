@@ -5,7 +5,8 @@ return {
       open_cmd = 'enew',
     })
 
-    vim.keymap.set('n', '<leader>ss', '<CMD>lua require("spectre").toggle()<CR>', {
+   vim.keymap.set('n', '<leader>ss',
+      '<CMD>lua require("spectre").toggle()<CR>', {
       desc = "Toggle Spectre"
     })
     -- open in custom search path

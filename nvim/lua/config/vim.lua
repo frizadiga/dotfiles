@@ -7,7 +7,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- disable default intro
-vim.opt.shortmess:append("I")
+vim.opt.shortmess:append('I')
 -- @end startup screen
 
 -- sign column
@@ -17,22 +17,22 @@ vim.wo.signcolumn = 'yes' -- (why? prevent layout shift)
 vim.opt.autoread = true
 
 -- set mapleader to space
-vim.g.mapleader = " "
-vim.g.maplocalleader = "," -- Same for `maplocalleader`
--- vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ',' -- Same for `maplocalleader`
+-- vim.g.maplocalleader = '\\' -- Same for `maplocalleader`
 
 -- @start cursor
 -- hide GUI cursor
--- vim.opt.guicursor = ""
+-- vim.opt.guicursor = ''
 -- change cursor type on diff mode
 -- docs: https://neovim.io/doc/user/options.html#'guicursor'
-vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:hor100,r-cr-o:hor20"
+vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:hor100,r-cr-o:hor20'
 -- vim.o.guicursor = 'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
 -- @end cursor
 
 -- show line numbers
 vim.opt.rnu = true -- relative line numbers
-vim.wo.number = true -- absolute line numbers
+vim.wo.number = false -- dont show absolute line numbers
 
 -- set fill characters for end of buffer
 vim.opt.fillchars = { eob = ' ' }
@@ -71,7 +71,7 @@ vim.g.detect_indent_max_lines = 1000
 
 -- @start language config
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = "python",
+	pattern = 'python',
 	callback = function()
 		vim.opt_local.expandtab = true
 		vim.opt_local.shiftwidth = 4
@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = "javascript,typescript,javascriptreact,typescriptreact",
+	pattern = 'javascript,typescript,javascriptreact,typescriptreact',
 	callback = function()
 		vim.opt_local.expandtab = true
 		vim.opt_local.shiftwidth = 2
@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = "go",
+	pattern = 'go',
 	callback = function()
 		vim.opt_local.expandtab = false
 		vim.opt_local.shiftwidth = 4
@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = "c,cpp",
+  pattern = 'c,cpp',
   callback = function()
     vim.opt_local.expandtab = false
     vim.opt_local.shiftwidth = 4
@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = "lua",
+  pattern = 'lua',
   callback = function()
     vim.opt_local.expandtab = true
     vim.opt_local.shiftwidth = 2

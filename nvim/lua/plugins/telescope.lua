@@ -45,7 +45,6 @@ return {
           },
           file_ignore_patterns = {"%.git/", "node_modules/"}, -- #performance improvement
         },
-        -- other configuration values here
         pickers = {
           find_files = {
             follow = true,
@@ -63,7 +62,6 @@ return {
       })
 
       local builtin = require('telescope.builtin')
-      local default_opts = { noremap = true, silent = true }
 
       -- resume
       local resume_keymaps = { 'f', '<leader>fr' }
