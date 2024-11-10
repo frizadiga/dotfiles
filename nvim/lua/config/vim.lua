@@ -22,12 +22,19 @@ vim.g.maplocalleader = ',' -- Same for `maplocalleader`
 -- vim.g.maplocalleader = '\\' -- Same for `maplocalleader`
 
 -- @start cursor
--- hide GUI cursor
--- vim.opt.guicursor = ''
 -- change cursor type on diff mode
 -- docs: https://neovim.io/doc/user/options.html#'guicursor'
-vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:hor100,r-cr-o:hor20'
--- vim.o.guicursor = 'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
+-- what does this do?
+-- 1. normal mode: block
+-- 2. insert mode: horizontal line
+-- 3. visual mode: vertical line
+-- 4. replace mode: horizontal line
+-- 5. command mode: horizontal line
+-- 6. operator pending mode: horizontal line
+-- 7. terminal mode: block
+-- 8. prompt mode: horizontal line
+-- 9. select mode: vertical line
+vim.opt.guicursor = 'n-c-sm:block,i-ci-ve:hor100,v:ver10,r-cr-o:hor20'
 -- @end cursor
 
 -- show line numbers

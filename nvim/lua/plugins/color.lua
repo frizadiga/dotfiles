@@ -1,13 +1,13 @@
 return {
-  "rebelot/kanagawa.nvim",
+  'rebelot/kanagawa.nvim',
   lazy = false,
-  name = "kanagawa",
+  name = 'kanagawa',
   priority = 1000,
   config = function()
     require('kanagawa').setup({
-      -- " 1. Modify your config
-      -- " 2. Restart nvim
-      -- " 3. Run this command:
+      -- 1. Modify your config
+      -- 2. Restart nvim
+      -- 3. Run this command:
       -- :KanagawaCompile
       compile = true,  -- enable compiling the colorscheme
       undercurl = true,  -- enable undercurls
@@ -20,12 +20,12 @@ return {
       colors = {  -- add/modify theme and palette colors
         theme = {
           all = {
-            ui = { bg_gutter = "none", float = { bg = "none" } }
+            ui = { bg_gutter = 'none', float = { bg = 'none' } }
           }
         },
       },
       overrides = function()
-      -- overrides = function(colors) -- add/modify highlights
+        -- get `colors` from function arg
         -- local theme = colors.theme
         -- Save an hlgroup with dark background and dimmed foreground
         -- so that you can use it where your still want darker windows.
@@ -38,64 +38,18 @@ return {
         -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
         return {
-          NormalFloat = { bg = "none" },
-          FloatBorder = { bg = "none" },
-          FloatTitle = { bg = "none" },
-          TelescopeBorder = { fg = "none", bg = "none" },
+          Visual = { bg = '#3E4451' },
+          NormalFloat = { bg = 'none' },
+          FloatBorder = { bg = 'none' },
+          FloatTitle = { bg = 'none' },
+          TelescopeBorder = { fg = 'none', bg = 'none' },
+          TelescopePromptPrefix = { fg = '#D75F00', bg = 'none' },
+          TelescopeSelectionCaret = { fg = '#393836', bg = '#393836' }, -- hlgroup: `CursorLine`
         }
       end,
     })
 
     -- setup must be called before loading
-    vim.cmd("colorscheme kanagawa-dragon")
+    vim.cmd('colorscheme kanagawa-dragon')
   end
 }
-
--- return {
---   {
---     "catppuccin/nvim",
---     lazy = false,
---     name = "catppuccin",
---     priority = 1000,
---     config = function()
---       vim.cmd.colorscheme "catppuccin-mocha"
---     end
---   }
--- }
-
--- return {
---   {
---     "ellisonleao/gruvbox.nvim",
---     lazy = false,
---     name = "gruvbox",
---     priority = 1000,
---     config = function()
---       require("gruvbox").setup({
---         terminal_colors = true, -- add neovim terminal colors
---         undercurl = true,
---         underline = true,
---         bold = true,
---         italic = {
---           strings = true,
---           emphasis = true,
---           comments = true,
---           operators = false,
---           folds = true,
---         },
---         strikethrough = true,
---         invert_selection = false,
---         invert_signs = false,
---         invert_tabline = false,
---         invert_intend_guides = false,
---         inverse = true, -- invert background for search, diffs, statuslines and errors
---         contrast = "", -- can be "hard", "soft" or empty string
---         palette_overrides = {},
---         overrides = {},
---         dim_inactive = false,
---         transparent_mode = false,
---       })
---       vim.cmd("colorscheme gruvbox")
---     end,
---     -- opts = { transparent_mode = true },
---   }
--- }
