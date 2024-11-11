@@ -9,15 +9,15 @@ return {
       -- 2. Restart nvim
       -- 3. Run this command:
       -- :KanagawaCompile
-      compile = true,  -- enable compiling the colorscheme
-      undercurl = true,  -- enable undercurls
+      compile = false, -- somehow disabling it improves initial load time
+      undercurl = true,
       commentStyle = { italic = false },
       keywordStyle = { italic = false},
       statementStyle = { bold = true },
       transparent = true,  -- do not set background color
       dimInactive = false,  -- dim inactive window `:h hl-NormalNC`
       terminalColors = true,  -- define vim.g.terminal_color_{0,17}
-      colors = {  -- add/modify theme and palette colors
+      colors = {
         theme = {
           all = {
             ui = { bg_gutter = 'none', float = { bg = 'none' } }
@@ -38,18 +38,29 @@ return {
         -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
         local ColorMainRed = '#D25858'
-        local ColorCursorLine = '#9c3333' -- default: '#393836' red: '#ab5238'
+        local ColorSecondaryRed = '#9c3333'
 
         return {
-          CursorLine = { bg = ColorCursorLine },
           -- Visual = { bg = '#4f3333' },
-          Visual = { fg = 'white', bg = ColorMainRed },
+          -- Visual = { fg = 'white', bg = ColorMainRed },
           NormalFloat = { bg = 'none' },
           FloatBorder = { bg = 'none' },
+          FloatFooter = { bg = 'none' },
+          FloatermBorder = { bg = 'none' },
           FloatTitle = { bg = 'none' },
-          TelescopeBorder = { fg = 'none', bg = 'none' },
+          StatusLine = { bg = 'none' },
+          StatusLineNC = { bg = 'none' },
+          FzfLuaBackdrop = { bg = 'none' },
+          NotifyBackground = { bg = 'none' },
+          MiniPickPrompt = { bg = 'none' },
+          MiniTablineHidden = { bg = 'none' },
+          MiniStatuslineFilename = { bg = 'none' },
+          TelescopeBorder = { bg = 'none' },
+          -- TelescopeMatching = { fg = 'white', bg = 'none' },
           TelescopePromptPrefix = { fg = ColorMainRed, bg = 'none' },
-          TelescopeSelectionCaret = { fg = ColorCursorLine, bg = ColorCursorLine }, -- hlgroup: `CursorLine`
+          TelescopeSelectionCaret = { fg = ColorSecondaryRed, bg = ColorSecondaryRed }, -- hlgroup: `CursorLine`
+          CopilotChatHeader = { fg = ColorSecondaryRed, bg = 'none' },
+          CopilotChatSeparator = { fg = '#54546d', bg = 'none' },
         }
       end,
     })

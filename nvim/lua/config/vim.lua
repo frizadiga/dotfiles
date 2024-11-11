@@ -34,7 +34,7 @@ vim.g.maplocalleader = ',' -- Same for `maplocalleader`
 -- 7. terminal mode: block
 -- 8. prompt mode: horizontal line
 -- 9. select mode: vertical line
-vim.opt.guicursor = 'n-c-sm:block,i-ci-ve:hor100,v:ver10,r-cr-o:hor20'
+vim.opt.guicursor = 'n-c-sm:block,i-ci-ve:hor100,v:hor100,r-cr-o:hor100'
 -- @end cursor
 
 -- show line numbers
@@ -49,18 +49,24 @@ vim.opt.timeoutlen = 1000 -- default is 1000
 -- use system clipboard
 vim.opt.clipboard = 'unnamedplus'
 
--- set termgui colors
+-- set term colors
+vim.cmd [[
+  highlight Normal guibg=NONE
+  highlight Normal ctermbg=NONE
+  highlight NonText guibg=NONE
+  highlight NonText ctermbg=NONE
+]]
 vim.opt.termguicolors = true
 
 -- @start lsp
 -- show lsp diagnostics on popup
 -- ref: https://stackoverflow.com/a/70760302/6893303
 vim.diagnostic.config({
-	virtual_text = false
+  virtual_text = false
 })
 
 -- show line diagnostics automatically in hover window
-vim.o.updatetime = 250
+vim.opt.updatetime = 250 -- default: 250
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 -- @end lsp
 
@@ -78,33 +84,33 @@ vim.g.detect_indent_max_lines = 1000
 
 -- @start language config
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'python',
-	callback = function()
-		vim.opt_local.expandtab = true
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-		vim.opt_local.softtabstop = 4
-	end,
+  pattern = 'python',
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+  end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'javascript,typescript,javascriptreact,typescriptreact',
-	callback = function()
-		vim.opt_local.expandtab = true
-		vim.opt_local.shiftwidth = 2
-		vim.opt_local.tabstop = 2
-		vim.opt_local.softtabstop = 2
-	end,
+  pattern = 'javascript,typescript,javascriptreact,typescriptreact',
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+  end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'go',
-	callback = function()
-		vim.opt_local.expandtab = false
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-		vim.opt_local.softtabstop = 4
-	end,
+  pattern = 'go',
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+  end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -129,4 +135,25 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- you can add more languages following the same pattern
 -- @end language config
+
+-- @start create user commands
+-- run todo.sh and print output
+vim.api.nvim_create_user_command(
+  'Todo',
+  function()
+    -- run some bash file and print stdout
+    local tools_dir = vim.fn.expand('$TOOLS_DIR')
+    local output = vim.fn.system({'bash', tools_dir .. '/todo.sh'})
+    print(output)
+  end,
+  {}
+)
+
+-- @TODO: cmd input with shell alias resolver
+
+-- Lazy alias
+vim.api.nvim_create_user_command('L', function(opts)
+  vim.cmd('Lazy ' .. opts.args)
+end, { nargs = '*', complete = 'custom,v:lua.require("lazy.view").complete' })
+-- @end create user commands
 

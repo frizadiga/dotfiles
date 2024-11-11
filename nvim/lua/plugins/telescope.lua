@@ -136,6 +136,9 @@ return {
         vim.keymap.set('n', key, ":lua Buffer_searcher()<CR>")
       end
 
+      -- oldfiles
+      vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Telescope Oldfiles' })
+
       -- marks
       vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })
 
@@ -144,6 +147,9 @@ return {
 
       -- commands
       vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
+
+      -- command history
+      vim.keymap.set('n', '<leader>;', builtin.command_history, { desc = 'Telescope Command history' })
 
       -- diagnostics
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })

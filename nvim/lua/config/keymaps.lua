@@ -8,8 +8,8 @@ vim.keymap.set('v', 'KJ', '<Esc>')
 -- quit
 vim.keymap.set('n', '<leader>qq', '<CMD>q<CR>')
 
--- write
-vim.keymap.set('n', '<Space><Space>', '<CMD>w<CR>')
+-- write to fs if only buffer is modified
+vim.keymap.set('n', '<Space><Space>', '<CMD>update<CR>')
 
 -- find
 -- copy selected text to search input when pressing `/`
@@ -26,6 +26,10 @@ vim.keymap.set(
   '<leader>cp',
   '<CMD>let @+=expand("%:p")<CR>:echo "Copied: " .. expand("%:p")<CR>'
 )
+
+-- move selected block up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- @start indentation
 -- basic indentation
