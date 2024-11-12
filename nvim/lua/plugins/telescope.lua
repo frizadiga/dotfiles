@@ -35,17 +35,15 @@ return {
             n = {
               ['q'] = actions.close,
               ['KJ'] = actions.close,
-              -- set shift as enter
-              ['l'] = actions.select_default,
-              -- ['<Space>'] = actions.select_default,
+              -- set as enter
+              [';'] = actions.select_default,
             },
           },
           preview = {
             timeout = 150, -- ms #performance improvement
             filesize_limit = 1, -- MB #performance improvement
           },
-          path_display = { 'truncate',
-          },
+          path_display = { 'truncate' },
           prompt_prefix = ' ▶ ',
           -- selection_caret = '·',
           layout_strategy = 'vertical',
@@ -54,7 +52,7 @@ return {
           },
           cache_picker = {
             num_pickers = 5, -- #performance improvement
-            limit_entries = 1000 -- #performance improvement
+            limit_entries = 1000, -- #performance improvement
           },
           file_ignore_patterns = {"%.git/", "node_modules/"}, -- #performance improvement
         },
@@ -62,12 +60,16 @@ return {
           find_files = {
             follow = true,
             prompt_title = 'Find Files - Entire Project',
-            find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'} -- #performance improvement
+            find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'}, -- #performance improvement
           },
           live_grep = {
             follow = true,
-            prompt_title = 'Live Grep - Entire Project'
+            prompt_title = 'Live Grep - Entire Project',
           },
+          oldfiles = {
+            prompt_title = 'Recent Files',
+            cwd_only = true, -- prevent list files globally across all projects
+          }
         },
         extensions = {
           ['ui-select'] = {
@@ -82,10 +84,16 @@ return {
         },
       })
 
+      -- recent files (oldfiles)
+      vim.keymap.set('n', ';', function()
+        builtin.oldfiles()
+      end, { desc = 'Telescope Oldfiles (Recent Files)' })
+
       -- find files entire project
       vim.keymap.set(
-        'n', ';', ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
-        { noremap = true, silent = true, desc = 'Telescope Find files - entire project' }
+        'n', '<leader>F',
+        ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
+        { desc = 'Telescope Find files - entire project' }
       )
 
       -- find files active buffer dir
@@ -151,9 +159,6 @@ return {
       for _, key in ipairs(buffer_keymaps) do
         vim.keymap.set('n', key, ":lua Buffer_searcher()<CR>")
       end
-
-      -- oldfiles
-      vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Telescope Oldfiles' })
 
       -- marks
       vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })

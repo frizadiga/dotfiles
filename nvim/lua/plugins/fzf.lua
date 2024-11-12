@@ -6,7 +6,9 @@ return {
     -- calling `setup` is optional for customization
     require('fzf-lua').setup({
       'fzf-native', -- profile
-      -- 'telescope', -- profile
+      fzf_opts = {
+        ['--color'] = 'prompt:160,pointer:160',
+      },
       files = {
         prompt = '▶ ',
         cwd_prompt = false,
@@ -35,6 +37,6 @@ return {
 
     -- navigate on result using <CTRL> + hjkl keys
 
-    vim.keymap.set('n', '<leader>fz', '<CMD>lua require("fzf-lua").files()<CR>')
+    vim.keymap.set('n', '<leader>fz', '<CMD>lua require("fzf-lua").files({ resume = true })<CR>')
   end
 }

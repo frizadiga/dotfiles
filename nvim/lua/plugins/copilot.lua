@@ -26,7 +26,15 @@ return {
             insert ='<S-Tab>',
             detail = 'Use @<Tab> or /<Tab> for options.',
             -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/issues/324#issuecomment-2118551487
-          }
+          },
+          accept_diff = {
+            normal = '<Space><Space>',
+            insert = '<Space><Space>',
+          },
+          reset = {
+            normal = '<C-l>',
+            insert = '<C-l>',
+          },
         },
         window = {
           title = '',
@@ -39,6 +47,7 @@ return {
       })
       -- CopilotChatToggle
       vim.keymap.set('n', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
+      vim.keymap.set('v', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
       -- CopilotChatFix
       vim.keymap.set('v', '<leader>ccf', '<CMD>CopilotChatFix<CR>')
       -- CopilotChatExplain

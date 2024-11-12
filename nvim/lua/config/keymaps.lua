@@ -8,6 +8,9 @@ vim.keymap.set('v', 'KJ', '<Esc>')
 -- quit
 vim.keymap.set('n', '<leader>qq', '<CMD>q<CR>')
 
+-- close current buffer
+vim.keymap.set('n', '<leader>w', '<CMD>bd<CR>')
+
 -- write to fs if only buffer is modified
 vim.keymap.set('n', '<Space><Space>', '<CMD>update<CR>')
 

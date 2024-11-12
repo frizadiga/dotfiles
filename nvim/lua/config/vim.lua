@@ -10,6 +10,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.shortmess:append('I')
 -- @end startup screen
 
+-- disable swap files
+vim.opt.swapfile = false
+
 -- sign column
 vim.wo.signcolumn = 'yes' -- (why? prevent layout shift)
 
