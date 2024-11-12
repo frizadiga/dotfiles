@@ -1,21 +1,32 @@
 return {
   {
-    'nvim-telescope/telescope-ui-select.nvim',
-  },
-  {
-    -- c implementation of fzf sorter for telescope
-    -- benchmark: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
-  },
-  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      {
+        'nvim-telescope/telescope-ui-select.nvim',
+      },
+      -- {
+      --   "nvim-telescope/telescope-live-grep-args.nvim" ,
+      --   -- This will not install any breaking changes.
+      --   -- For major updates, this must be adjusted manually.
+      --   version = "^1.0.0",
+      -- },
+      {
+        -- c implementation of fzf sorter for telescope
+        -- benchmark: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        -- build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+      },
+    },
     config = function()
+      local telescope = require('telescope')
       local actions = require('telescope.actions')
+      local utils = require('telescope.utils')
+      local builtin = require('telescope.builtin')
 
-      require('telescope').setup({
+      telescope.setup({
         defaults = {
           mappings = {
             i = {
@@ -24,14 +35,16 @@ return {
             n = {
               ['q'] = actions.close,
               ['KJ'] = actions.close,
+              -- set shift as enter
+              ['l'] = actions.select_default,
+              -- ['<Space>'] = actions.select_default,
             },
           },
           preview = {
             timeout = 150, -- ms #performance improvement
             filesize_limit = 1, -- MB #performance improvement
           },
-          path_display = {
-            'truncate',
+          path_display = { 'truncate',
           },
           prompt_prefix = ' ▶ ',
           -- selection_caret = '·',
@@ -48,50 +61,53 @@ return {
         pickers = {
           find_files = {
             follow = true,
+            prompt_title = 'Find Files - Entire Project',
             find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'} -- #performance improvement
           },
-          -- live_grep = {
-          -- 	follow = true
-          -- },
+          live_grep = {
+            follow = true,
+            prompt_title = 'Live Grep - Entire Project'
+          },
         },
         extensions = {
           ['ui-select'] = {
-            require('telescope.themes').get_dropdown({}),
+            require('telescope.themes').get_dropdown({
+              layout_config = {
+                -- center = { width = 50 },
+                prompt_position = 'bottom',
+              },
+              -- layout_strategy = 'bottom_pane',
+            }),
           },
         },
       })
 
-      local builtin = require('telescope.builtin')
+      -- find files entire project
+      vim.keymap.set(
+        'n', ';', ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
+        { noremap = true, silent = true, desc = 'Telescope Find files - entire project' }
+      )
 
-      -- resume
-      local resume_keymaps = { 'f', '<leader>fr' }
-      for _, key in ipairs(resume_keymaps) do
-        vim.keymap.set(
-          'n', key, "<CMD>lua require'telescope.builtin'.resume()<CR>",
-          { noremap = true, silent = true, desc = 'Telescope Resume' }
-        )
-      end
-
-      -- builtin list
-      vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope Builtin' })
-
-      -- find files
-      local find_files_keymaps = { ';', '<leader>ff' }
-      for _, key in ipairs(find_files_keymaps) do
-        vim.keymap.set(
-          'n', key, ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
-          { noremap = true, silent = true, desc = 'Telescope Find files' }
-        )
-      end
+      -- find files active buffer dir
+      vim.keymap.set('n', '<leader>:', function()
+        builtin.find_files({ cwd = utils.buffer_dir(), prompt_title = 'Find Files - CWD' })
+      end, { desc = 'Telescope Find files cwd' })
 
       -- grep_string
       vim.keymap.set('n', '<leader>f/', function()
-        builtin.grep_string({ search = vim.fn.input("Grep > ")})
+        builtin.grep_string({ search = vim.fn.input("Grep")})
       end, { desc = 'Telescope Grep string' })
 
-      -- live_grep
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope Live grep' })
-      vim.keymap.set('v', '<leader>fg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>')
+      -- live_grep active buffer dir
+      vim.keymap.set('n', '<leader>fg', function()
+        builtin.live_grep({ prompt_title = 'Live Grep - CWD', cwd = utils.buffer_dir() })
+      end, { desc = 'Telescope Live grep - cwd' })
+
+      -- live_grep entire project
+      vim.keymap.set('n', '<leader>ff', function()
+        builtin.live_grep({ prompt_title = 'Live Grep - Entire Project' })
+      end, { desc = 'Telescope Live grep - entire project' })
+      vim.keymap.set('v', '<leader>ff', 'y<ESC>:Telescope live_grep default_text=<C-r>0<CR>')
 
       -- buffers
       local action_state = require('telescope.actions.state')
@@ -160,8 +176,22 @@ return {
       -- highlights groups
       vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
 
-      require('telescope').load_extension('ui-select')
-      require('telescope').load_extension('fzf') -- #performance improvement
+      -- builtin list
+      vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope Builtin' })
+
+      -- resume
+      local resume_keymaps = { 'f', '<leader>fr' }
+      for _, key in ipairs(resume_keymaps) do
+        vim.keymap.set(
+          'n', key, "<CMD>lua require'telescope.builtin'.resume()<CR>",
+          { noremap = true, silent = true, desc = 'Telescope Resume' }
+        )
+      end
+
+      -- Enable Telescope extensions if they are installed
+      pcall(telescope.load_extension, 'fzf')
+      pcall(telescope.load_extension, 'ui-select')
+      -- pcall(telescope.load_extension, 'live_grep_args')
     end,
   },
 }

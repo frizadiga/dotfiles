@@ -16,7 +16,7 @@ return {
       }
     })
 
-    -- show last message
+    -- search message history
     vim.keymap.set('n', '<leader>nn', '<CMD>Noice telescope<CR>', { desc = "Show Last Message" })
   end,
 }
