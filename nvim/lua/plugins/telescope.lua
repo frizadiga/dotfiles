@@ -1,7 +1,8 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    branch = '0.1.x', -- for stable
+    -- branch = 'master', -- for latest
     dependencies = {
       {
         'nvim-telescope/telescope-ui-select.nvim',
@@ -12,6 +13,7 @@ return {
       --   -- For major updates, this must be adjusted manually.
       --   version = "^1.0.0",
       -- },
+      { 'nvim-telescope/telescope-frecency.nvim' },
       {
         -- c implementation of fzf sorter for telescope
         -- benchmark: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
@@ -164,22 +166,22 @@ return {
       vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })
 
       -- keymaps
-      vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope Keymaps' })
+      -- vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope Keymaps' })
 
       -- commands
-      vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
+      -- vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
 
       -- command history
-      vim.keymap.set('n', '<leader>;', builtin.command_history, { desc = 'Telescope Command history' })
+      -- vim.keymap.set('n', '<leader>;', builtin.command_history, { desc = 'Telescope Command history' })
+
+      -- highlights groups
+      -- vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
 
       -- diagnostics
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
 
       -- LSP symbols
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope LSP Symbols' })
-
-      -- highlights groups
-      vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
 
       -- builtin list
       vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope Builtin' })
@@ -196,6 +198,8 @@ return {
       -- Enable Telescope extensions if they are installed
       pcall(telescope.load_extension, 'fzf')
       pcall(telescope.load_extension, 'ui-select')
+      pcall(telescope.load_extension, 'frecency')
+      -- require("telescope").load_extension "frecency"
       -- pcall(telescope.load_extension, 'live_grep_args')
     end,
   },

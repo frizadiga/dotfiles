@@ -16,6 +16,13 @@ return {
           ['--layout'] = 'default',
         },
       },
+      grep = {
+        prompt = 'Live Grep Native ▶ ',
+        cwd_prompt = false,
+        fzf_opts = {
+          ['--layout'] = 'default',
+        },
+      },
       winopts = {
         -- window layout
         fullscreen = true,
@@ -37,6 +44,11 @@ return {
 
     -- navigate on result using <CTRL> + hjkl keys
 
-    vim.keymap.set('n', '<leader>fz', '<CMD>lua require("fzf-lua").files({ resume = true })<CR>')
+    -- keymap to toggle files
+    local keymap_files = { '<leader>;', '<leader>fz' }
+    for _, key in ipairs(keymap_files) do
+      vim.keymap.set('n', key, '<CMD>lua require("fzf-lua").files({ resume = true })<CR>')
+    end
+    vim.keymap.set('n', '<leader>FF', '<CMD>lua require("fzf-lua").live_grep_native({ resume = true })<CR>')
   end
 }

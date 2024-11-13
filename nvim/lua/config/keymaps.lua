@@ -8,12 +8,21 @@ vim.keymap.set('v', 'KJ', '<Esc>')
 -- quit
 vim.keymap.set('n', '<leader>qq', '<CMD>q<CR>')
 
+-- @start buffer
 -- close current buffer
 vim.keymap.set('n', '<leader>w', '<CMD>bd<CR>')
 
+-- previous buffer
+vim.keymap.set('n', '<leader>h', '<CMD>bp<CR>')
+
+-- next buffer
+vim.keymap.set('n', '<leader>H', '<CMD>bn<CR>')
+
 -- write to fs if only buffer is modified
 vim.keymap.set('n', '<Space><Space>', '<CMD>update<CR>')
+-- @end buffer
 
+-- @start search buffer
 -- find
 -- copy selected text to search input when pressing `/`
 vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
@@ -22,6 +31,7 @@ vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
 vim.keymap.set('n', '<leader>r', ':%s//g<Left><Left>')
 -- in visual mode prefill search with selected text
 vim.keymap.set('v', '<leader>r', ':s/<C-r><C-w>//g<Left><Left>')
+-- @end search buffer
 
 -- copy to clipboard current file path
 vim.keymap.set(

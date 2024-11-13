@@ -10,6 +10,11 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.shortmess:append('I')
 -- @end startup screen
 
+-- @start shell
+-- set shell to zsh
+vim.opt.shell = '/bin/zsh'
+-- @end shell
+
 -- disable swap files
 vim.opt.swapfile = false
 
@@ -152,11 +157,29 @@ vim.api.nvim_create_user_command(
   {}
 )
 
--- @TODO: cmd input with shell alias resolver
-
 -- Lazy alias
 vim.api.nvim_create_user_command('L', function(opts)
   vim.cmd('Lazy ' .. opts.args)
 end, { nargs = '*', complete = 'custom,v:lua.require("lazy.view").complete' })
--- @end create user commands
 
+-- new daily open command
+vim.api.nvim_create_user_command(
+  'D',
+  function()
+    local notes_dir = vim.fn.expand('$NOTES_DIR')
+    local output = vim.fn.system({'bash', notes_dir .. '/app/schd-new-daily.sh'})
+    -- get last line of output
+    local today_filepath = vim.fn.trim(vim.fn.split(output, '\n')[#vim.fn.split(output, '\n')])
+
+    print(output)
+    print(today_filepath)
+
+    -- if today file exists, open it
+    if vim.fn.filereadable(today_filepath) == 1 then
+      vim.cmd('e ' .. today_filepath)
+    end
+  end,
+  {}
+)
+
+-- @end create user commands

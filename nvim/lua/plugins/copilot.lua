@@ -29,7 +29,6 @@ return {
           },
           accept_diff = {
             normal = '<Space><Space>',
-            insert = '<Space><Space>',
           },
           reset = {
             normal = '<C-l>',
@@ -48,12 +47,16 @@ return {
       -- CopilotChatToggle
       vim.keymap.set('n', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
       vim.keymap.set('v', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
+
       -- CopilotChatFix
       vim.keymap.set('v', '<leader>ccf', '<CMD>CopilotChatFix<CR>')
+
       -- CopilotChatExplain
       vim.keymap.set('v', '<leader>cce', '<CMD>CopilotChatExplain<CR>')
+
       -- CopilotChatReview
       vim.keymap.set('v', '<leader>ccr', '<CMD>CopilotChatReview<CR>')
+
       -- impl more: https://github.com/CopilotC-Nvim/CopilotChat.nvim?tab=readme-ov-file#commands-coming-from-default-prompts
     end,
   },
