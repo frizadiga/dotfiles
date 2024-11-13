@@ -145,6 +145,21 @@ vim.api.nvim_create_autocmd('FileType', {
 -- @end language config
 
 -- @start create user commands
+-- fn to print reverse lines
+local function print_reverse_lines(output)
+  -- Split output into lines
+  local lines = vim.fn.split(output, '\n')
+
+  -- Print reverse of lines
+  for i = #lines, 1, -1 do
+    print(lines[i])
+  end
+
+  -- Example usage
+  -- local output = "line1\nline2\nline3"
+  -- print_reverse_lines(output)
+end
+
 -- run todo.sh and print output
 vim.api.nvim_create_user_command(
   'Todo',
@@ -152,7 +167,8 @@ vim.api.nvim_create_user_command(
     -- run some bash file and print stdout
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
     local output = vim.fn.system({'bash', tools_dir .. '/todo.sh'})
-    print(output)
+    -- print(output)
+    print_reverse_lines(output)
   end,
   {}
 )
@@ -168,16 +184,17 @@ vim.api.nvim_create_user_command(
   function()
     local notes_dir = vim.fn.expand('$NOTES_DIR')
     local output = vim.fn.system({'bash', notes_dir .. '/app/schd-new-daily.sh'})
-    -- get last line of output
-    local today_filepath = vim.fn.trim(vim.fn.split(output, '\n')[#vim.fn.split(output, '\n')])
 
-    print(output)
-    print(today_filepath)
+    -- get last line of output
+    local lines = vim.fn.split(output, '\n')
+    local today_filepath = vim.fn.trim(lines[#lines])
 
     -- if today file exists, open it
     if vim.fn.filereadable(today_filepath) == 1 then
       vim.cmd('e ' .. today_filepath)
     end
+
+    print_reverse_lines(output)
   end,
   {}
 )

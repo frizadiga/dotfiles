@@ -37,7 +37,7 @@ vim.keymap.set('v', '<leader>r', ':s/<C-r><C-w>//g<Left><Left>')
 vim.keymap.set(
   'n',
   '<leader>cp',
-  '<CMD>let @+=expand("%:p")<CR>:echo "Copied: " .. expand("%:p")<CR>'
+  '<CMD>let @+=expand("%:p")<CR>:echo "copied: " .. expand("%:p")<CR>'
 )
 
 -- move selected block up and down

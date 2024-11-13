@@ -3,6 +3,9 @@ return {
     'hrsh7th/cmp-nvim-lsp'
   },
   {
+    'hrsh7th/cmp-cmdline',
+  },
+  {
     'L3MON4D3/LuaSnip',
     dependencies = {
       'saadparwaiz1/cmp_luasnip',
@@ -15,6 +18,7 @@ return {
       local cmp = require('cmp')
       require('luasnip.loaders.from_vscode').lazy_load()
 
+      -- base cmp setup
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -32,12 +36,38 @@ return {
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
+        sources = cmp.config.sources(
+          {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' }, -- for luasnip users.
+          },
+          {
+            { name = 'buffer' },
+          }
+        ),
+      })
+
+      -- `/` cmdline setup.
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      -- `:` cmdline setup.
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- for luasnip users.
+          { name = 'path' }
         }, {
-          { name = 'buffer' },
-        }),
+            {
+              name = 'cmdline',
+              option = {
+                ignore_cmds = { 'Man', '!' }
+              }
+            }
+          })
       })
     end,
   },
