@@ -36,23 +36,20 @@ return {
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
-        sources = cmp.config.sources(
-          {
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' }, -- for luasnip users.
-          },
-          {
-            { name = 'buffer' },
-          }
-        ),
-      })
-
-      -- `/` cmdline setup.
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
+        -- sources = cmp.config.sources(
+        --   {
+        --     { name = 'nvim_lsp' },
+        --     { name = 'luasnip' }, -- for luasnip users.
+        --     { name = 'path' },
+        --     { name = 'buffer' },
+        --   }
+        -- ),
         sources = {
-          { name = 'buffer' }
-        }
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' }, -- for luasnip users.
+          { name = 'path' },
+          { name = 'buffer' },
+        },
       })
 
       -- `:` cmdline setup.

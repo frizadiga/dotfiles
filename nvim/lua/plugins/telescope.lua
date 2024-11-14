@@ -195,11 +195,10 @@ return {
         )
       end
 
-      -- Enable Telescope extensions if they are installed
+      -- enable telescope extensions if they are installed
       pcall(telescope.load_extension, 'fzf')
-      pcall(telescope.load_extension, 'ui-select')
       pcall(telescope.load_extension, 'frecency')
-      -- require("telescope").load_extension "frecency"
+      pcall(telescope.load_extension, 'ui-select')
       -- pcall(telescope.load_extension, 'live_grep_args')
     end,
   },

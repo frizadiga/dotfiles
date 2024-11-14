@@ -66,7 +66,7 @@ return {
       })
 
       -- eslint
-      lspconfig.eslint_d.setup({
+      lspconfig.eslint.setup({
         capabilities = capabilities
       })
 

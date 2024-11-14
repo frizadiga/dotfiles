@@ -47,7 +47,8 @@ return {
     -- keymap to toggle files
     local keymap_files = { '<leader>;', '<leader>fz' }
     for _, key in ipairs(keymap_files) do
-      vim.keymap.set('n', key, '<CMD>lua require("fzf-lua").files({ resume = true })<CR>')
+      vim.keymap.set('n', key, '<CMD>lua require("fzf-lua").files()<CR>')
+      -- vim.keymap.set('n', key, '<CMD>lua require("fzf-lua").files({ resume = true })<CR>')
     end
     vim.keymap.set('n', '<leader>FF', '<CMD>lua require("fzf-lua").live_grep_native({ resume = true })<CR>')
   end

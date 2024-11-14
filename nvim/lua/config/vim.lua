@@ -199,4 +199,16 @@ vim.api.nvim_create_user_command(
   {}
 )
 
+-- check detail ticket
+vim.api.nvim_create_user_command(
+  'TicketDetail',
+  function()
+    local tools_dir = vim.fn.expand('$TOOLS_DIR')
+    local output = vim.fn.system({'bash', tools_dir .. '/jira-curl/curl-issue-find-one.sh'})
+
+    print_reverse_lines(output)
+  end,
+  {}
+)
+
 -- @end create user commands
