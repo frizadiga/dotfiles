@@ -1,19 +1,23 @@
 return {
   {
-    'hrsh7th/cmp-nvim-lsp'
-  },
-  {
     'hrsh7th/cmp-cmdline',
-  },
-  {
-    'L3MON4D3/LuaSnip',
-    dependencies = {
-      'saadparwaiz1/cmp_luasnip',
-      'rafamadriz/friendly-snippets',
-    },
+    event = 'VimEnter',
   },
   {
     'hrsh7th/nvim-cmp',
+    event = 'InsertEnter', -- https://github.com/nvim-lua/kickstart.nvim/blob/2ba39c69736597b60f6033aa3f8526e7c28343d5/init.lua#L722
+    dependencies = {
+      {
+        'hrsh7th/cmp-nvim-lsp'
+      },
+      {
+        'L3MON4D3/LuaSnip',
+        dependencies = {
+          'saadparwaiz1/cmp_luasnip',
+          'rafamadriz/friendly-snippets',
+        },
+      },
+    },
     config = function()
       local cmp = require('cmp')
       require('luasnip.loaders.from_vscode').lazy_load()

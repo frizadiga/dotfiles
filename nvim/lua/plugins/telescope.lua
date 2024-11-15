@@ -1,18 +1,13 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x', -- for stable
-    -- branch = 'master', -- for latest
+    event = 'VimEnter',
+    branch = '0.1.x', -- stable
+    -- branch = 'master', -- latest (currently still broken)
     dependencies = {
       {
         'nvim-telescope/telescope-ui-select.nvim',
       },
-      -- {
-      --   "nvim-telescope/telescope-live-grep-args.nvim" ,
-      --   -- This will not install any breaking changes.
-      --   -- For major updates, this must be adjusted manually.
-      --   version = "^1.0.0",
-      -- },
       { 'nvim-telescope/telescope-frecency.nvim' },
       {
         -- c implementation of fzf sorter for telescope
@@ -126,9 +121,9 @@ return {
         -- @end extensions section
       })
 
-      -- recent files (oldfiles)
+      -- frecency files (oldfiles + frecency indexing)
       vim.keymap.set('n', ';', function()
-        builtin.oldfiles()
+        builtin.oldfiles({ prompt_title = 'Files - Recent' })
       end, { desc = 'Telescope Oldfiles (Recent Files)' })
 
       -- find files entire project
@@ -149,7 +144,7 @@ return {
       end, { desc = 'Telescope Grep string' })
 
       -- live_grep active buffer dir
-      vim.keymap.set('n', '<leader>fg', function()
+      vim.keymap.set('n', '<leader>fc', function()
         builtin.live_grep({ prompt_title = 'Live Grep - CWD', cwd = utils.buffer_dir() })
       end, { desc = 'Telescope Live grep - cwd' })
 
@@ -203,18 +198,6 @@ return {
       -- marks
       vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })
 
-      -- keymaps
-      -- vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope Keymaps' })
-
-      -- commands
-      -- vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope Commands' })
-
-      -- command history
-      -- vim.keymap.set('n', '<leader>;', builtin.command_history, { desc = 'Telescope Command history' })
-
-      -- highlights groups
-      -- vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Telescope Highlights' })
-
       -- diagnostics
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
 
@@ -233,11 +216,10 @@ return {
         )
       end
 
-      -- enable telescope extensions if they are installed
+      -- use telescope extensions if installed
       pcall(telescope.load_extension, 'fzf')
       pcall(telescope.load_extension, 'frecency')
       pcall(telescope.load_extension, 'ui-select')
-      -- pcall(telescope.load_extension, 'live_grep_args')
     end,
   },
 }

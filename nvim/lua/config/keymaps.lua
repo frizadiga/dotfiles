@@ -18,6 +18,9 @@ vim.keymap.set('n', '<leader>W', '<CMD>bd!<CR>')
 -- close all buffer
 vim.keymap.set('n', '<leader>Q', '<CMD>bufdo bd<CR>')
 
+-- only view this buffer
+vim.keymap.set('n', '<leader>o', '<CMD>only<CR>')
+
 -- previous buffer
 vim.keymap.set('n', '<leader>h', '<CMD>bp<CR>')
 

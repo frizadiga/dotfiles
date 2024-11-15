@@ -1,26 +1,13 @@
 return {
-  'github/copilot.vim',
-  -- 	'zbirenbaum/copilot.lua',
-  -- 	cmd = 'Copilot',
-  --   event = 'InsertEnter',
-  --   config = function()
-  --     require('copilot').setup({})
-  --   end,
+  { 'github/copilot.vim', event = 'VeryLazy' },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
+    event = 'VeryLazy',
     branch = 'canary',
-    dependencies = {
-      { 'github/copilot.vim' },
-      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
-      -- { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
-    },
-    build = 'make tiktoken', -- Only on MacOS or Linux
-    -- see commands section for default commands if you want to lazy load on them
+    build = 'make tiktoken', -- only on MacOS or Linux
     config = function()
       require('CopilotChat').setup({
         debug = false, -- enable debugging
-        -- see configuration section for rest
-        -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
         mappings = {
           complete = {
             insert ='<S-Tab>',
@@ -43,6 +30,7 @@ return {
           width = 0.6, -- fractional width of parent, or absolute width in columns when > 1
           height = 0.6, -- fractional height of parent, or absolute height in rows when > 1
         }
+        -- more config see: https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
       })
       -- CopilotChatToggle
       vim.keymap.set('n', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')

@@ -55,12 +55,12 @@ return {
           MiniPickPrompt = { bg = 'none' },
           MiniTablineHidden = { bg = 'none' },
           MiniStatuslineFilename = { bg = 'none' },
+          CopilotChatHeader = { fg = 'orange', bg = 'none' },
+          CopilotChatSeparator = { fg = '#54546d', bg = 'none' },
           TelescopeBorder = { bg = 'none' },
           -- TelescopeMatching = { fg = 'white', bg = 'none' },
           TelescopePromptPrefix = { fg = ColorMainRed, bg = 'none' },
           TelescopeSelectionCaret = { fg = ColorSecondaryRed, bg = ColorSecondaryRed }, -- hlgroup: `CursorLine`
-          CopilotChatHeader = { fg = ColorSecondaryRed, bg = 'none' },
-          CopilotChatSeparator = { fg = '#54546d', bg = 'none' },
         }
       end,
     })
