@@ -12,6 +12,12 @@ vim.keymap.set('n', '<leader>qq', '<CMD>q<CR>')
 -- close current buffer
 vim.keymap.set('n', '<leader>w', '<CMD>bd<CR>')
 
+-- force close current buffer (without saving)
+vim.keymap.set('n', '<leader>W', '<CMD>bd!<CR>')
+
+-- close all buffer
+vim.keymap.set('n', '<leader>Q', '<CMD>bufdo bd<CR>')
+
 -- previous buffer
 vim.keymap.set('n', '<leader>h', '<CMD>bp<CR>')
 

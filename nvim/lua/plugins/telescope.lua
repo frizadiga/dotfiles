@@ -25,10 +25,29 @@ return {
     config = function()
       local telescope = require('telescope')
       local actions = require('telescope.actions')
+      local action_state = require('telescope.actions.state')
       local utils = require('telescope.utils')
       local builtin = require('telescope.builtin')
 
+      local function fzf_files_open()
+        local search_term = action_state.get_current_line()
+
+        vim.defer_fn(function()
+          require('fzf-lua').files({
+            query = search_term,
+            -- force cursor to input prompt
+            winopts = {
+              on_create = function()
+                -- move cursor to the prompt line
+                vim.cmd('startinsert!')
+              end
+            }
+          })
+        end, 10) -- 10ms delay to ensure the cursor is focus in the prompt
+      end
+
       telescope.setup({
+        -- @start defaults section
         defaults = {
           mappings = {
             i = {
@@ -58,21 +77,41 @@ return {
           },
           file_ignore_patterns = {"%.git/", "node_modules/"}, -- #performance improvement
         },
+        -- @end defaults section
+
+        -- @start pickers section
         pickers = {
           find_files = {
             follow = true,
             prompt_title = 'Find Files - Entire Project',
             find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'}, -- #performance improvement
+            live_grep = {
+              follow = true,
+              prompt_title = 'Live Grep - Entire Project',
+            },
           },
-          live_grep = {
-            follow = true,
-            prompt_title = 'Live Grep - Entire Project',
-          },
+
           oldfiles = {
             prompt_title = 'Recent Files',
             cwd_only = true, -- prevent list files globally across all projects
-          }
+            mappings = {
+              i = {
+                ['<CR>'] = function(prompt_bufnr)
+                  local picker = action_state.get_current_picker(prompt_bufnr)
+                  if #picker:get_multi_selection() == 0 and picker:get_selection(prompt_bufnr) == nil then
+                    actions.close(prompt_bufnr)
+                    fzf_files_open()
+                  else
+                    actions.select_default(prompt_bufnr)
+                  end
+                end,
+              },
+            },
+          },
         },
+        -- @end pickers section
+
+        -- @start extensions section
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown({
@@ -84,6 +123,7 @@ return {
             }),
           },
         },
+        -- @end extensions section
       })
 
       -- recent files (oldfiles)
@@ -120,8 +160,6 @@ return {
       vim.keymap.set('v', '<leader>ff', 'y<ESC>:Telescope live_grep default_text=<C-r>0<CR>')
 
       -- buffers
-      local action_state = require('telescope.actions.state')
-
       Buffer_searcher = function()
         builtin.buffers {
           sort_mru = true,

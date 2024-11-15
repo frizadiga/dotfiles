@@ -3,25 +3,31 @@ return {
   config = function()
     require('spectre').setup({
       open_cmd = 'enew',
+      replace_engine = {
+        ['sed'] = {
+          cmd = 'sed',
+          args = { '-i', '', '-E' },
+        }, -- handle -E prefix files see: https://github.com/nvim-pack/nvim-spectre/issues/118#issuecomment-1531683211
+      },
     })
 
-   vim.keymap.set('n', '<leader>ss',
+    vim.keymap.set('n', '<leader>ss',
       '<CMD>lua require("spectre").toggle()<CR>', {
-      desc = "Toggle Spectre"
-    })
+        desc = 'Toggle Spectre'
+      })
     -- open in custom search path
     vim.keymap.set('n', '<leader>sp', function()
-      local search = vim.fn.input("Search Path > ")
-      require("spectre").open({cwd = search})
-    end, {desc = "Search on custom path"})
+      local search = vim.fn.input('Search Path > ')
+      require('spectre').open({cwd = search})
+    end, {desc = 'Search on custom path'})
     vim.keymap.set('n', '<leader>sw', '<CMD>lua require("spectre").open_visual({select_word=true})<CR>', {
-      desc = "Search current word"
+      desc = 'Search current word'
     })
     vim.keymap.set('v', '<leader>sw', '<esc><CMD>lua require("spectre").open_visual()<CR>', {
-      desc = "Search current word"
+      desc = 'Search current word'
     })
     vim.keymap.set('n', '<leader>sf', '<CMD>lua require("spectre").open_file_search({select_word=true})<CR>', {
-      desc = "Search on current file"
+      desc = 'Search on current file'
     })
   end,
 }

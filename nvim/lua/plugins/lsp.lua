@@ -92,6 +92,8 @@ return {
       vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, {})
       vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, {})
       vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, {})
+      -- clear diagnostics
+      vim.keymap.set('n', '<leader>lc', vim.diagnostic.reset, {})
     end,
   },
 }
