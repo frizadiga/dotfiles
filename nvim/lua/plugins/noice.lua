@@ -13,7 +13,7 @@ return {
       }
     })
 
-    -- search message history
-    vim.keymap.set('n', '<leader>nn', '<CMD>Noice telescope<CR>', { desc = "Show Last Message" })
+    -- search notification history
+    vim.keymap.set('n', '<leader>nn', '<CMD>Noice telescope<CR>', { desc = 'Show Last Notification' })
   end,
 }

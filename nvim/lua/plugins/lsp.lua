@@ -90,6 +90,9 @@ return {
         capabilities = capabilities,
       })
 
+      -- mojo:
+      -- TODO: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#mojo
+
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, {})
       vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, {})

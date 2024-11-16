@@ -65,7 +65,7 @@ return {
           -- selection_caret = '·',
           layout_strategy = 'vertical',
           layout_config = {
-            vertical = { width = 80, preview_cutoff = 0 },
+            vertical = { width = 80, preview_cutoff = 5 },
           },
           cache_picker = {
             num_pickers = 5, -- #performance improvement
@@ -124,7 +124,7 @@ return {
 
       -- frecency files (oldfiles + frecency indexing)
       vim.keymap.set('n', ';', function()
-        builtin.oldfiles({ prompt_title = 'Files - Recent' })
+        builtin.oldfiles({ prompt_title = 'Frequent - Recently' })
       end, { desc = 'Telescope Oldfiles (Recent Files)' })
 
       -- find files active buffer dir

@@ -51,10 +51,15 @@ return {
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- for luasnip users.
-          { name = 'path' },
-          { name = 'buffer' },
+          -- { name = 'nvim_lsp' },
+          -- { name = 'luasnip' },
+          -- { name = 'path' },
+          -- { name = 'buffer' },
+          { name = "path", group_index = 2 },
+          { name = "buffer", group_index = 2 },
+          { name = "luasnip", group_index = 2 },
+          { name = "copilot", group_index = 2 },
+          { name = "nvim_lsp", group_index = 2 },
         },
       })
 
@@ -69,17 +74,17 @@ return {
       -- `:` cmdline command.
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-          sources = cmp.config.sources({
-            { name = 'path' }
-          }, {
-              {
-                name = 'cmdline',
-                option = {
-                  ignore_cmds = { 'Man', '!' }
-                }
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+            {
+              name = 'cmdline',
+              option = {
+                ignore_cmds = { 'Man', '!' }
               }
-            })
-        })
+            }
+          })
+      })
     end,
   },
 }

@@ -55,7 +55,7 @@ require('lazy').setup({
     pills = false, size = { width = 1, height = 1 }, border = 'single',
   },
   defaults = {
-    lazy = true, -- @TODO: enabled once current granular lazy setup has no issues
+    lazy = true, -- @NOTES: disabled auto lazy loading when shit happen 
   },
   -- see: https://github.com/folke/lazy.nvim/blob/main/lua/lazy/core/config.lua
 })

@@ -1,6 +1,5 @@
 return {
   'nvim-pack/nvim-spectre',
-  -- event = 'VeryLazy',
   keys = {
     '<leader>ss',
     '<leader>sp',

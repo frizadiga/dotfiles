@@ -7,9 +7,10 @@ return {
       -- see :help oil-columns
       columns = {
         'icon',
-        -- 'permissions',
+        -- @TODO: toggle bind this to show/hide columns
         -- 'size',
         -- 'mtime',
+        -- 'permissions',
       },
       view_options = {
         -- show files and directories that start with '.'
@@ -26,7 +27,6 @@ return {
       },
       -- configuration for the floating window in oil.open_float
       float = {
-        -- padding around the floating window
         padding = 2,
         max_width = 55,
         max_height = 25,

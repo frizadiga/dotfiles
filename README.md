@@ -1,4 +1,5 @@
 # dotfiles
+My public personal dotfiles for my daily driver.
 
 - alacritty (done)
 - tmux (done)
@@ -9,5 +10,5 @@
 - alt-tab
   - ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
 
-all symlinking mechanism done by my internal tooling feel free use your own solution
+All symlinking mechanisms are done by my internal tooling. If you want to reproduce, feel free to use your own solution.
 
