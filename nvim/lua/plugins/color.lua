@@ -8,7 +8,7 @@ return {
       -- 2. Restart nvim
       -- 3. Run this command:
       -- :KanagawaCompile
-      compile = false, -- somehow disabling it improves initial load time
+      compile = false, -- somehow disabling it improves startup time
       undercurl = true,
       commentStyle = { italic = false },
       keywordStyle = { italic = false},
@@ -55,7 +55,7 @@ return {
           MiniPickPrompt = { bg = 'none' },
           MiniTablineHidden = { bg = 'none' },
           MiniStatuslineFilename = { bg = 'none' },
-          CopilotChatHeader = { fg = 'orange', bg = 'none' },
+          CopilotChatHeader = { fg = ColorSecondaryRed },
           CopilotChatSeparator = { fg = '#54546d', bg = 'none' },
           TelescopeBorder = { bg = 'none' },
           TelescopeMatching = { bg = ColorSecondaryRed },

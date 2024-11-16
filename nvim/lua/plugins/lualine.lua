@@ -1,32 +1,25 @@
 return {
   'nvim-lualine/lualine.nvim',
   lazy = false,
-  priority = 9999, -- must early loaded due to high impact to user perceived performance
   config = function()
+    local common_sections = {
+      lualine_a = { 'mode' },
+      lualine_b = { 'branch' },
+      lualine_c = { 'filename' },
+      lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location' },
+    }
+
     require('lualine').setup({
       options = {
         section_separators = { '', '' },
         component_separators = { '', '' },
-        theme = 'everforest', -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+        theme = 'everforest',
       },
-      -- tabline = {}, -- top bar
-			sections = { -- bottom bar
-				lualine_a = { 'mode' },
-				lualine_b = { 'branch' },
-				lualine_c = { 'filename' },
-				lualine_x = { 'encoding', 'fileformat', 'filetype' },
-				lualine_y = { 'progress' },
-				lualine_z = { 'location' },
-			},
-      inactive_sections = {
-				lualine_a = { 'mode' },
-				lualine_b = { 'branch' },
-				lualine_c = { 'filename' },
-				lualine_x = { 'encoding', 'fileformat', 'filetype' },
-				lualine_y = { 'progress' },
-				lualine_z = { 'location' },
-      },
-      -- extensions = { 'fugitive', 'nvim-tree' }
+      sections = common_sections,
+      inactive_sections = common_sections,
     })
-  end
+  end,
+  priority = 9999, -- must be loaded early due to high impact on UI perceived performance
 }

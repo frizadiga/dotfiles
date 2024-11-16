@@ -1,10 +1,10 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    -- event = 'VimEnter',
-    event = 'VeryLazy',
+    event = 'VeryLazy', -- status quo: 'VimEnter'
     branch = '0.1.x', -- stable
     -- branch = 'master', -- latest (currently still broken)
+    priority = 500,
     dependencies = {
       {
         'nvim-telescope/telescope-ui-select.nvim',
@@ -126,13 +126,6 @@ return {
       vim.keymap.set('n', ';', function()
         builtin.oldfiles({ prompt_title = 'Files - Recent' })
       end, { desc = 'Telescope Oldfiles (Recent Files)' })
-
-      -- find files entire project
-      vim.keymap.set(
-        'n', '<leader>F',
-        ":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
-        { desc = 'Telescope Find files - entire project' }
-      )
 
       -- find files active buffer dir
       vim.keymap.set('n', '<leader>:', function()

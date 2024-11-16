@@ -1,6 +1,12 @@
 return {
   'nvim-pack/nvim-spectre',
-  event = 'VeryLazy',
+  -- event = 'VeryLazy',
+  keys = {
+    '<leader>ss',
+    '<leader>sp',
+    '<leader>sw',
+    '<leader>sf',
+  },
   config = function()
     require('spectre').setup({
       open_cmd = 'enew',

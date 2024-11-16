@@ -1,3 +1,8 @@
+-- lazy loading recipes:
+-- https://lazy.folke.io/spec/examples
+-- https://lazy.folke.io/spec/lazy_loading
+-- https://www.lazyvim.org/configuration/lazy.nvim -- yes it's a distro but it has some great tips
+
 -- start bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -27,18 +32,13 @@ require('config.keymaps') -- make sure loaded before lazy plugins setup
 -- lazy plugins setup
 require('lazy').setup({
   spec = {
-    -- load from dir /plugins
-    { import = 'plugins' },
+    { import = 'plugins' }, -- load from dir /plugins
   },
   install = { colorscheme = { 'kanagawa-dragon' } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
-  ui = {
-    pills = false, size = { width = 1, height = 1 }, border = 'single',
-  },
-   performance = {
+  checker = { enabled = true }, -- automatically check for plugin updates
+  performance = {
     rtp = {
-      -- disable some rtp plugins
+      -- it saves about 20ms on startup
       disabled_plugins = {
         "gzip",
         "matchit",
@@ -51,8 +51,11 @@ require('lazy').setup({
       },
     },
   },
+  ui = {
+    pills = false, size = { width = 1, height = 1 }, border = 'single',
+  },
   defaults = {
-    -- lazy = true, -- @TODO: enabled once current granular lazy setup has no issues
+    lazy = true, -- @TODO: enabled once current granular lazy setup has no issues
   },
   -- see: https://github.com/folke/lazy.nvim/blob/main/lua/lazy/core/config.lua
 })

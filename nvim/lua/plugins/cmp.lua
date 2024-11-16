@@ -1,15 +1,24 @@
 return {
   {
     'hrsh7th/cmp-cmdline',
-    event = 'VeryLazy',
-    -- event = 'VimEnter',
+    event = 'CmdlineEnter',
   },
   {
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter', -- https://github.com/nvim-lua/kickstart.nvim/blob/2ba39c69736597b60f6033aa3f8526e7c28343d5/init.lua#L722
+    event = 'InsertEnter',
     dependencies = {
       {
         'hrsh7th/cmp-nvim-lsp'
+      },
+      {
+        'hrsh7th/cmp-path'
+      },
+      {
+        'hrsh7th/cmp-buffer'
+      },
+      {
+        'saadparwaiz1/cmp_luasnip',
+        after = 'L3MON4D3/LuaSnip',
       },
       {
         'L3MON4D3/LuaSnip',
@@ -41,14 +50,6 @@ return {
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
-        -- sources = cmp.config.sources(
-        --   {
-        --     { name = 'nvim_lsp' },
-        --     { name = 'luasnip' }, -- for luasnip users.
-        --     { name = 'path' },
-        --     { name = 'buffer' },
-        --   }
-        -- ),
         sources = {
           { name = 'nvim_lsp' },
           { name = 'luasnip' }, -- for luasnip users.
@@ -57,20 +58,28 @@ return {
         },
       })
 
-      -- `:` cmdline setup.
+      -- `/` cmdline search.
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      -- `:` cmdline command.
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' }
-        }, {
-            {
-              name = 'cmdline',
-              option = {
-                ignore_cmds = { 'Man', '!' }
+          sources = cmp.config.sources({
+            { name = 'path' }
+          }, {
+              {
+                name = 'cmdline',
+                option = {
+                  ignore_cmds = { 'Man', '!' }
+                }
               }
-            }
-          })
-      })
+            })
+        })
     end,
   },
 }

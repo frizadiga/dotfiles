@@ -1,5 +1,5 @@
 return {
-  { 'github/copilot.vim', event = 'VeryLazy' },
+  { 'github/copilot.vim', event = 'InsertEnter' },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     event = 'VeryLazy',
@@ -32,6 +32,15 @@ return {
         }
         -- more config see: https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
       })
+
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = "copilot-chat",
+        callback = function()
+          vim.opt_local.relativenumber = false
+          vim.opt_local.number = false
+        end,
+      })
+
       -- CopilotChatToggle
       vim.keymap.set('n', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
       vim.keymap.set('v', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
