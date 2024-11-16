@@ -1,7 +1,8 @@
 return {
   {
     'hrsh7th/cmp-cmdline',
-    event = 'VimEnter',
+    event = 'VeryLazy',
+    -- event = 'VimEnter',
   },
   {
     'hrsh7th/nvim-cmp',

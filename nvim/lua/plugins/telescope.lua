@@ -1,7 +1,8 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
+    -- event = 'VimEnter',
+    event = 'VeryLazy',
     branch = '0.1.x', -- stable
     -- branch = 'master', -- latest (currently still broken)
     dependencies = {

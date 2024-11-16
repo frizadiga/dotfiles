@@ -35,6 +35,25 @@ require('lazy').setup({
   checker = { enabled = true },
   ui = {
     pills = false, size = { width = 1, height = 1 }, border = 'single',
-  }
+  },
+   performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+  defaults = {
+    -- lazy = true, -- @TODO: enabled once current granular lazy setup has no issues
+  },
+  -- see: https://github.com/folke/lazy.nvim/blob/main/lua/lazy/core/config.lua
 })
 

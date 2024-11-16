@@ -58,7 +58,7 @@ return {
           CopilotChatHeader = { fg = 'orange', bg = 'none' },
           CopilotChatSeparator = { fg = '#54546d', bg = 'none' },
           TelescopeBorder = { bg = 'none' },
-          -- TelescopeMatching = { fg = 'white', bg = 'none' },
+          TelescopeMatching = { bg = ColorSecondaryRed },
           TelescopePromptPrefix = { fg = ColorMainRed, bg = 'none' },
           TelescopeSelectionCaret = { fg = ColorSecondaryRed, bg = ColorSecondaryRed }, -- hlgroup: `CursorLine`
         }
