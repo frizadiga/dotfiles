@@ -5,10 +5,9 @@ My daily driver public dotfiles.
 - tmux (done)
 - nvim (done)
 - lazygit (done)
-- lazydocker (wip)
+- lazydocker (done)
 - btop (done)
-- alt-tab
-  - ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
+- alt-tab (done)
 
-All symlinking mechanisms are done by my internal tooling. If you want to reproduce, feel free to use your own solution.
+All symlinking mechanisms are done by my internal tooling. If you want to reproduce, bring your own solution.
 

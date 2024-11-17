@@ -1,6 +1,6 @@
 return {
   'rebelot/kanagawa.nvim',
-  event = 'UIEnter', -- it's ok cause we an opened empty buffer anw
+  event = 'UIEnter', -- it's ok cause we opened an empty buffer anw
   config = function()
     require('kanagawa').setup({
       -- 1. Modify your config
@@ -59,6 +59,7 @@ return {
           TelescopeBorder = { bg = 'none' },
           TelescopeMatching = { bg = ColorSecondaryRed },
           TelescopePromptPrefix = { fg = ColorMainRed, bg = 'none' },
+          TelescopePromptNormal = { fg = ColorMainRed, bg = 'none' },
           TelescopeSelectionCaret = { fg = ColorSecondaryRed, bg = ColorSecondaryRed }, -- hlgroup: `CursorLine`
         }
       end,

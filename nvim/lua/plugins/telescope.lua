@@ -89,6 +89,12 @@ return {
 
         -- @start pickers section
         pickers = {
+          oldfiles = {
+            prompt_title = 'Files - Recent',
+            mappings = { i = { ['<CR>'] = find_oldfile } },
+            cwd_only = true, -- prevent list files globally across all projects
+          },
+
           find_files = {
             follow = true,
             prompt_title = 'Find Files - Entire Project',
@@ -96,16 +102,6 @@ return {
             live_grep = {
               follow = true,
               prompt_title = 'Live Grep - Entire Project',
-            },
-          },
-
-          oldfiles = {
-            prompt_title = 'Files - Recent',
-            cwd_only = true, -- prevent list files globally across all projects
-            mappings = {
-              i = {
-                ['<CR>'] = find_oldfile,
-              },
             },
           },
         },
