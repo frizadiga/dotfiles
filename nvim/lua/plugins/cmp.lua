@@ -7,15 +7,9 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      {
-        'hrsh7th/cmp-nvim-lsp'
-      },
-      {
-        'hrsh7th/cmp-path'
-      },
-      {
-        'hrsh7th/cmp-buffer'
-      },
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
       {
         'saadparwaiz1/cmp_luasnip',
         after = 'L3MON4D3/LuaSnip',
@@ -51,10 +45,6 @@ return {
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = {
-          -- { name = 'nvim_lsp' },
-          -- { name = 'luasnip' },
-          -- { name = 'path' },
-          -- { name = 'buffer' },
           { name = "path", group_index = 2 },
           { name = "buffer", group_index = 2 },
           { name = "luasnip", group_index = 2 },

@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "canary", "commit": "cd755e133eca89d2047c880d58c64a3902a71e47" },
+  "CopilotChat.nvim": { "branch": "canary", "commit": "a1a16ee3a2c8cb88c4664af2e9fb7e014ef29a0c" },
   "LuaSnip": { "branch": "master", "commit": "659c4479529a05cc9b05ef762639a09d366cc690" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
@@ -24,7 +24,6 @@
   "nvim-web-devicons": { "branch": "master", "commit": "19d257cf889f79f4022163c3fbb5e08639077bd8" },
   "oil.nvim": { "branch": "master", "commit": "8ea40b5506115b6d355e304dd9ee5089f7d78601" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
-  "telescope-frecency.nvim": { "branch": "master", "commit": "8622ef42f73cf0eb76bbe049220a812ffe32354d" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },

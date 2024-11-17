@@ -1,5 +1,5 @@
 # dotfiles
-My public personal dotfiles for my daily driver.
+My daily driver public dotfiles.
 
 - alacritty (done)
 - tmux (done)

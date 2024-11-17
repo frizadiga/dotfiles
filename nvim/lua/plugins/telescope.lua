@@ -1,7 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    event = 'VeryLazy', -- status quo: 'VimEnter'
+    event = 'VeryLazy',
     branch = '0.1.x', -- stable
     -- branch = 'master', -- latest (currently still broken)
     priority = 500,
@@ -9,7 +9,6 @@ return {
       {
         'nvim-telescope/telescope-ui-select.nvim',
       },
-      { 'nvim-telescope/telescope-frecency.nvim' },
       {
         -- c implementation of fzf sorter for telescope
         -- benchmark: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
@@ -25,6 +24,10 @@ return {
       local utils = require('telescope.utils')
       local builtin = require('telescope.builtin')
 
+      -- usecase: 
+      -- 1. open telescope oldfiles
+      -- 2. find a file
+      -- 3. if no files selected, press enter to open fzf files
       local function fzf_files_open()
         local search_term = action_state.get_current_line()
 
@@ -88,7 +91,7 @@ return {
           },
 
           oldfiles = {
-            prompt_title = 'Recent Files',
+            prompt_title = 'Files - Recent',
             cwd_only = true, -- prevent list files globally across all projects
             mappings = {
               i = {
@@ -124,7 +127,7 @@ return {
 
       -- frecency files (oldfiles + frecency indexing)
       vim.keymap.set('n', ';', function()
-        builtin.oldfiles({ prompt_title = 'Frequent - Recently' })
+        builtin.oldfiles()
       end, { desc = 'Telescope Oldfiles (Recent Files)' })
 
       -- find files active buffer dir
@@ -212,7 +215,6 @@ return {
 
       -- use telescope extensions if installed
       pcall(telescope.load_extension, 'fzf')
-      pcall(telescope.load_extension, 'frecency')
       pcall(telescope.load_extension, 'ui-select')
     end,
   },
