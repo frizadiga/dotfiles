@@ -28,6 +28,7 @@ return {
       -- 1. open telescope oldfiles
       -- 2. find a file
       -- 3. if no files selected, press enter to open fzf files
+
       local function fzf_files_open()
         local search_term = action_state.get_current_line()
 
@@ -43,6 +44,16 @@ return {
             }
           })
         end, 10) -- 10ms delay to ensure the cursor is focus in the prompt
+      end
+
+      local function find_oldfile(prompt_bufnr)
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        if #picker:get_multi_selection() == 0 and picker:get_selection(prompt_bufnr) == nil then
+          actions.close(prompt_bufnr)
+          fzf_files_open()
+        else
+          actions.select_default(prompt_bufnr)
+        end
       end
 
       telescope.setup({
@@ -95,15 +106,7 @@ return {
             cwd_only = true, -- prevent list files globally across all projects
             mappings = {
               i = {
-                ['<CR>'] = function(prompt_bufnr)
-                  local picker = action_state.get_current_picker(prompt_bufnr)
-                  if #picker:get_multi_selection() == 0 and picker:get_selection(prompt_bufnr) == nil then
-                    actions.close(prompt_bufnr)
-                    fzf_files_open()
-                  else
-                    actions.select_default(prompt_bufnr)
-                  end
-                end,
+                ['<CR>'] = find_oldfile,
               },
             },
           },
