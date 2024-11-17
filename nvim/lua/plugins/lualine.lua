@@ -1,6 +1,5 @@
 return {
   'nvim-lualine/lualine.nvim',
-  lazy = false,
   config = function()
     local common_sections = {
       lualine_a = { 'mode' },
@@ -21,5 +20,5 @@ return {
       inactive_sections = common_sections,
     })
   end,
-  priority = 9999, -- must be loaded early due to high impact on UI perceived performance
+  event = 'VimEnter', -- must be loaded just before `UIEnter` for "instant" impact on UI perceived performance
 }

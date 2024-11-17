@@ -6,9 +6,7 @@ return {
     -- branch = 'master', -- latest (currently still broken)
     priority = 500,
     dependencies = {
-      {
-        'nvim-telescope/telescope-ui-select.nvim',
-      },
+      'nvim-telescope/telescope-ui-select.nvim', -- for lsp code actions
       {
         -- c implementation of fzf sorter for telescope
         -- benchmark: https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions

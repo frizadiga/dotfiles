@@ -1,7 +1,6 @@
 return {
   'rebelot/kanagawa.nvim',
-  lazy = false,
-  priority = 1000,
+  event = 'UIEnter', -- it's ok cause we an opened empty buffer anw
   config = function()
     require('kanagawa').setup({
       -- 1. Modify your config
