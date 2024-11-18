@@ -15,6 +15,17 @@ vim.opt.shortmess:append('I')
 vim.opt.shell = '/bin/zsh'
 -- @end shell
 
+-- shared data
+-- :lua print(vim.opt.shada._value)
+-- {{!,'100,<50,s10,h}}
+-- ! - save global variables
+-- '100 - save marks
+-- <50 - save 50 lines of command line history
+-- s10 - save 10 items in search history
+-- h - save 20 lines of command line history
+vim.opt.shada = "!,'30,f1,<50,s10,h"
+-- vim.opt.shada = "!,'100,<50,s10,h" -- default value as of Neovim 0.10
+
 -- disable swap files
 vim.opt.swapfile = false
 
@@ -167,7 +178,7 @@ vim.api.nvim_create_user_command(
     -- run some bash file and print stdout
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
     local output = vim.fn.system({'bash', tools_dir .. '/todo.sh'})
-    -- print(output)
+
     print_reverse_lines(output)
   end,
   {}

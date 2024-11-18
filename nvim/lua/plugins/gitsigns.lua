@@ -58,13 +58,15 @@ return {
     )
 
     -- toggle signs
-    vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns toggle_signs<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns toggle_signs<CR>')
 
     -- highlight group
     local function get_color(group, attr)
       local fn = vim.fn
       return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
     end
+
+    -- `<C-w>w` focus on popup content https://github.com/lewis6991/gitsigns.nvim/pull/322
 
     vim.api.nvim_set_hl(0, 'GitSignsAddPreview', { fg = get_color('GitSignsAddPreview', 'fg'), bg = 'none' })
     vim.api.nvim_set_hl(0, 'GitSignsDeletePreview', { fg = get_color('GitSignsDeletePreview', 'fg'), bg = 'none' })
