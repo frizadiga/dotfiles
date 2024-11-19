@@ -22,6 +22,7 @@ return {
       local utils = require('telescope.utils')
       local builtin = require('telescope.builtin')
 
+      -- @start_section oldfiles + fzf files
       -- usecase: 
       -- 1. open telescope oldfiles
       -- 2. find a file
@@ -53,9 +54,44 @@ return {
           actions.select_default(prompt_bufnr)
         end
       end
+      -- @end_section oldfiles + fzf files
+
+      -- @start_section live grep + fzf live grep native
+      -- usecase:
+      -- 1. open telescope live grep
+      -- 2. find a pattern
+      -- 3. if no files selected, press enter to open fzf live grep native
+
+      local function fzf_live_grep_native_open()
+        local search_term = action_state.get_current_line()
+
+        vim.defer_fn(function()
+          require('fzf-lua').live_grep_native({
+            query = search_term,
+            -- force cursor to input prompt
+            winopts = {
+              on_create = function()
+                -- move cursor to the prompt line
+                vim.cmd('startinsert!')
+              end
+            }
+          })
+        end, 10) -- 10ms delay to ensure the cursor is focus in the prompt
+      end
+
+      local function find_live_grep(prompt_bufnr)
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        if #picker:get_multi_selection() == 0 and picker:get_selection(prompt_bufnr) == nil then
+          actions.close(prompt_bufnr)
+          fzf_live_grep_native_open()
+        else
+          actions.select_default(prompt_bufnr)
+        end
+      end
+      -- @end_section live grep + fzf live grep native
 
       telescope.setup({
-        -- @start defaults section
+        -- @start_section default
         defaults = {
           mappings = {
             i = {
@@ -85,9 +121,9 @@ return {
           },
           file_ignore_patterns = {"%.git/", "node_modules/"}, -- #performance improvement
         },
-        -- @end defaults section
+        -- @end_section default
 
-        -- @start pickers section
+        -- @start_section pickers
         pickers = {
           oldfiles = {
             prompt_title = 'Files - Recent',
@@ -104,10 +140,20 @@ return {
               prompt_title = 'Live Grep - Entire Project',
             },
           },
-        },
-        -- @end pickers section
 
-        -- @start extensions section
+          live_grep = {
+            follow = true,
+            prompt_title = 'Live Grep - Entire Project',
+            find_command = {
+              'rg', '--hidden', '--files', '--no-ignore-vcs', '--no-ignore',
+              '--follow', '--hidden', '--glob', '!.git', '--glob', '!node_modules'
+            }, -- #performance improvement
+            mappings = { i = { ['<CR>'] = find_live_grep } },
+          },
+        },
+        -- @end_section pickers
+
+        -- @start_section extensions
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown({
@@ -119,7 +165,7 @@ return {
             }),
           },
         },
-        -- @end extensions section
+        -- @end_section extensions
       })
 
       -- frecency files (oldfiles + frecency indexing)

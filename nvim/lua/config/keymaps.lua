@@ -8,6 +8,9 @@ vim.keymap.set('v', 'KJ', '<Esc>')
 -- quit
 vim.keymap.set('n', '<leader>qq', '<CMD>q<CR>')
 
+-- redo
+vim.keymap.set('n', '<leader>u', '<CMD>redo<CR>')
+
 -- @start buffer
 -- select all text in buffer
 vim.keymap.set('n', '<leader>a', 'ggVG')
