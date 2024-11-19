@@ -26,7 +26,7 @@ return {
       -- usecase: 
       -- 1. open telescope oldfiles
       -- 2. find a file
-      -- 3. if no files selected, press enter to open fzf files
+      -- 3. if no files found, press enter to open fzf files
 
       local function fzf_files_open()
         local search_term = action_state.get_current_line()
@@ -60,7 +60,7 @@ return {
       -- usecase:
       -- 1. open telescope live grep
       -- 2. find a pattern
-      -- 3. if no files selected, press enter to open fzf live grep native
+      -- 3. if no pattern found, press enter to open fzf live grep native
 
       local function fzf_live_grep_native_open()
         local search_term = action_state.get_current_line()
@@ -168,7 +168,7 @@ return {
         -- @end_section extensions
       })
 
-      -- frecency files (oldfiles + frecency indexing)
+      -- find recently opened files
       vim.keymap.set('n', ';', function()
         builtin.oldfiles()
       end, { desc = 'Telescope Oldfiles (Recent Files)' })

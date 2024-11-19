@@ -7,34 +7,52 @@ return {
     '<leader>sf',
   },
   config = function()
-    require('spectre').setup({
+    local spectre = require('spectre')
+
+    spectre.setup({
       open_cmd = 'enew',
       replace_engine = {
         ['sed'] = {
           cmd = 'sed',
-          args = { '-i', '', '-E' },
-        }, -- handle -E prefix files see: https://github.com/nvim-pack/nvim-spectre/issues/118#issuecomment-1531683211
+          args = { '-i', '', '-E' }, -- fix unwanted "*-E" files 
+        },
       },
     })
 
+    -- path: project root
     vim.keymap.set('n', '<leader>ss',
-      '<CMD>lua require("spectre").toggle()<CR>', {
-        desc = 'Toggle Spectre'
-      })
-    -- open in custom search path
-    vim.keymap.set('n', '<leader>sp', function()
-      local search = vim.fn.input('Search Path > ')
-      require('spectre').open({cwd = search})
-    end, {desc = 'Search on custom path'})
-    vim.keymap.set('n', '<leader>sw', '<CMD>lua require("spectre").open_visual({select_word=true})<CR>', {
-      desc = 'Search current word'
-    })
-    vim.keymap.set('v', '<leader>sw', '<esc><CMD>lua require("spectre").open_visual()<CR>', {
-      desc = 'Search current word'
-    })
-    vim.keymap.set('n', '<leader>sf', '<CMD>lua require("spectre").open_file_search({select_word=true})<CR>', {
-      desc = 'Search on current file'
-    })
+      function ()
+        spectre.toggle()
+      end,
+      { desc = 'Toggle Spectre' }
+    )
+
+    -- path: custom path
+    vim.keymap.set('n', '<leader>sp',
+      function()
+        local search = vim.fn.input('Search Path > ')
+        spectre.open({cwd = search})
+      end,
+      { desc = 'Search on custom path' }
+    )
+
+    vim.keymap.set('n', '<leader>sw',
+      function()
+        spectre.open_visual({ select_word = true })
+        -- '<CMD>lua require("spectre").open_visual({select_word=true})<CR>'
+      end,
+      { desc = 'Search current word' }
+    )
+
+    vim.keymap.set('n', '<leader>sf',
+      function()
+        spectre.open_file_search({ select_word = true })
+        -- '<CMD>lua require("spectre").open_file_search({select_word=true})<CR>'
+      end,
+      { desc = 'Search on current file' }
+    )
+
+    vim.keymap.set('v', '<leader>sw', '<esc><CMD>lua require("spectre").open_visual()<CR>', { desc = 'Search current word' })
   end,
 }
 
