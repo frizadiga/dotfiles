@@ -31,14 +31,14 @@ return {
 
     -- next hunk
     vim.keymap.set('n',
-      '<leader>gn',
+      '<leader>gl',
       '<CMD>lua require("gitsigns").next_hunk()<CR>',
       { desc = 'Next Hunk' }
     )
 
     -- prev hunk
     vim.keymap.set('n',
-      '<leader>gp',
+      '<leader>gh',
       '<CMD>lua require("gitsigns").prev_hunk()<CR>',
       { desc = 'Prev Hunk' }
     )
@@ -58,7 +58,7 @@ return {
     )
 
     -- toggle signs
-    vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns toggle_signs<CR>')
+    vim.keymap.set('n', '<leader>GG', '<CMD>Gitsigns toggle_signs<CR>')
 
     -- highlight group
     local function get_color(group, attr)

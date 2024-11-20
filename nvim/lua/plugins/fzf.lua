@@ -2,8 +2,9 @@ return {
   'ibhagwan/fzf-lua',
   event = 'VeryLazy',
   config = function()
-    -- calling `setup` is optional for customization
-    require('fzf-lua').setup({
+    local fzf = require('fzf-lua')
+
+    fzf.setup({
       'fzf-native', -- profile
       fzf_opts = {
         ['--color'] = 'prompt:160,pointer:160',
@@ -25,14 +26,14 @@ return {
         fullscreen = true,
         -- height     = 0.8,
         -- width      = 80,
-        -- Position the results in the middle
+        -- position the results in the middle
         row     = 0.35,
         col     = 0.50,
         -- border style
         border     = 'none',
         preview    = {
-          vertical   = 'up:65%',   -- Preview window on top
-          horizontal = 'right:50%', -- For horizontal preview
+          vertical   = 'up:65%',   -- preview window on top
+          horizontal = 'right:50%', -- for horizontal preview
           layout     = 'vertical',
           flip_columns = 120,
         },
@@ -41,13 +42,10 @@ return {
 
     -- navigate on result using <CTRL> + hjkl keys
 
-    local keymap_files = { '<leader>;', '<leader>fz' }
-    for _, key in ipairs(keymap_files) do
-      vim.keymap.set('n', key, '<CMD>lua require("fzf-lua").files()<CR>')
-      -- vim.keymap.set('n', key, '<CMD>lua require("fzf-lua").files({ resume = true })<CR>')
-    end
+    -- files search entire project
+    vim.keymap.set('n', '<leader>fz', fzf.files, { desc = 'FZF: files' })
 
-    -- keymap live grep native
-    vim.keymap.set('n', '<leader>FF', '<CMD>lua require("fzf-lua").live_grep_native({ resume = true })<CR>')
+    -- keymap live grep native entire project
+    vim.keymap.set('n', '<leader>FF', function() fzf.live_grep_native({ resume = true }) end, { desc = 'FZF: live_grep_native' })
   end
 }

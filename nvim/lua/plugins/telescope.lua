@@ -171,27 +171,27 @@ return {
       -- find recently opened files
       vim.keymap.set('n', ';', function()
         builtin.oldfiles()
-      end, { desc = 'Telescope Oldfiles (Recent Files)' })
+      end, { desc = 'Telescope: Oldfiles (Recent Files)' })
 
       -- find files active buffer dir
       vim.keymap.set('n', '<leader>:', function()
         builtin.find_files({ cwd = utils.buffer_dir(), prompt_title = 'Find Files - CWD' })
-      end, { desc = 'Telescope Find files cwd' })
+      end, { desc = 'Telescope: Find files cwd' })
 
       -- grep_string
       vim.keymap.set('n', '<leader>f/', function()
         builtin.grep_string({ search = vim.fn.input("Grep")})
-      end, { desc = 'Telescope Grep string' })
+      end, { desc = 'Telescope: Grep string' })
 
       -- live_grep active buffer dir
       vim.keymap.set('n', '<leader>fc', function()
         builtin.live_grep({ prompt_title = 'Live Grep - CWD', cwd = utils.buffer_dir() })
-      end, { desc = 'Telescope Live grep - cwd' })
+      end, { desc = 'Telescope: Live grep - cwd' })
 
       -- live_grep entire project
       vim.keymap.set('n', '<leader>ff', function()
         builtin.live_grep({ prompt_title = 'Live Grep - Entire Project' })
-      end, { desc = 'Telescope Live grep - entire project' })
+      end, { desc = 'Telescope: Live grep - entire project' })
       vim.keymap.set('v', '<leader>ff', 'y<ESC>:Telescope live_grep default_text=<C-r>0<CR>')
 
       -- buffers
@@ -236,25 +236,19 @@ return {
       end
 
       -- marks
-      vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope Marks' })
+      vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope: Marks' })
 
       -- diagnostics
-      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope: LSP diagnostics' })
 
       -- LSP symbols
-      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope LSP Symbols' })
+      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope: LSP Symbols' })
 
       -- builtin list
-      vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope Builtin' })
+      vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope: Builtin' })
 
       -- resume
-      local resume_keymaps = { 'f', '<leader>fr' }
-      for _, key in ipairs(resume_keymaps) do
-        vim.keymap.set(
-          'n', key, "<CMD>lua require'telescope.builtin'.resume()<CR>",
-          { noremap = true, silent = true, desc = 'Telescope Resume' }
-        )
-      end
+      vim.keymap.set('n', '<leader>;', builtin.resume, { desc = 'Telescope: Resume' })
 
       -- use telescope extensions if installed
       pcall(telescope.load_extension, 'fzf')

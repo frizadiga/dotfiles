@@ -42,8 +42,7 @@ return {
       })
 
       -- CopilotChatToggle
-      vim.keymap.set('n', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
-      vim.keymap.set('v', '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
 
       -- CopilotChatFix
       vim.keymap.set('v', '<leader>ccf', '<CMD>CopilotChatFix<CR>')

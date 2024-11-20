@@ -2,19 +2,21 @@ return {
   'nvim-lualine/lualine.nvim',
   config = function()
     local fg_color = '#a7c080'
+    local noice = require('noice')
+
     local common_sections = {
       lualine_a = { 'mode' },
       lualine_b = { 'branch' },
       lualine_c = { 'filename' },
       lualine_x = {
         {
-          require("noice").api.status.command.get,
-          cond = require("noice").api.status.command.has,
+          noice.api.status.search.get,
+          cond = noice.api.status.search.has,
           color = { fg = fg_color },
         },
         {
-          require("noice").api.status.search.get,
-          cond = require("noice").api.status.search.has,
+          noice.api.status.command.get,
+          cond = noice.api.status.command.has,
           color = { fg = fg_color },
         },
         'encoding', 'fileformat', 'filetype',
