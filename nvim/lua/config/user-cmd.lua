@@ -13,9 +13,9 @@
 
 -- fn to open a floating window
 local function open_floating_window(content_buff, width, height)
-  local width = width or 0.6  -- default width value
-  local height = height or 0.6  -- default height value
-  
+  local _width = width or 0.6
+  local _height = height or 0.6
+
   -- split the command output into lines
   local buffer_lines = {}
   for line in content_buff:gmatch("[^\r\n]+") do
@@ -25,22 +25,22 @@ local function open_floating_window(content_buff, width, height)
   -- create a new buffer and window
   local buf = vim.api.nvim_create_buf(false, true) -- nofile, scratch buffer
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, buffer_lines)
-  
+
   -- define floating window dimensions
-  local _width = math.floor(vim.o.columns * width)
-  local _height = math.floor(vim.o.lines * height)
-  local row = math.floor((vim.o.lines - _height) / 2)
-  local col = math.floor((vim.o.columns - _width) / 2)
+  local final_width = math.floor(vim.o.columns * _width)
+  local final_height = math.floor(vim.o.lines * _height)
+  local row = math.floor((vim.o.lines - final_height) / 2)
+  local col = math.floor((vim.o.columns - final_width) / 2)
 
   -- open the floating window
   vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = _width,
-    height = _height,
-    row = row,
-    col = col,
     style = "minimal",
     border = "rounded",
+    relative = "editor",
+    row = row,
+    col = col,
+    width = final_width,
+    height = final_height,
   })
 end
 
