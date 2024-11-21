@@ -1,28 +1,29 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    local fg_color = '#a7c080'
-    local noice = require('noice')
+    -- local fg_color = '#a7c080'
+    -- local noice = require('noice')
 
     local common_sections = {
       lualine_a = { 'mode' },
-      lualine_b = { 'branch' },
-      lualine_c = { 'filename' },
+      lualine_b = {{ 'branch', icon = { '', align='right', }}},
+      lualine_c = { 'filename', 'diff', 'diagnostics' },
       lualine_x = {
-        {
-          noice.api.status.search.get,
-          cond = noice.api.status.search.has,
-          color = { fg = fg_color },
-        },
-        {
-          noice.api.status.command.get,
-          cond = noice.api.status.command.has,
-          color = { fg = fg_color },
-        },
-        'encoding', 'fileformat', 'filetype',
+        -- {
+        --   noice.api.status.search.get,
+        --   cond = noice.api.status.search.has,
+        --   color = { fg = fg_color },
+        -- },
+        -- {
+        --   noice.api.status.command.get,
+        --   cond = noice.api.status.command.has,
+        --   color = { fg = fg_color },
+        -- },
+        'selectioncount',
       },
-      lualine_y = { 'progress' },
-      lualine_z = { 'location' },
+      lualine_y = { 'location' },
+      lualine_z = { 'fileformat' },
+      -- lualine_z = { { 'location', color = { bg = '#9c3333' } } },
     }
 
     require('lualine').setup({
@@ -35,5 +36,5 @@ return {
       inactive_sections = common_sections,
     })
   end,
-  event = 'VimEnter', -- must be loaded just before `UIEnter` for "instant" impact on UI perceived performance
+  event = 'VimEnter', -- must be loaded just before `UIEnter` (`VimEnter`) for "instant" impact on UI perceived performance
 }

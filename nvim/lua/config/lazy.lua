@@ -29,9 +29,6 @@ require('config.opt') -- make sure loaded before lazy plugins setup
 -- keybindings
 require('config.key') -- make sure loaded before lazy plugins setup
 
--- user commands
-require('config.user-cmd') -- make sure loaded before lazy plugins setup
-
 -- lazy plugins setup
 require('lazy').setup({
   spec = {
@@ -62,3 +59,8 @@ require('lazy').setup({
   -- see: https://github.com/folke/lazy.nvim/blob/main/lua/lazy/core/config.lua
 })
 
+-- auto commands
+require('config.auto-cmd') -- make sure loaded before lazy plugins setup
+
+-- user commands
+require('config.user-cmd') -- make sure loaded before lazy plugins setup

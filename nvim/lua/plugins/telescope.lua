@@ -4,7 +4,6 @@ return {
     event = 'VeryLazy',
     branch = '0.1.x', -- stable
     -- branch = 'master', -- latest (currently still broken)
-    priority = 500,
     dependencies = {
       'nvim-telescope/telescope-ui-select.nvim', -- for lsp code actions
       {

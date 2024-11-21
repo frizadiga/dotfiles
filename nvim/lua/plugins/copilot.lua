@@ -27,8 +27,8 @@ return {
           layout = 'float', -- horizontal, vertical, float, replace,
           relative = 'win', -- 'editor', 'win', 'cursor', 'mouse'
           border = 'single', -- 'none', 'single', 'double', 'rounded', 'solid', 'shadow',
-          width = 0.6, -- fractional width of parent, or absolute width in columns when > 1
-          height = 0.6, -- fractional height of parent, or absolute height in rows when > 1
+          width = 80, -- fractional width of parent, or absolute width in columns when > 1
+          height = 0.65, -- fractional height of parent, or absolute height in rows when > 1
         }
         -- more config see: https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
       })

@@ -7,7 +7,7 @@ return {
       views = {
         mini = {
           win_options = {
-            winblend = 0
+            winblend = 0 -- fix lsp notif blocking the screen (case: rust-analyzer)
           }
         },
       }

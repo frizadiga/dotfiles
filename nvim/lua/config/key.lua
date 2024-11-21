@@ -49,7 +49,7 @@ vim.keymap.set('v', '<leader>r', ':s/<C-r><C-w>//g<Left><Left>')
 -- @end search buffer
 
 -- copy to clipboard current file path
-function copy_current_buffer_path()
+local function copy_current_buffer_path()
   vim.cmd('let @+=expand("%:p")')
   -- vim.cmd('echo "copied: " .. expand("%:p")')
   -- notify user
