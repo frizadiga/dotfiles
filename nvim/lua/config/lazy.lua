@@ -60,7 +60,7 @@ require('lazy').setup({
 })
 
 -- auto commands
-require('config.auto-cmd') -- not necessarily loaded before the lazy plugin setup
+require('cmd.auto') -- not necessarily loaded before the lazy plugin setup
 
 -- user commands
-require('config.user-cmd') -- not necessarily loaded before the lazy plugin setup
+require('cmd.user') -- not necessarily loaded before the lazy plugin setup
