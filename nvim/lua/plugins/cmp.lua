@@ -43,8 +43,8 @@ return {
           -- accept ([y]es) the completion.
           -- auto-import if your LSP supports it.
           -- expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
           ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<C-y>'] = cmp.mapping.confirm { select = true },
 
           -- prevent conflict with copilot <Tab>
           ['<S-Tab>'] = cmp.mapping.select_next_item(),

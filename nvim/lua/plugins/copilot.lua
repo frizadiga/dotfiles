@@ -11,18 +11,23 @@ return {
     config = function()
       require('CopilotChat').setup({
         debug = false, -- enable debugging
+        auto_insert_mode = true,
+        question_header = '## User ', -- Header to use for user questions
+        answer_header = '## Copilot ', -- Header to use for AI answers
+        error_header = '## Error ', -- Header to use for errors
+        separator = '', -- Separator to use in chat
         mappings = {
-          complete = {
-            insert ='<S-Tab>',
-            detail = 'Use @<Tab> or /<Tab> for options.',
-            -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/issues/324#issuecomment-2118551487
-          },
           accept_diff = {
             normal = '<Space><Space>',
           },
           reset = {
             normal = '<C-l>',
             insert = '<C-l>',
+          },
+          complete = {
+            insert ='<S-Tab>',
+            detail = 'Use @<Tab> or /<Tab> for options.',
+            -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/issues/324#issuecomment-2118551487
           },
         },
         window = {

@@ -12,23 +12,33 @@
 -- end
 
 -- fn to open a floating window
-local function open_floating_window(content_buff, width, height)
+local function open_floating_window(buf_body, width, height)
   local _width = width or 0.6
   local _height = height or 0.6
 
   -- split the command output into lines
-  local buffer_lines = {}
-  for line in content_buff:gmatch("[^\r\n]+") do
-    table.insert(buffer_lines, line)
+  local buf_lines = {}
+  for line in buf_body:gmatch("[^\r\n]+") do
+    table.insert(buf_lines, line)
   end
 
   -- create a new buffer and window
   local buf = vim.api.nvim_create_buf(false, true) -- nofile, scratch buffer
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, buffer_lines)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, buf_lines)
 
-  -- define floating window dimensions
-  local final_width = math.floor(vim.o.columns * _width)
-  local final_height = math.floor(vim.o.lines * _height)
+  local final_width = 0.2
+  local final_height = 0.2
+
+  if _width > 1 then
+    -- use normal unit
+    final_width = _width
+    final_height = _height
+  else
+    -- use percentage unit of current window
+    final_width = math.floor(vim.o.columns * _width)
+    final_height = math.floor(vim.o.lines * _height)
+  end
+
   local row = math.floor((vim.o.lines - final_height) / 2)
   local col = math.floor((vim.o.columns - final_width) / 2)
 
@@ -45,7 +55,8 @@ local function open_floating_window(content_buff, width, height)
 end
 
 -- lazy.nvim dashboard alias
-vim.api.nvim_create_user_command('L',
+vim.api.nvim_create_user_command(
+  'L',
   function(opts)
     vim.cmd('Lazy ' .. opts.args)
   end,
@@ -62,7 +73,7 @@ vim.api.nvim_create_user_command(
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
     local output = vim.fn.system({'bash', tools_dir .. '/todo.sh'})
 
-    open_floating_window(output)
+    open_floating_window('# Todo:\n' .. output, 60, 10)
   end,
   {}
 )
@@ -88,14 +99,26 @@ vim.api.nvim_create_user_command(
   {}
 )
 
--- check detail ticket
+-- info detail ticket
 vim.api.nvim_create_user_command(
   'TicketDetail',
   function()
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
     local output = vim.fn.system({'bash', tools_dir .. '/jira-curl/curl-issue-find-one.sh'})
 
-    open_floating_window(output)
+    open_floating_window('# Ticket Detail:\n' .. output, 60, 7)
+  end,
+  {}
+)
+
+-- open tabs ticket related
+vim.api.nvim_create_user_command(
+  'TicketTabs',
+  function()
+    local notes_dir = vim.fn.expand('$NOTES_DIR')
+    local output = vim.fn.system({'bash', notes_dir .. '/app/browser-tabs/mod-tabs-by-ticket-id.sh'})
+
+    vim.notify('\n' .. output)
   end,
   {}
 )

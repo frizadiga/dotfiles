@@ -9,7 +9,7 @@ vim.keymap.set('v', 'KJ', '<Esc>')
 vim.keymap.set('n', '<leader>qq', '<CMD>q<CR>')
 
 -- redo
-vim.keymap.set('n', '<leader>u', '<CMD>redo<CR>')
+vim.keymap.set('n', 'r', '<C-r>')
 
 -- @start buffer
 -- select all text in buffer

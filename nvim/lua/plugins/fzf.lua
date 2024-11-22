@@ -45,7 +45,7 @@ return {
     -- files search entire project
     vim.keymap.set('n', '<leader>fz', fzf.files, { desc = 'FZF: files' })
 
-    -- keymap live grep native entire project
+    -- live grep native entire project
     vim.keymap.set('n', '<leader>FF', function() fzf.live_grep_native({ resume = true }) end, { desc = 'FZF: live_grep_native' })
   end
 }

@@ -112,7 +112,7 @@ return {
           -- selection_caret = '·',
           layout_strategy = 'vertical',
           layout_config = {
-            vertical = { width = 80, preview_cutoff = 5 },
+            vertical = { width = 80, height = 0.95, preview_cutoff = 5 },
           },
           cache_picker = {
             num_pickers = 5, -- #performance improvement
