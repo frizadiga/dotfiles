@@ -40,30 +40,29 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
-          -- traditional completion keymaps,
+          -- accept ([y]es) the completion.
+          -- auto-import if your LSP supports it.
+          -- expand snippets if the LSP sent a snippet.
+          ['<C-y>'] = cmp.mapping.confirm { select = true },
           ['<CR>'] = cmp.mapping.confirm { select = true },
-          ['<Tab>'] = cmp.mapping.select_next_item(),
-          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+
+          -- prevent conflict with copilot <Tab>
+          ['<S-Tab>'] = cmp.mapping.select_next_item(),
 
           -- scroll the documentation window [b]ack / [f]orward
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
-          -- accept ([y]es) the completion.
-          --  This will auto-import if your LSP supports it.
-          --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
-
           -- manually trigger a completion from nvim-cmp.
-          --  generally you don't need this, because nvim-cmp will display
-          --  completions whenever it has completion options available.
+          -- generally you don't need this, because nvim-cmp will display
+          -- completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
 
           -- think of <c-l> as moving to the right of your snippet expansion.
-          --  so if you have a snippet that's like:
-          --  function $name($args)
-          --    $body
-          --  end
+          -- so if you have a snippet that's like:
+          -- function $name($args)
+          --   $body
+          -- end
           --
           -- <c-l> will move you to the right of each of the expansion locations.
           -- <c-h> is similar, except moving you backwards.

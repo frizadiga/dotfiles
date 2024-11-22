@@ -1,5 +1,8 @@
 return {
-  { 'github/copilot.vim', event = 'InsertEnter' },
+  {
+    'github/copilot.vim',
+    event = 'InsertEnter',
+  },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     event = 'VeryLazy',

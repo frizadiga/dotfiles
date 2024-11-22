@@ -9,6 +9,7 @@ return {
       lualine_b = {{ 'branch', icon = { '', align='right', }}},
       lualine_c = { 'filename', 'diff', 'diagnostics' },
       lualine_x = {
+        'selectioncount',
         -- {
         --   noice.api.status.search.get,
         --   cond = noice.api.status.search.has,
@@ -19,7 +20,6 @@ return {
         --   cond = noice.api.status.command.has,
         --   color = { fg = fg_color },
         -- },
-        'selectioncount',
       },
       lualine_y = { 'location' },
       lualine_z = { 'fileformat' },
