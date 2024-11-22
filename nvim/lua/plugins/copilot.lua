@@ -11,12 +11,15 @@ return {
     config = function()
       require('CopilotChat').setup({
         debug = false, -- enable debugging
-        auto_insert_mode = true,
-        question_header = '## User ', -- Header to use for user questions
-        answer_header = '## Copilot ', -- Header to use for AI answers
-        error_header = '## Error ', -- Header to use for errors
-        separator = '', -- Separator to use in chat
+        error_header = 'Err', -- header to use for errors
+        answer_header = '▶︎ A', -- header to use for AI answers
+        question_header = '▶︎ Q', -- header to use for user questions
+        separator = '', -- separator to use in chat
         mappings = {
+          submit_prompt = {
+            normal = '<CR>',
+            insert = '<C-;>',
+          },
           accept_diff = {
             normal = '<Space><Space>',
           },

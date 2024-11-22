@@ -112,7 +112,12 @@ return {
           -- selection_caret = '·',
           layout_strategy = 'vertical',
           layout_config = {
-            vertical = { width = 80, height = 0.95, preview_cutoff = 5 },
+            vertical = {
+              width = 80,
+              height = 0.9,
+              preview_height = 0.6, -- fraction of total height
+              preview_cutoff = 10, -- when columns are less than this value, the preview will be disabled
+            },
           },
           cache_picker = {
             num_pickers = 5, -- #performance improvement

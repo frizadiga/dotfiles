@@ -32,10 +32,16 @@ local function open_floating_window(buf_body, width, height)
   if _width > 1 then
     -- use normal unit
     final_width = _width
-    final_height = _height
   else
     -- use percentage unit of current window
     final_width = math.floor(vim.o.columns * _width)
+  end
+
+  if _height > 1 then
+    -- use normal unit
+    final_height = _height
+  else
+    -- use percentage unit of current window
     final_height = math.floor(vim.o.lines * _height)
   end
 
@@ -94,7 +100,7 @@ vim.api.nvim_create_user_command(
       vim.cmd('e ' .. today_filepath)
     end
 
-    vim.notify('\n' .. output)
+    vim.notify('\n' .. output, vim.log.levels.INFO, { timeout = 10000 })
   end,
   {}
 )
