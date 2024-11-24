@@ -21,6 +21,12 @@ return {
       local utils = require('telescope.utils')
       local builtin = require('telescope.builtin')
 
+      -- fn remove trailing ; (not found trigger symbol)
+      local function get_search_query()
+        local search_query = action_state.get_current_line()
+        return search_query:gsub(';$', '')
+      end
+
       -- @start_section oldfiles + fzf files
       -- usecase: 
       -- 1. open telescope oldfiles
@@ -28,11 +34,11 @@ return {
       -- 3. if no files found, press enter to open fzf files
 
       local function fzf_files_open()
-        local search_term = action_state.get_current_line()
+        local search_query = get_search_query()
 
         vim.defer_fn(function()
           require('fzf-lua').files({
-            query = search_term,
+            query = search_query,
             -- force cursor to input prompt
             winopts = {
               on_create = function()
@@ -62,11 +68,11 @@ return {
       -- 3. if no pattern found, press enter to open fzf live grep native
 
       local function fzf_live_grep_native_open()
-        local search_term = action_state.get_current_line()
+        local search_query = get_search_query()
 
         vim.defer_fn(function()
           require('fzf-lua').live_grep_native({
-            query = search_term,
+            query = search_query,
             -- force cursor to input prompt
             winopts = {
               on_create = function()

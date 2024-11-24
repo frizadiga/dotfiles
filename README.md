@@ -7,7 +7,6 @@ My daily driver public dotfiles.
 - lazygit (done)
 - lazydocker (done)
 - btop (done)
-- alt-tab (done)
 - skhd (todo)
 - yabai (todo)
 
