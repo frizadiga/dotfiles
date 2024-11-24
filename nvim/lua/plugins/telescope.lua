@@ -104,7 +104,7 @@ return {
             },
           },
           preview = {
-            timeout = 150, -- ms #performance improvement
+            timeout = 50, -- ms #performance improvement
             filesize_limit = 1, -- MB #performance improvement
           },
           path_display = { 'truncate' },
@@ -116,7 +116,7 @@ return {
               width = 80,
               height = 0.9,
               preview_height = 0.6, -- fraction of total height
-              preview_cutoff = 10, -- when columns are less than this value, the preview will be disabled
+              -- preview_cutoff = 40, -- when columns are less than this value, the preview will be disabled
             },
           },
           cache_picker = {

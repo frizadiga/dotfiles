@@ -28,8 +28,8 @@ return {
       -- configuration for the floating window in oil.open_float
       float = {
         padding = 2,
-        max_width = 55,
-        max_height = 25,
+        max_width = 50,
+        max_height = 20,
         border = 'rounded',
         -- make title empty to disable the title
         get_win_title = function() return '' end,

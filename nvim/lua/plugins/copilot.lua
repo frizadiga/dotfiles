@@ -10,11 +10,11 @@ return {
     build = 'make tiktoken', -- only on MacOS or Linux
     config = function()
       require('CopilotChat').setup({
-        debug = false, -- enable debugging
+        debug = false, -- plugin level debug
         error_header = 'Err', -- header to use for errors
         answer_header = '▶︎ A', -- header to use for AI answers
         question_header = '▶︎ Q', -- header to use for user questions
-        separator = '', -- separator to use in chat
+        separator = '', -- disable separator to use in chat
         mappings = {
           submit_prompt = {
             normal = '<CR>',
@@ -28,7 +28,7 @@ return {
             insert = '<C-l>',
           },
           complete = {
-            insert ='<S-Tab>',
+            insert ='<S-Tab>', -- prevent conflict with copilot ghost suggestion
             detail = 'Use @<Tab> or /<Tab> for options.',
             -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/issues/324#issuecomment-2118551487
           },
@@ -47,22 +47,25 @@ return {
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = "copilot-chat",
         callback = function()
-          vim.opt_local.relativenumber = false
           vim.opt_local.number = false
+          vim.opt_local.relativenumber = false
         end,
       })
-
-      -- CopilotChatToggle
-      vim.keymap.set({ 'n', 'v' }, '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
 
       -- CopilotChatFix
       vim.keymap.set('v', '<leader>ccf', '<CMD>CopilotChatFix<CR>')
 
+      -- CopilotChatReview
+      vim.keymap.set('v', '<leader>ccr', '<CMD>CopilotChatReview<CR>')
+
       -- CopilotChatExplain
       vim.keymap.set('v', '<leader>cce', '<CMD>CopilotChatExplain<CR>')
 
-      -- CopilotChatReview
-      vim.keymap.set('v', '<leader>ccr', '<CMD>CopilotChatReview<CR>')
+      -- CopilotChatModels
+      vim.keymap.set('n', '<leader>ccm', '<CMD>CopilotChatModels<CR>')
+
+      -- CopilotChatToggle
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
 
       -- impl more: https://github.com/CopilotC-Nvim/CopilotChat.nvim?tab=readme-ov-file#commands-coming-from-default-prompts
     end,

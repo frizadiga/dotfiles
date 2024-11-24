@@ -68,10 +68,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- @start indentation
 -- basic indentation
-vim.keymap.set('n', '<Tab>', '>>')   -- Indent right in normal mode
-vim.keymap.set('n', '<S-Tab>', '<<') -- Indent left in normal mode
-vim.keymap.set('v', '<', '<gv')      -- Indent left in visual mode and stay in visual mode
-vim.keymap.set('v', '>', '>gv')      -- Indent right in visual mode and stay in visual mode
+vim.keymap.set('n', '<Tab>', '>>')   -- indent right in normal mode
+vim.keymap.set('n', '<S-Tab>', '<<') -- indent left in normal mode
+vim.keymap.set('v', '<', '<gv')      -- indent left in visual mode and stay in visual mode
+vim.keymap.set('v', '>', '>gv')      -- indent right in visual mode and stay in visual mode
 
 -- auto indent when pasting
 vim.keymap.set('n', 'p', ']p', { desc = 'Paste with auto-indent' })

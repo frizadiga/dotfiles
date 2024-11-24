@@ -27,7 +27,7 @@ return {
       { desc = 'Spectre: toggle' }
     )
 
-    -- path: custom path
+    -- path: custom working directory
     vim.keymap.set('n', '<leader>sp',
       function()
         local search = vim.fn.input('Search Path > ')
