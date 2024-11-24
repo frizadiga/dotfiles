@@ -21,6 +21,8 @@ return {
       local utils = require('telescope.utils')
       local builtin = require('telescope.builtin')
 
+      local use_cwd = false -- flag to use current buffer dir as cwd
+
       -- fn remove trailing ; (not found trigger symbol)
       local function get_search_query()
         local search_query = action_state.get_current_line()
@@ -39,6 +41,7 @@ return {
         vim.defer_fn(function()
           require('fzf-lua').files({
             query = search_query,
+            cwd = use_cwd and utils.buffer_dir() or nil,
             -- force cursor to input prompt
             winopts = {
               on_create = function()
@@ -47,14 +50,14 @@ return {
               end
             }
           })
-        end, 10) -- 10ms delay to ensure the cursor is focus in the prompt
+        end, 1) -- delay in ms to ensure the cursor is focus in the prompt
       end
 
-      local function find_oldfile(prompt_bufnr)
+      local function find_files(prompt_bufnr)
         local picker = action_state.get_current_picker(prompt_bufnr)
         if #picker:get_multi_selection() == 0 and picker:get_selection(prompt_bufnr) == nil then
           actions.close(prompt_bufnr)
-          fzf_files_open()
+          fzf_files_open(prompt_bufnr)
         else
           actions.select_default(prompt_bufnr)
         end
@@ -73,6 +76,7 @@ return {
         vim.defer_fn(function()
           require('fzf-lua').live_grep_native({
             query = search_query,
+            cwd = use_cwd and utils.buffer_dir() or nil,
             -- force cursor to input prompt
             winopts = {
               on_create = function()
@@ -81,7 +85,7 @@ return {
               end
             }
           })
-        end, 10) -- 10ms delay to ensure the cursor is focus in the prompt
+        end, 1) -- delay in ms to ensure the cursor is focus in the prompt
       end
 
       local function find_live_grep(prompt_bufnr)
@@ -137,18 +141,8 @@ return {
         pickers = {
           oldfiles = {
             prompt_title = 'Files - Recent',
-            mappings = { i = { ['<CR>'] = find_oldfile } },
+            mappings = { i = { ['<CR>'] = find_files } },
             cwd_only = true, -- prevent list files globally across all projects
-          },
-
-          find_files = {
-            follow = true,
-            prompt_title = 'Find Files - Entire Project',
-            find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'}, -- #performance improvement
-            live_grep = {
-              follow = true,
-              prompt_title = 'Live Grep - Entire Project',
-            },
           },
 
           live_grep = {
@@ -159,6 +153,13 @@ return {
               '--follow', '--hidden', '--glob', '!.git', '--glob', '!node_modules'
             }, -- #performance improvement
             mappings = { i = { ['<CR>'] = find_live_grep } },
+          },
+
+          find_files = {
+            follow = true,
+            mappings = { i = { ['<CR>'] = find_files } },
+            prompt_title = '[DONT - USE OLDFILES INSTEAD] - Find Files - Entire Project',
+            find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'}, -- #performance improvement
           },
         },
         -- @end_section pickers
@@ -180,11 +181,13 @@ return {
 
       -- find recently opened files
       vim.keymap.set('n', ';', function()
+        use_cwd = false
         builtin.oldfiles()
       end, { desc = 'Telescope: Oldfiles (Recent Files)' })
 
       -- find files active buffer dir
       vim.keymap.set('n', '<leader>:', function()
+        use_cwd = true
         builtin.find_files({ cwd = utils.buffer_dir(), prompt_title = 'Find Files - CWD' })
       end, { desc = 'Telescope: Find files cwd' })
 
@@ -195,11 +198,13 @@ return {
 
       -- live_grep active buffer dir
       vim.keymap.set('n', '<leader>fc', function()
+        use_cwd = true
         builtin.live_grep({ prompt_title = 'Live Grep - CWD', cwd = utils.buffer_dir() })
       end, { desc = 'Telescope: Live grep - cwd' })
 
       -- live_grep entire project
       vim.keymap.set('n', '<leader>ff', function()
+        use_cwd = false
         builtin.live_grep({ prompt_title = 'Live Grep - Entire Project' })
       end, { desc = 'Telescope: Live grep - entire project' })
       vim.keymap.set('v', '<leader>ff', 'y<ESC>:Telescope live_grep default_text=<C-r>0<CR>')
