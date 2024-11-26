@@ -9,9 +9,9 @@ return {
       preview_config = {
         border = 'rounded',
       },
-      numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-      linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-      word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+      numhl = false, -- toggle with `:Gitsigns toggle_numhl`
+      linehl = false, -- toggle with `:Gitsigns toggle_linehl`
+      word_diff = false, -- toggle with `:Gitsigns toggle_word_diff`
       -- doc: https://github.com/lewis6991/gitsigns.nvim/blob/master/lua/gitsigns/config.lua#L212
     }
 

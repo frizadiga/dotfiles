@@ -23,10 +23,10 @@ return {
 
       local use_cwd = false -- flag to use current buffer dir as cwd
 
-      -- fn remove trailing ; (not found trigger symbol)
+      -- fn: construct final search query
       local function get_search_query()
         local search_query = action_state.get_current_line()
-        return search_query:gsub(';$', '')
+        return search_query:gsub(';$', '') -- remove trailing ; (not found trigger symbol)
       end
 
       -- @start_section oldfiles + fzf files
@@ -57,7 +57,7 @@ return {
         local picker = action_state.get_current_picker(prompt_bufnr)
         if #picker:get_multi_selection() == 0 and picker:get_selection(prompt_bufnr) == nil then
           actions.close(prompt_bufnr)
-          fzf_files_open(prompt_bufnr)
+          fzf_files_open()
         else
           actions.select_default(prompt_bufnr)
         end
@@ -141,7 +141,10 @@ return {
         pickers = {
           oldfiles = {
             prompt_title = 'Files - Recent',
-            mappings = { i = { ['<CR>'] = find_files } },
+            mappings = {
+              i = { ['<CR>'] = find_files },
+              n = { ['<CR>'] = find_files },
+            },
             cwd_only = true, -- prevent list files globally across all projects
           },
 

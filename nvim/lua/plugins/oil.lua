@@ -37,10 +37,10 @@ return {
       default_file_explorer = false, -- prevent oil startup screen passing `false` is required
     })
     -- open floating window
-    vim.keymap.set('n', 'e', oil.toggle_float, {})
+    vim.keymap.set('n', '<leader>e', oil.toggle_float, {})
 
     -- open `oil` in the path it was opened with `nvim .`
-    vim.keymap.set('n', '<leader>e', '<CMD>Oil --float .<CR>', { desc = 'Open Oil in root project path' })
+    vim.keymap.set('n', '<leader>E', '<CMD>Oil --float .<CR>', { desc = 'Open Oil in root project path' })
 
     -- close the `oil` buffer with esc, only react to esc in oil buffers
     vim.api.nvim_create_autocmd('FileType', {

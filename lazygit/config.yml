@@ -16,4 +16,7 @@ gui:
     # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#highlighting-the-selected-line
     selectedLineBgColor:
       - '#4d4d4d'
+os:
+  dislocate: true
+  escapeKeyBinding: '^Z'
 

@@ -6,8 +6,7 @@
 --   local lines = vim.fn.split(output, '\n')
 --
 --   -- print reverse of lines
---   for i = #lines, 1, -1 do
---     print(lines[i])
+--   for i = #lines, 1, -1 do print(lines[i])
 --   end
 -- end
 
@@ -113,6 +112,27 @@ vim.api.nvim_create_user_command(
     local output = vim.fn.system({'bash', tools_dir .. '/jira-curl/curl-issue-find-one.sh'})
 
     open_floating_window('# Ticket Detail:\n' .. output, 60, 7)
+  end,
+  {}
+)
+
+-- open ticket markdown
+vim.api.nvim_create_user_command(
+  'TicketMd',
+  function()
+    local notes_dir = vim.fn.expand('$NOTES_DIR')
+    local output = vim.fn.system({'bash', notes_dir .. '/projects/products/open-md-product.sh', '--path'})
+
+    -- get last line of output
+    local lines = vim.fn.split(output, '\n')
+    local md_filepath = vim.fn.trim(lines[#lines])
+
+    -- if md file exists, open it
+    if vim.fn.filereadable(md_filepath) == 1 then
+      vim.cmd('e ' .. md_filepath)
+    end
+
+    vim.notify('\n' .. output)
   end,
   {}
 )
