@@ -45,7 +45,7 @@ vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
 -- replace
 vim.keymap.set('n', '<leader>r', ':%s//g<Left><Left>')
 -- in visual mode prefill search with selected text
-vim.keymap.set('v', '<leader>r', ':s/<C-r><C-w>//g<Left><Left>')
+vim.keymap.set('v', '<leader>r', ':%s/<C-r><C-w>//g<Left><Left>')
 -- @end search buffer
 
 -- copy to clipboard current file path
@@ -56,11 +56,6 @@ local function copy_current_buffer_path()
   vim.notify('copied: ' .. vim.fn.expand('%:p'))
 end
 vim.keymap.set('n', '<leader>cp', copy_current_buffer_path)
--- vim.keymap.set(
---   'n',
---   '<leader>cp',
---   '<CMD>let @+=expand("%:p")<CR>:echo "copied: " .. expand("%:p")<CR>'
--- )
 
 -- move selected block up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
