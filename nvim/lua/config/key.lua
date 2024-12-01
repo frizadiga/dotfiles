@@ -43,9 +43,9 @@ vim.keymap.set('n', '<Space><Space>', '<CMD>update<CR>')
 vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
 
 -- replace
-vim.keymap.set('n', '<leader>r', ':%s//g<Left><Left>')
+vim.keymap.set('n', '<leader>r', ':%s//gc<Left><Left><Left>')
 -- in visual mode prefill search with selected text
-vim.keymap.set('v', '<leader>r', ':<C-u>%s/<C-r><C-w>//g<Left><Left>')
+vim.keymap.set('v', '<leader>r', ':<C-u>%s/<C-r><C-w>//gc<Left><Left><Left>')
 -- @end search buffer
 
 -- copy to clipboard current file path

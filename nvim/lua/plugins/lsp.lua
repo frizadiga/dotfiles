@@ -27,6 +27,7 @@ return {
         'html',
         'ts_ls',
         'lua_ls',
+        'pyright',
         'rust_analyzer',
       },
     },
@@ -82,6 +83,11 @@ return {
 
       -- html
       lspconfig.html.setup({
+        capabilities = capabilities
+      })
+
+      -- python
+      lspconfig.pyright.setup({
         capabilities = capabilities
       })
 

@@ -40,7 +40,7 @@ return {
 
         return {
           -- Visual = { bg = '#4f3333' },
-          -- Visual = { fg = 'white', bg = ColorMainRed },
+          Visual = { fg = 'white', bg = ColorMainRed },
           NormalFloat = { bg = 'none' },
           FloatBorder = { bg = 'none' },
           FloatFooter = { bg = 'none' },
