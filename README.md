@@ -1,4 +1,4 @@
-# dotfiles
+# DOTFILES
 My daily driver public dotfiles.
 
 - alacritty (done)
@@ -7,6 +7,8 @@ My daily driver public dotfiles.
 - lazygit (done)
 - lazydocker (done)
 - btop (done)
+- brew (done)
+- ghostty (todo)
 - skhd (todo)
 - yabai (todo)
 

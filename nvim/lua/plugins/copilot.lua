@@ -6,7 +6,7 @@ return {
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     event = 'VeryLazy',
-    branch = 'canary',
+    branch = 'main',
     build = 'make tiktoken', -- only on MacOS or Linux
     config = function()
       require('CopilotChat').setup({

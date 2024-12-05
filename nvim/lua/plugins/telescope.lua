@@ -109,8 +109,8 @@ return {
             n = {
               ['q'] = actions.close,
               ['KJ'] = actions.close,
-              ['h'] = actions.cycle_history_prev,
-              ['l'] = actions.cycle_history_next,
+              ['H'] = actions.cycle_history_prev,
+              ['L'] = actions.cycle_history_next,
               -- set as enter
               [';'] = actions.select_default,
             },

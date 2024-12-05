@@ -26,9 +26,11 @@ return {
         'gopls',
         'html',
         'ts_ls',
+        'jsonls',
         'lua_ls',
         'pyright',
         'rust_analyzer',
+        -- 'mojo-lsp-server', -- for now manually install, isn't avail via mason yet
       },
     },
   },
@@ -81,6 +83,11 @@ return {
         capabilities = capabilities
       })
 
+      -- json
+      lspconfig.jsonls.setup({
+        capabilities = capabilities
+      })
+
       -- html
       lspconfig.html.setup({
         capabilities = capabilities
@@ -103,8 +110,14 @@ return {
         capabilities = capabilities,
       })
 
-      -- mojo:
-      -- @TODO: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#mojo
+      -- mojo
+      lspconfig.mojo.setup({
+        capabilities = capabilities,
+        cmd = { "mojo-lsp-server" },
+        filetypes = { "mojo", "🔥" },
+      })
+
+      -- more lsp see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, {})

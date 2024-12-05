@@ -39,6 +39,10 @@ return {
         local ColorSecondaryRed = '#9c3333'
 
         return {
+          -- text styles
+          ["@variable.builtin"] = { italic = false },
+
+          -- highlight colors
           -- Visual = { bg = '#4f3333' },
           Visual = { fg = 'white', bg = ColorMainRed },
           NormalFloat = { bg = 'none' },
