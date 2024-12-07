@@ -29,6 +29,8 @@ brew "brightness"
 brew "btop"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# Ultralightweight JSON parser in ANSI C
+brew "cjson"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
@@ -117,6 +119,8 @@ brew "lazydocker"
 brew "lazygit"
 # Library to render SVG files using Cairo
 brew "librsvg"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Modern and intuitive terminal-based text editor
@@ -125,8 +129,6 @@ brew "micro"
 brew "mkcert"
 # Lightweight PDF and XPS viewer
 brew "mupdf"
-# Fast, highly customisable system info script
-brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
