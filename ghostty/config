@@ -1,6 +1,23 @@
-font-family = "MesloLGS NF"
 font-size = 16
+font-family = "MesloLGS NF"
+
+# fullscreen
+window-width = 99999
+window-height = 99999
+window-padding-y = 8
+window-padding-x = 16
 window-decoration = false
 
-window-padding-x = 16
-window-padding-y = 8
+cursor-text = ffffff
+cursor-color = d25858
+cursor-style = block
+cursor-style-blink = false
+
+foreground= ffffff
+background = 000000
+background-opacity = 0.8
+
+mouse-hide-while-typing = true
+
+# see: https://github.com/ghostty-org/ghostty/blob/main/src/config/Config.zig
+

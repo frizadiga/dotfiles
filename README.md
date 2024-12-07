@@ -8,7 +8,7 @@ My daily driver public dotfiles.
 - lazydocker (done)
 - btop (done)
 - brew (done)
-- ghostty (todo)
+- ghostty (done)
 - skhd (todo)
 - yabai (todo)
 
