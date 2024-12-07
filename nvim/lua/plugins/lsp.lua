@@ -7,7 +7,7 @@ return {
         ui = {
           width = 1,
           height = 1,
-          border = 'single',
+          border = 'none',
           check_outdated_packages_on_open = true,
         },
         ensure_installed = { 'eslint_d' },

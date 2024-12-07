@@ -1,0 +1,19 @@
+
+# focus windows
+cmd - h : yabai -m window --focus west
+cmd - l : yabai -m window --focus east
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+
+# move windows
+cmd - shift - h : yabai -m window --swap west
+cmd - shift - l : yabai -m window --swap east
+cmd - shift - j : yabai -m window --swap south
+cmd - shift - k : yabai -m window --swap north
+
+# resize windows
+cmd - alt - h : yabai -m window --resize left:-20:0
+cmd - alt - l : yabai -m window --resize right:20:0
+cmd - alt - j : yabai -m window --resize bottom:0:20
+cmd - alt - k : yabai -m window --resize top:0:-20
+

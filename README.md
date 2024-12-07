@@ -1,4 +1,4 @@
-# DOTFILES
+# friz()'s dotfiles
 My daily driver public dotfiles.
 
 - alacritty (done)
@@ -9,8 +9,8 @@ My daily driver public dotfiles.
 - btop (done)
 - brew (done)
 - ghostty (done)
-- skhd (todo)
-- yabai (todo)
+- skhd (wip)
+- yabai (wip)
 
 All symlinking mechanisms are done by my internal tooling. If you want to reproduce, bring your own solution.
 

@@ -185,7 +185,7 @@ return {
       })
 
       -- find recently opened files
-      vim.keymap.set('n', ';', function()
+      vim.keymap.set({ 'n', 'v' }, ';', function()
         use_cwd = false
         builtin.oldfiles()
       end, { desc = 'Telescope: Oldfiles (Recent Files)' })

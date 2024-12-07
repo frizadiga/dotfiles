@@ -9,12 +9,24 @@ return {
     branch = 'main',
     build = 'make tiktoken', -- only on MacOS or Linux
     config = function()
-      require('CopilotChat').setup({
-        debug = false, -- plugin level debug
-        error_header = 'Err', -- header to use for errors
-        answer_header = '▶︎ A', -- header to use for AI answers
-        question_header = '▶︎ Q', -- header to use for user questions
-        separator = '', -- disable separator to use in chat
+      local cc = require("CopilotChat")
+
+      local def_win_opt = {
+        title = '',
+        layout = 'float',
+        relative = 'win',
+        border = 'single',
+        width = 80,
+        height = 15,
+      }
+
+      cc.setup({
+        debug = false,
+        error_header = 'Err',
+        answer_header = '▶︎ A',
+        question_header = '▶︎ Q',
+        separator = '',
+        window = def_win_opt,
         mappings = {
           submit_prompt = {
             normal = '<CR>',
@@ -24,26 +36,21 @@ return {
             normal = '<Space><Space>',
           },
           reset = {
-            normal = '<C-l>',
-            insert = '<C-l>',
-          },
+            normal = '<C-l>', insert = '<C-l>', },
           complete = {
             insert ='<S-Tab>', -- prevent conflict with copilot ghost suggestion
             detail = 'Use @<Tab> or /<Tab> for options.',
             -- https://github.com/CopilotC-Nvim/CopilotChat.nvim/issues/324#issuecomment-2118551487
           },
         },
-        window = {
-          title = '',
-          layout = 'float', -- horizontal, vertical, float, replace,
-          relative = 'win', -- 'editor', 'win', 'cursor', 'mouse'
-          border = 'single', -- 'none', 'single', 'double', 'rounded', 'solid', 'shadow',
-          width = 80, -- fractional width of parent, or absolute width in columns when > 1
-          height = 0.65, -- fractional height of parent, or absolute height in rows when > 1
-        }
-        -- more config see: https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
+        agent = 'copilot', -- see ':CopilotChatAgents' for available agents (can be specified manually in prompt via @).
+        model = 'claude-3.5-sonnet', -- see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
+        context = nil, -- default context or array of contexts to use (can be specified manually in prompt via #).
+        temperature = 0.1, -- LLM result temperature (0.0 - 1.0) closer to 0 is more deterministic, closer to 1 is "more creative".
+        -- default config see: https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
       })
 
+      -- ft-type handling for 'copilot-chat'
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = "copilot-chat",
         callback = function()
@@ -52,20 +59,32 @@ return {
         end,
       })
 
-      -- CopilotChatFix
+      -- show/hide chat window
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccc', cc.toggle)
+
+      -- show chat window with fix instructions
       vim.keymap.set('v', '<leader>ccf', '<CMD>CopilotChatFix<CR>')
 
-      -- CopilotChatReview
+      -- show chat window with review instructions
       vim.keymap.set('v', '<leader>ccr', '<CMD>CopilotChatReview<CR>')
 
-      -- CopilotChatExplain
+      -- show chat window with explain instructions
       vim.keymap.set('v', '<leader>cce', '<CMD>CopilotChatExplain<CR>')
 
-      -- CopilotChatModels
+      -- select model
       vim.keymap.set('n', '<leader>ccm', '<CMD>CopilotChatModels<CR>')
 
-      -- CopilotChatToggle
-      vim.keymap.set({ 'n', 'v' }, '<leader>ccc', '<CMD>CopilotChatToggle<CR>')
+      -- show current model
+      vim.keymap.set('n', '<leader>ccM', function() vim.notify(cc.config.model) end)
+
+      local max_win_opt = vim.tbl_extend('force', def_win_opt, {
+        width = 1.0,
+        height = 1.0,
+        border = 'none',
+      })
+
+      -- show/hide max chat window
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccC', function() cc.toggle { window = max_win_opt } end)
 
       -- impl more: https://github.com/CopilotC-Nvim/CopilotChat.nvim?tab=readme-ov-file#commands-coming-from-default-prompts
     end,

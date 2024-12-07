@@ -51,7 +51,7 @@ require('lazy').setup({
     },
   },
   ui = {
-    pills = false, size = { width = 1, height = 1 }, border = 'single',
+    pills = false, size = { width = 1, height = 1 }, border = 'none',
   },
   defaults = {
     lazy = true, -- @NOTES: disabled auto lazy loading when shit happen 
