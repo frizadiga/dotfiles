@@ -37,6 +37,11 @@ vim.keymap.set('n', '<leader>H', '<CMD>bn<CR>')
 vim.keymap.set('n', '<Space><Space>', '<CMD>update<CR>')
 -- @end buffer
 
+-- @start split view
+-- switch to other split view
+vim.keymap.set('n', '<leader>S', '<C-w><C-w>')
+-- @end split view
+
 -- @start search buffer
 -- find
 -- copy selected text to search input when pressing `/`
