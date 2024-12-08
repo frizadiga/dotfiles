@@ -46,11 +46,11 @@ return {
         agent = 'copilot', -- see ':CopilotChatAgents' for available agents (can be specified manually in prompt via @).
         model = 'claude-3.5-sonnet', -- see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
         context = nil, -- default context or array of contexts to use (can be specified manually in prompt via #).
-        temperature = 0.1, -- LLM result temperature (0.0 - 1.0) closer to 0 is more deterministic, closer to 1 is "more creative".
+        temperature = 0.1, -- LLM result temperature (0.0 - 1.0) closer to 0 is more deterministic, closer to 1 is more "creative".
         -- default config see: https://github.com/CopilotC-Nvim/CopilotChat.nvim/blob/canary/lua/CopilotChat/config.lua#L81
       })
 
-      -- ft-type handling for 'copilot-chat'
+      -- file-type handler for 'copilot-chat'
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = "copilot-chat",
         callback = function()
@@ -59,8 +59,8 @@ return {
         end,
       })
 
-      -- show/hide chat window
-      vim.keymap.set({ 'n', 'v' }, '<leader>ccc', cc.toggle)
+      -- show chat window
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccc', cc.open)
 
       -- show chat window with fix instructions
       vim.keymap.set('v', '<leader>ccf', '<CMD>CopilotChatFix<CR>')
@@ -83,8 +83,8 @@ return {
         border = 'none',
       })
 
-      -- show/hide max chat window
-      vim.keymap.set({ 'n', 'v' }, '<leader>ccC', function() cc.toggle { window = max_win_opt } end)
+      -- show max chat window
+      vim.keymap.set({ 'n', 'v' }, '<leader>ccC', function() cc.open { window = max_win_opt } end)
 
       -- impl more: https://github.com/CopilotC-Nvim/CopilotChat.nvim?tab=readme-ov-file#commands-coming-from-default-prompts
     end,

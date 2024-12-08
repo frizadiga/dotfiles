@@ -225,7 +225,7 @@ cask "cloudflare-warp"
 cask "displaylink"
 # Web browser
 cask "firefox"
-cask "font-fira-code"
+cask "font-meslo-lg"
 # Web browser
 cask "google-chrome@canary"
 # Testing client for REST, GraphQL, and HTTP APIs
