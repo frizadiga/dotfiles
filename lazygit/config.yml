@@ -19,4 +19,9 @@ gui:
 os:
   dislocate: true
   escapeKeyBinding: '^Z'
-
+git:
+  paging:
+    colorArg: always
+    # pager: diff-so-fancy
+    # delta support pin-pointing the exact line of the change
+    pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
