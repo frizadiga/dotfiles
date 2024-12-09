@@ -27,8 +27,8 @@ return {
         -- height     = 0.8,
         -- width      = 80,
         -- position the results in the middle
-        row     = 0.35,
-        col     = 0.50,
+        -- row     = 0.35,
+        -- col     = 0.50,
         -- border style
         border     = 'none',
         preview    = {

@@ -2,18 +2,11 @@ gui:
   border: "single"
   showBottomLine: false
   theme:
-    # Border color of focused window
     activeBorderColor:
       - green
       - bold
-
-    # Border color of non-focused windows
     inactiveBorderColor:
       - '#969896'
       # - '#424242'
-
-    # Background color of selected line.
-    # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#highlighting-the-selected-line
     selectedLineBgColor:
       - '#4d4d4d'
-
