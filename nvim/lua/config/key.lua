@@ -6,7 +6,7 @@ vim.keymap.set('i', 'kj', '<Esc>')
 vim.keymap.set('v', 'KJ', '<Esc>')
 
 -- quit
-vim.keymap.set('n', '<leader>qq', '<CMD>q<CR>')
+vim.keymap.set({'n', 'v', 'c'}, '<leader>qq', '<CMD>q<CR>')
 
 -- redo
 vim.keymap.set('n', 'r', '<C-r>')
