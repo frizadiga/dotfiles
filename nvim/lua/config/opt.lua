@@ -65,7 +65,12 @@ vim.wo.number = false -- dont show absolute line numbers
 -- set fill characters for end of buffer
 vim.opt.fillchars = { eob = ' ' }
 
+-- set listchars
+vim.opt.list = true
+vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '>', precedes = '<', nbsp = '␣' }
+
 vim.opt.timeoutlen = 1000 -- default is 1000
+vim.opt.updatetime = 4000 -- default is 4000
 
 -- use system clipboard
 vim.opt.clipboard = 'unnamedplus'
