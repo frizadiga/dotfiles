@@ -39,14 +39,14 @@ require('lazy').setup({
   performance = {
     rtp = {
       disabled_plugins = {
-        "gzip",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-        -- "matchit",
-        -- "matchparen",
+        'gzip',
+        'netrwPlugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+        -- 'matchit',
+        -- 'matchparen',
       }, -- disabled not used rtp plug saves about couple ms on startup
     },
   },

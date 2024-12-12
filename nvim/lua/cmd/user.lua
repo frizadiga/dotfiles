@@ -71,6 +71,18 @@ vim.api.nvim_create_user_command(
   }
 )
 
+-- run nvim_list_runtime_paths
+vim.api.nvim_create_user_command(
+  'RTPList',
+  function()
+    -- get runtime paths as table
+    local output = vim.api.nvim_list_runtime_paths()
+
+    open_floating_window('# RTP List:\n \n' .. table.concat(output, '\n'), 70, 30)
+  end,
+  {}
+)
+
 -- run todo.sh and print output
 vim.api.nvim_create_user_command(
   'Todo',
@@ -120,7 +132,28 @@ vim.api.nvim_create_user_command(
       vim.cmd('e ' .. today_filepath)
     end
 
-    vim.notify('\nfinder_latest:\n' .. output, vim.log.levels.INFO, { timeout = 10000 })
+    vim.notify('\nfinder latest:\n' .. output, vim.log.levels.INFO, { timeout = 10000 })
+  end,
+  {}
+)
+
+-- daily previous
+vim.api.nvim_create_user_command(
+  'DP',
+  function()
+    local notes_dir = vim.fn.expand('$NOTES_DIR')
+    local output = vim.fn.system({'bash', notes_dir .. '/app/finder/finder-prev.sh'})
+
+    -- get last line of output
+    local lines = vim.fn.split(output, '\n')
+    local today_filepath = vim.fn.trim(lines[#lines])
+
+    -- if today file exists, open it
+    if vim.fn.filereadable(today_filepath) == 1 then
+      vim.cmd('e ' .. today_filepath)
+    end
+
+    vim.notify('\nfinder previous:\n' .. output, vim.log.levels.INFO, { timeout = 10000 })
   end,
   {}
 )

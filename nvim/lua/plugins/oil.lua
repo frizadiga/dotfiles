@@ -67,7 +67,7 @@ return {
     oil.setup(def_opt)
 
     -- open floating window
-    vim.keymap.set('n', '<leader>e', oil.toggle_float, {})
+    vim.keymap.set('n', '<leader>e', oil.toggle_float, { desc = 'Open Oil in current buffer dir' })
 
     -- open `oil` with path was opened with `nvim .`
     vim.keymap.set('n', '<leader>E', '<CMD>Oil --float .<CR>', { desc = 'Open Oil in root project path' })
