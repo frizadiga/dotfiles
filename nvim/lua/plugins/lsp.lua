@@ -40,10 +40,13 @@ return {
     config = function()
       local lspconfig = require('lspconfig')
       local lspconfig_util = require 'lspconfig.util'
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      -- capabilities.textDocument.formatting = true
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local get_git_root = function(fname)
-        return lspconfig_util.root_pattern '.git'(fname)
+        return lspconfig_util.root_pattern '.git' (fname)
       end
 
       -- c/c++
@@ -103,8 +106,12 @@ return {
         settings = {
           Lua = {
             diagnostics = {
-              globals = {'vim'}
-            }
+              globals = { 'vim' }
+            },
+            completion = {
+              callSnippet = 'Replace',
+            },
+            -- diagnostics = { disable = { 'missing-fields' } }, -- ignore Lua_LS `missing-fields`
           }
         },
         capabilities = capabilities,
@@ -113,18 +120,20 @@ return {
       -- mojo
       lspconfig.mojo.setup({
         capabilities = capabilities,
-        cmd = { "mojo-lsp-server" },
-        filetypes = { "mojo", "🔥" },
+        cmd = { 'mojo-lsp-server' },
+        filetypes = { 'mojo', '🔥' },
       })
 
       -- more lsp see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-      vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, {})
-      vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, {})
-      vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, {})
-      vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, {})
-      vim.keymap.set('n', '<leader>lc', vim.diagnostic.reset, {}) -- clear diagnostics sign in current buffer
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'LSP: Hover' })
+      vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'LSP: Do Format' })
+      vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, { desc = 'LSP: Do Rename' })
+      vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { desc = 'LSP: Go to Definition' })
+      vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, { desc = 'LSP: Go to Declaration' })
+      vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, { desc = 'LSP: Go to References' })
+      vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'LSP: Select Code Action' })
+      vim.keymap.set('n', '<leader>lc', vim.diagnostic.reset, { desc = 'LSP: Clear all Diagnostics in the current buffer' })
     end,
   },
 }

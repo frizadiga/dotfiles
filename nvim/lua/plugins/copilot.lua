@@ -14,7 +14,7 @@ return {
       local def_win_opt = {
         title = '',
         layout = 'float',
-        relative = 'win',
+        relative = 'editor',
         border = 'single',
         width = 80,
         height = 15,

@@ -25,8 +25,8 @@ local function open_floating_window(buf_body, width, height)
   local buf = vim.api.nvim_create_buf(false, true) -- nofile, scratch buffer
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, buf_lines)
 
-  local final_width = 0.2
-  local final_height = 0.2
+  local final_width
+  local final_height
 
   if _width > 1 then
     -- use normal unit
@@ -78,7 +78,7 @@ vim.api.nvim_create_user_command(
     -- get runtime paths as table
     local output = vim.api.nvim_list_runtime_paths()
 
-    open_floating_window('# RTP List:\n \n' .. table.concat(output, '\n'), 70, 30)
+    open_floating_window('# RTP List:\n \n' .. table.concat(output, '\n'), 80, 30)
   end,
   {}
 )
@@ -90,7 +90,7 @@ vim.api.nvim_create_user_command(
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
     local output = vim.fn.system({'bash', tools_dir .. '/todo.sh'})
 
-    open_floating_window('# Todo:\n' .. output, 60, 10)
+    open_floating_window('# Todo:\n' .. output, 80, 15)
   end,
   {}
 )
@@ -165,7 +165,7 @@ vim.api.nvim_create_user_command(
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
     local output = vim.fn.system({'bash', tools_dir .. '/jira-curl/curl-issue-find-one.sh'})
 
-    open_floating_window('# Ticket Detail:\n' .. output, 60, 7)
+    open_floating_window('# Ticket Detail:\n' .. output, 80, 10)
   end,
   {}
 )
