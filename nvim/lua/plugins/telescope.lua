@@ -23,6 +23,13 @@ return {
 
       local use_cwd = false -- flag to use current buffer dir as cwd
 
+      -- fn: find grep string from visual mode
+      local function find_grep_string()
+        vim.cmd('normal! y') -- copy visual selection to clipboard
+        local selection_text = vim.fn.getreg('0'):gsub('[\n\r]', '') -- remove newlines
+        builtin.grep_string({ search = selection_text })
+      end
+
       -- fn: construct final search query
       local function get_search_query()
         local search_query = action_state.get_current_line()
@@ -185,10 +192,18 @@ return {
       })
 
       -- find recently opened files
-      vim.keymap.set({ 'n', 'v' }, ';', function()
+      vim.keymap.set('n', ';', function()
         use_cwd = false
         builtin.oldfiles()
       end, { desc = 'Telescope: Oldfiles (Recent Files)' })
+
+      -- find recently opened files -- visual mode
+      vim.keymap.set('v', ';', function()
+        use_cwd = false
+        vim.cmd('normal! y') -- copy visual selection to clipboard
+        local selection_text = vim.fn.getreg('0'):gsub('[\n\r]', '') -- remove newlines
+        builtin.oldfiles({ default_text = selection_text })
+      end, { desc = 'Telescope: Oldfiles (Recent Files) - visual mode' })
 
       -- find files active buffer dir
       vim.keymap.set('n', '<leader>:', function()
@@ -212,7 +227,8 @@ return {
         use_cwd = false
         builtin.live_grep({ prompt_title = 'Live Grep - Entire Project' })
       end, { desc = 'Telescope: Live grep - entire project' })
-      vim.keymap.set('v', '<leader>ff', 'y<ESC>:Telescope live_grep default_text=<C-r>0<CR>')
+      -- vim.keymap.set('v', '<leader>ff', 'y<ESC>:Telescope live_grep default_text=<C-r>0<CR>')
+      vim.keymap.set('v', '<leader>ff', find_grep_string, { desc = 'Telescope: Live grep - visual mode' })
 
       -- buffers
       Buffer_searcher = function()
@@ -250,10 +266,17 @@ return {
         }
       end
 
+      -- show buffer list
       local buffer_keymaps = { "'", '<leader>fb' }
       for _, key in ipairs(buffer_keymaps) do
         vim.keymap.set('n', key, ":lua Buffer_searcher()<CR>")
       end
+
+      -- resume
+      vim.keymap.set('n', '<leader>;', builtin.resume, { desc = 'Telescope: Resume' })
+
+      -- builtin list
+      vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope: Builtin' })
 
       -- marks
       vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope: Marks' })
@@ -263,12 +286,6 @@ return {
 
       -- LSP symbols
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope: LSP Symbols' })
-
-      -- builtin list
-      vim.keymap.set('n', '<leader>fl', builtin.builtin, { desc = 'Telescope: Builtin' })
-
-      -- resume
-      vim.keymap.set('n', '<leader>;', builtin.resume, { desc = 'Telescope: Resume' })
 
       -- use telescope extensions if installed
       pcall(telescope.load_extension, 'fzf')

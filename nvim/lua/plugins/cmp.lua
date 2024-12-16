@@ -17,22 +17,29 @@ return {
       {
         'L3MON4D3/LuaSnip',
         dependencies = {
-          'saadparwaiz1/cmp_luasnip',
-          'rafamadriz/friendly-snippets',
+          -- `friendly-snippets` contains a variety of premade snippets.
+          --    see the README about individual language/framework/plugin snippets:
+          --    https://github.com/rafamadriz/friendly-snippets
+          -- {
+          --   'rafamadriz/friendly-snippets',
+          --   config = function()
+          --     require('luasnip.loaders.from_vscode').lazy_load()
+          --   end,
+          -- },
         },
       },
     },
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+
       luasnip.config.setup {}
-      require('luasnip.loaders.from_vscode').lazy_load()
 
       -- base cmp setup
       cmp.setup({
         snippet = {
           expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
           end,
         },
         window = {

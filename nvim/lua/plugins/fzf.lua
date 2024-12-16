@@ -40,7 +40,7 @@ return {
       },
     })
 
-    -- navigate on result using <CTRL> + hjkl keys
+    -- navigate on result using <CTRL> + jk keys
 
     -- files search entire project
     vim.keymap.set('n', '<leader>fz', fzf.files, { desc = 'FZF: files' })

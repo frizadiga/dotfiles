@@ -161,8 +161,6 @@ brew "ripgrep"
 brew "rust"
 # Experimental Rust compiler front-end for IDEs
 brew "rust-analyzer"
-# Generate ASCII art with terminal, shell, and OS info
-brew "screenfetch"
 # Intuitive find & replace CLI
 brew "sd"
 # Monitors sleep, wakeup, and idleness of a Mac
