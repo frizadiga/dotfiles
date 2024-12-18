@@ -281,11 +281,16 @@ return {
       -- marks
       vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Telescope: Marks' })
 
-      -- diagnostics
-      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope: LSP diagnostics' })
-
       -- LSP symbols
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope: LSP Symbols' })
+
+      -- diagnostic (current buffer)
+      vim.keymap.set('n', '<leader>fd', function()
+        builtin.diagnostics({ bufnr = 0 })
+      end, { desc = 'Telescope: LSP diagnostics current buffer' })
+
+      -- diagnostics (workspace scopes)
+      vim.keymap.set('n', '<leader>fD', builtin.diagnostics, { desc = 'Telescope: LSP diagnostics (workspace)' })
 
       -- use telescope extensions if installed
       pcall(telescope.load_extension, 'fzf')
