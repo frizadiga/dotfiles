@@ -216,6 +216,9 @@ return {
         builtin.grep_string({ search = vim.fn.input("Grep")})
       end, { desc = 'Telescope: Grep string' })
 
+      -- grep string - visual mode
+      vim.keymap.set('v', '<leader>f/', find_grep_string, { desc = 'Telescope: Grep string - visual mode' })
+
       -- live_grep active buffer dir
       vim.keymap.set('n', '<leader>fc', function()
         use_cwd = true
