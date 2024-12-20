@@ -26,7 +26,7 @@ return {
       -- fn: find grep string from visual mode
       local function find_grep_string()
         vim.cmd('normal! y') -- copy visual selection to clipboard
-        local selection_text = vim.fn.getreg('0'):gsub('[\n\r]', '') -- remove newlines
+        local selection_text = vim.fn.getreg('0'):gsub('[\n\r]', '') -- get most recently yanked value and rm newlines
         builtin.grep_string({ search = selection_text })
       end
 
