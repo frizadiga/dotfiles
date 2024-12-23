@@ -6,7 +6,8 @@ function M.print_reverse_lines(output)
   local lines = vim.fn.split(output, '\n')
 
   -- print reverse of lines
-  for i = #lines, 1, -1 do print(lines[i])
+  for i = #lines, 1, -1 do
+    print(lines[i])
   end
 end
 

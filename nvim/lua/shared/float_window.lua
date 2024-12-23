@@ -4,19 +4,7 @@ local M = {}
 function M.open_floating_window(buf_body, width, height)
   local _width = width or 0.6
   local _height = height or 0.6
-
-  -- split the command output into lines
-  local buf_lines = {}
-  for line in buf_body:gmatch("[^\r\n]+") do
-    table.insert(buf_lines, line)
-  end
-
-  -- create a new buffer and window
-  local buf = vim.api.nvim_create_buf(false, true) -- nofile, scratch buffer
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, buf_lines)
-
-  local final_width
-  local final_height
+  local final_width, final_height
 
   if _width > 1 then
     -- use normal unit
@@ -36,6 +24,16 @@ function M.open_floating_window(buf_body, width, height)
 
   local row = math.floor((vim.o.lines - final_height) / 2)
   local col = math.floor((vim.o.columns - final_width) / 2)
+
+  -- split the command output into lines
+  local buf_lines = {}
+  for line in buf_body:gmatch("[^\r\n]+") do
+    table.insert(buf_lines, line)
+  end
+
+  -- create a new buffer and window
+  local buf = vim.api.nvim_create_buf(false, true) -- arg: nofile, scratch buffer
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, buf_lines)
 
   -- open the floating window
   vim.api.nvim_open_win(buf, true, {

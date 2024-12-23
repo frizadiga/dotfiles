@@ -129,8 +129,6 @@ brew "librsvg"
 brew "llvm"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
-# Modern and intuitive terminal-based text editor
-brew "micro"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Lightweight PDF and XPS viewer
@@ -232,6 +230,8 @@ cask "firefox"
 cask "font-meslo-lg"
 # Web browser
 cask "google-chrome@canary"
+# Desktop automation application
+cask "hammerspoon"
 # Testing client for REST, GraphQL, and HTTP APIs
 cask "httpie"
 # Keyboard customiser

@@ -38,7 +38,7 @@ return {
     'neovim/nvim-lspconfig',
     event = 'VeryLazy',
     config = function()
-      local lspconfig = require('lspconfig')
+      local lspconfig = require 'lspconfig'
       local lspconfig_util = require 'lspconfig.util'
       -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
       -- capabilities.textDocument.formatting = true
@@ -106,7 +106,7 @@ return {
         settings = {
           Lua = {
             diagnostics = {
-              globals = { 'vim' }
+              globals = { 'vim', 'hs' },
             },
             completion = {
               callSnippet = 'Replace',

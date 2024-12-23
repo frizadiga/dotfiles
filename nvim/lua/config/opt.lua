@@ -35,7 +35,7 @@ vim.opt.swapfile = false
 vim.wo.signcolumn = 'yes' -- (why? prevent layout shift)
 
 -- set autoread
-vim.opt.autoread = true -- sync external files changes
+vim.opt.autoread = true -- sync files content from external changes
 
 -- set mapleader to space
 vim.g.mapleader = ' '

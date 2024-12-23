@@ -1,19 +1,36 @@
+# # focus windows
+# cmd - h : yabai -m window --focus west
+# cmd - l : yabai -m window --focus east
+# cmd - j : yabai -m window --focus south
+# cmd - k : yabai -m window --focus north
+#
+# # move windows
+# cmd - shift - h : yabai -m window --swap west
+# cmd - shift - l : yabai -m window --swap east
+# cmd - shift - j : yabai -m window --swap south
+# cmd - shift - k : yabai -m window --swap north
+#
+# # resize windows
+# cmd - alt - h : yabai -m window --resize left:-20:0
+# cmd - alt - l : yabai -m window --resize right:20:0
+# cmd - alt - j : yabai -m window --resize bottom:0:20
+# cmd - alt - k : yabai -m window --resize top:0:-20
 
-# focus windows
-cmd - h : yabai -m window --focus west
-cmd - l : yabai -m window --focus east
-cmd - j : yabai -m window --focus south
-cmd - k : yabai -m window --focus north
+# maximize window
+# ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
 
-# move windows
-cmd - shift - h : yabai -m window --swap west
-cmd - shift - l : yabai -m window --swap east
-cmd - shift - j : yabai -m window --swap south
-cmd - shift - k : yabai -m window --swap north
+# move window to next display
+# ctrl + alt - cmd - right : yabai -m window --warp next
 
-# resize windows
-cmd - alt - h : yabai -m window --resize left:-20:0
-cmd - alt - l : yabai -m window --resize right:20:0
-cmd - alt - j : yabai -m window --resize bottom:0:20
-cmd - alt - k : yabai -m window --resize top:0:-20
+# test if skhd works by show test dialog
+ctrl + alt - l : osascript -e 'tell app "System Events" to display dialog "hello bastard"'
 
+# alacritty focus toggle
+alt - space : \
+  current_application=$(yabai -m query --windows --window | jq -r '.app'); \
+  alacritty_id="$(yabai -m query --windows | jq -r '.[] | select(.app=="Alacritty") | .id')"; \
+  if [ "$current_application" = "Alacritty" ]; then \
+      echo "$alacritty_id" | xargs -I{} yabai -m window {} --minimize; \
+  else \
+      yabai -m window --focus "$alacritty_id"; \
+  fi
