@@ -163,6 +163,8 @@ brew "rust-analyzer"
 brew "sd"
 # Monitors sleep, wakeup, and idleness of a Mac
 brew "sleepwatcher"
+# Command-line packet analyzer
+brew "tcpdump"
 # Terminal multiplexer
 brew "tmux"
 # Command-line translator using Google Translate and more
@@ -171,6 +173,8 @@ brew "translate-shell"
 brew "tree"
 # Internet file retriever
 brew "wget"
+# Network analyzer and capture tool - without graphical user interface
+brew "wireshark"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Terminal based YouTube player and downloader
