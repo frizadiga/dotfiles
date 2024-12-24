@@ -31,6 +31,6 @@ return {
     vim.keymap.set('n', '<leader>ss', function() spectre.toggle() end, { desc = 'Spectre: toggle' })
 
     -- path: project root - prefill with selected text
-    vim.keymap.set('v', '<leader>ss', function() require('spectre').open_visual() end, { desc = 'Spectre: visual mode' })
+    vim.keymap.set('v', '<leader>ss', function() spectre.open_visual() end, { desc = 'Spectre: visual mode' })
   end,
 }
