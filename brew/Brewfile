@@ -137,6 +137,8 @@ brew "mupdf"
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
+# Network grep
+brew "ngrep"
 # Port scanning utility for large networks
 brew "nmap"
 # Manage multiple Node.js versions
