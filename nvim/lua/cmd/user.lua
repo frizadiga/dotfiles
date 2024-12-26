@@ -55,7 +55,7 @@ vim.api.nvim_create_user_command(
       vim.cmd('e ' .. today_filepath)
     end
 
-    vim.notify('\n' .. output, vim.log.levels.INFO, { timeout = 10000 })
+    vim.notify('\n' .. output, vim.log.levels.INFO)
   end,
   {}
 )
@@ -69,14 +69,14 @@ vim.api.nvim_create_user_command(
 
     -- get last line of output
     local lines = vim.fn.split(output, '\n')
-    local today_filepath = vim.fn.trim(lines[#lines])
+    local latest_filepath = vim.fn.trim(lines[#lines])
 
-    -- if today file exists, open it
-    if vim.fn.filereadable(today_filepath) == 1 then
-      vim.cmd('e ' .. today_filepath)
+    -- if latest file exists, open it
+    if vim.fn.filereadable(latest_filepath) == 1 then
+      vim.cmd('e ' .. latest_filepath)
     end
 
-    vim.notify('\nfinder latest:\n' .. output, vim.log.levels.INFO, { timeout = 10000 })
+    vim.notify('\nfinder latest:\n' .. output, vim.log.levels.INFO)
   end,
   {}
 )
@@ -90,14 +90,14 @@ vim.api.nvim_create_user_command(
 
     -- get last line of output
     local lines = vim.fn.split(output, '\n')
-    local today_filepath = vim.fn.trim(lines[#lines])
+    local prev_filepath = vim.fn.trim(lines[#lines])
 
-    -- if today file exists, open it
-    if vim.fn.filereadable(today_filepath) == 1 then
-      vim.cmd('e ' .. today_filepath)
+    -- if previous file exists, open it
+    if vim.fn.filereadable(prev_filepath) == 1 then
+      vim.cmd('e ' .. prev_filepath)
     end
 
-    vim.notify('\nfinder previous:\n' .. output, vim.log.levels.INFO, { timeout = 10000 })
+    vim.notify('\nfinder previous:\n' .. output, vim.log.levels.INFO)
   end,
   {}
 )

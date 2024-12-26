@@ -9,7 +9,7 @@ return {
     branch = 'main',
     build = 'make tiktoken', -- only on MacOS or Linux
     config = function()
-      local cc = require("CopilotChat")
+      local cc = require 'CopilotChat'
 
       local def_win_opt = {
         title = '',
