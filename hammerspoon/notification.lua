@@ -26,3 +26,14 @@ hs.hotkey.bind({ 'cmd', 'alt', 'ctrl' }, 'C', function()
   -- show confirmation
   hs.alert.show('Cleared all notifications')
 end)
+
+-- close all visible notifications in notification center.
+hs.hotkey.bind({ "ctrl", "cmd" }, "delete", function()
+  hs.task
+    .new("/usr/bin/osascript", nil, {
+      "-l",
+      "JavaScript",
+      os.getenv("HOME") .. "/Documents/main/dotfiles/hammerspoon/notifications.js",
+    })
+    :start()
+end)

@@ -1,29 +1,29 @@
 # friz()'s dotfiles
 My daily driver public dotfiles.
 
-- alacritty
+- `alacritty`  
   terminal emulator
-- tmux
+- `tmux`  
   terminal multiplexer
-- nvim
+- `nvim`  
   text editor
-- lazygit
+- `lazygit`  
   git terminal UI
-- lazydocker
+- `lazydocker`  
   docker terminal UI
-- btop
+- `btop`  
   terminal resource monitor
-- brew
+- `brew`  
   system package manager
-- ghostty
+- `ghostty`  
   terminal emulator
-- skhd
+- `skhd`  
   hotkey daemon
-- yabai
+- `yabai`  
   window manager
-- hammerspoon
+- `hammerspoon`  
   automation tool
-- karabiner
+- `karabiner`  
   key remapper
 
 All symlinking mechanisms are handled by my internal tooling. If you want to reproduce this setup, you'll need to provide your own symlinking solution.

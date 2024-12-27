@@ -32,6 +32,7 @@ local function handle_screen_change()
   -- call external handler script
   -- fn signature: hs.execute(command[, with_user_env]) -> output, status, type, rc
   -- @TODO: figure out alternative implementation to make user env load faster
+  hs.execute('bash ' .. os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh', true)
   hs.execute('bash ' .. os.getenv('HOME') .. '/Documents/tools/layout-corrector/layout-corrector.sh', true)
 end
 

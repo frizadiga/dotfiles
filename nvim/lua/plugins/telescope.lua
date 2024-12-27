@@ -269,7 +269,7 @@ return {
     end
 
     -- show buffer list
-    vim.keymap.set('n', '<leader>fb', ':lua Buffer_searcher()<CR>')
+    vim.keymap.set('n', "'", ':lua Buffer_searcher()<CR>')
 
     -- resume
     vim.keymap.set('n', '<leader>;', builtin.resume, { desc = 'Telescope: Resume' })

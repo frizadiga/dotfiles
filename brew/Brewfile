@@ -234,6 +234,8 @@ cask "displaylink"
 # Web browser
 cask "firefox"
 cask "font-meslo-lg"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Web browser
 cask "google-chrome@canary"
 # Desktop automation application
