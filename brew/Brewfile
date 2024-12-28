@@ -183,6 +183,8 @@ brew "yazi"
 brew "yewtube"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
 # Shell extension to navigate your filesystem faster
@@ -250,10 +252,6 @@ cask "raycast"
 cask "rectangle"
 # Media player based on MPlayer and mplayer2
 cask "stolendata-mpv"
-# Messaging app with a focus on speed and security
-cask "telegram"
-# Desktop client for Telegram messenger
-cask "telegram-desktop"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 # GPU-accelerated cross-platform terminal emulator and multiplexer

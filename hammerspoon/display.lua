@@ -32,8 +32,38 @@ local function handle_screen_change()
   -- call external handler script
   -- fn signature: hs.execute(command[, with_user_env]) -> output, status, type, rc
   -- @TODO: figure out alternative implementation to make user env load faster
-  hs.execute('bash ' .. os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh', true)
-  hs.execute('bash ' .. os.getenv('HOME') .. '/Documents/tools/layout-corrector/layout-corrector.sh', true)
+
+  -- local function handleOutput(task, stdOut, stdErr)
+  --   if stdOut then
+  --     print("stdout:", stdOut)
+  --   end
+  --   if stdErr then
+  --     print("stderr:", stdErr)
+  --   end
+  -- end
+
+  -- local task = hs.task.new(
+  --   "/bin/bash",
+  --   handleOutput,
+  --   -- {os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh'}
+  -- )
+  -- task:start()
+
+  -- os.execute('zsh ' .. os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh')
+
+  local output, status, type, rc = hs.execute(
+    'zsh ' .. os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh',
+    true
+  )
+  print("Audio switch output - BEGIN")
+  print("Output:", output)
+  print("Status:", status)
+  print("Type:", type)
+  print("Return code:", rc)
+  print("Audio switch output - END")
+  print("")
+
+  -- hs.execute('bash ' .. os.getenv('HOME') .. '/Documents/tools/layout-corrector/layout-corrector.sh', true)
 end
 
 -- start watching for screen changes
