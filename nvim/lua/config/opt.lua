@@ -23,7 +23,7 @@ vim.opt.shell = '/bin/zsh'
 -- <50 - save 50 lines of command line history
 -- s10 - save 10 items in search history
 -- h - save 20 lines of command line history
-vim.opt.shada = "!,'50,<50,s10,h"
+vim.opt.shada = "!,'150,<70,s15,h"
 -- vim.opt.shada = "!,'30,f1,<50,s10,h"
 -- vim.opt.shada = "!,'100,<50,s10,h" -- default value as of Neovim 0.10
 -- @end_section shared data
@@ -83,6 +83,9 @@ vim.cmd [[
   highlight NonText ctermbg=NONE
 ]]
 vim.opt.termguicolors = true
+
+-- new split windows below
+vim.opt.splitbelow = true
 
 -- @start lsp
 -- show lsp diagnostics on popup

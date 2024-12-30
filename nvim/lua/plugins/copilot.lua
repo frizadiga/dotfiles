@@ -1,7 +1,8 @@
 return {
   {
     'github/copilot.vim',
-    event = 'InsertEnter',
+    -- event = 'InsertEnter', -- load on insert mode
+    event = 'VeryLazy', -- load on idle time (after UIEnter)
   },
   {
     'CopilotC-Nvim/CopilotChat.nvim',

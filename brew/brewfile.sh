@@ -4,8 +4,8 @@
 # usage: fn_brewfile.sh [args]
 # flags: @WIP:0 @TODO:0 @FIXME:0 @BUG:0 @OPTIMIZE:0 @REFACTOR:0 @DEPRECATED:0
 
-declare -r _self_path_file_=$(readlink -f "$0")
-declare -r _self_path_dir_=$(dirname "${_self_path_file_}")
+# declare -r _self_path_file_=$(readlink -f "$0")
+# declare -r _self_path_dir_=$(dirname "${_self_path_file_}")
 # echo [DEBUG] _self_path_dir_: "${_self_path_dir_}"
 
 source "${TOOLS_DIR}/ansi-utils.sh"
@@ -19,7 +19,7 @@ source "${TOOLS_DIR}/ansi-utils.sh"
 # fi
 
 fn_brewfile() {
-  echo $(yellow $(bold 'fn_brewfile'))
+  # echo $(yellow $(bold 'fn_brewfile'))
   local arg_1=$1
 
   # if no args

@@ -233,7 +233,7 @@ return {
     vim.keymap.set('v', '<leader>ff', find_grep_string, { desc = 'Telescope: Live grep - visual mode' })
 
     -- buffers
-    local finder_buf = require('shared.finder-buffers')
+    local finder_buf = require('shared.finder_buffers')
     vim.keymap.set('n', "'", function() finder_buf.GLOBAL_finder_buf() end)
 
     -- resume

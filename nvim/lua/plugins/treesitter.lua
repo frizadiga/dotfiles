@@ -4,7 +4,8 @@ return {
     'folke/ts-comments.nvim',
     opts = {},
     event = 'VeryLazy',
-    enabled = vim.fn.has('nvim-0.10.0') == 1,
+    -- nowadays v0.10.0 is minimum requirement
+    -- enabled = vim.fn.has('nvim-0.10.0') == 1,
   },
   {
     'nvim-treesitter/nvim-treesitter',
