@@ -61,6 +61,7 @@ return {
         -- make title empty to disable the title
         get_win_title = function() return '' end,
       },
+      skip_confirm_for_simple_edits = true,
       default_file_explorer = false, -- prevent oil startup screen passing `false` is required
     }
 
