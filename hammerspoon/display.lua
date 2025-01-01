@@ -45,14 +45,14 @@ local function handle_screen_change()
   -- local task = hs.task.new(
   --   "/bin/bash",
   --   handleOutput,
-  --   -- {os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh'}
+  --   -- {os.getenv('HOME') .. '/Documents/main/tools/audio-switch-by-display.sh'}
   -- )
   -- task:start()
 
-  -- os.execute('zsh ' .. os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh')
+  -- os.execute('zsh ' .. os.getenv('HOME') .. '/Documents/main/tools/audio-switch-by-display.sh')
 
   local output, status, type, rc = hs.execute(
-    'zsh ' .. os.getenv('HOME') .. '/Documents/tools/audio-switch-by-display.sh',
+    'zsh ' .. os.getenv('HOME') .. '/Documents/main/tools/audio-switch-by-display.sh',
     true
   )
   print("Audio switch output - BEGIN")
@@ -63,7 +63,7 @@ local function handle_screen_change()
   print("Audio switch output - END")
   print("")
 
-  -- hs.execute('bash ' .. os.getenv('HOME') .. '/Documents/tools/layout-corrector/layout-corrector.sh', true)
+  -- hs.execute('bash ' .. os.getenv('HOME') .. '/Documents/main/tools/layout-corrector/layout-corrector.sh', true)
 end
 
 -- start watching for screen changes

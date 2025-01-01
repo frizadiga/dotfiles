@@ -9,7 +9,7 @@
 # echo [DEBUG] _self_path_dir_: "${_self_path_dir_}"
 
 source "${TOOLS_DIR}/ansi-utils.sh"
-# source "$HOME/Documents/tools/aliases"
+# source "$HOME/Documents/main/tools/aliases"
 
 # check if script run directly or indirect
 # if [ "${0}" = "${BASH_SOURCE}" ]; then
