@@ -27,6 +27,8 @@ My daily driver public dotfiles.
   terminal multiplexer
 - `yabai`  
   window manager
+- `yazi`  
+  terminal file manager
 
 All symlinking mechanisms are handled by my internal tooling. If you want to reproduce this setup, you'll need to provide your own symlinking solution.
 
