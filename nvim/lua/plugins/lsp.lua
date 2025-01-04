@@ -105,13 +105,22 @@ return {
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {
-            diagnostics = {
-              globals = { 'vim', 'hs', 'ui' },
-            },
             completion = {
               callSnippet = 'Replace',
             },
-            -- diagnostics = { disable = { 'missing-fields' } }, -- ignore Lua_LS `missing-fields`
+            -- @ARCHIVED:
+            -- diagnostics = {
+            --   globals = { 'vim', 'hs', 'ui' }, -- use .luarc.json instead
+            --   disable = { 'missing-fields' }
+            -- },
+            -- workspace = {
+            --   -- tell lua_ls to use .luarc.json from the project directory
+            --   checkThirdParty = false,
+            --   library = {
+            --     vim.fn.expand('$VIMRUNTIME/lua'),
+            --     vim.fn.stdpath('config') .. '/lua'
+            --   }
+            -- },
           }
         },
         capabilities = capabilities,
