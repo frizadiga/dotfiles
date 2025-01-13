@@ -6,7 +6,7 @@ font-family = "MesloLGS NF"
 window-width = 99999
 window-height = 99999
 window-padding-y = 8
-window-padding-x = 16
+window-padding-x = 8
 window-decoration = false
 
 cursor-text = ffffff
