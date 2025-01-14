@@ -15,7 +15,7 @@ cursor = "#d25858" # red
 [window]
 title="sh-0"
 dynamic_title = false
-padding = { x = 8, y = 8 }
+padding = { x = 16, y = 8 }
 dynamic_padding = true
 decorations = "None"
 startup_mode = "Maximized"
