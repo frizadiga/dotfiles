@@ -63,7 +63,7 @@ end
 vim.keymap.set('n', '<leader>cp', copy_current_buffer_path)
 
 -- open quickfix window
-vim.keymap.set('n', '<leader>op', '<CMD>copen<CR>')
+vim.keymap.set('n', '<leader>Oq', '<CMD>copen<CR>')
 
 -- move selected block up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
