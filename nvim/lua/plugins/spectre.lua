@@ -8,7 +8,7 @@ return {
     local spectre = require('spectre')
 
     spectre.setup({
-      open_cmd = 'enew',
+      open_cmd = 'new', -- new | enew see: https://neovim.io/doc/user/windows.html
       replace_engine = {
         ['sed'] = {
           cmd = 'sed',

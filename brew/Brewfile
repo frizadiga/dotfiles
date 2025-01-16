@@ -104,7 +104,7 @@ brew "htop"
 # Simple zero-configuration command-line HTTP server
 brew "http-server"
 # User-friendly cURL replacement (command-line HTTP client)
-brew "httpie", link: false
+brew "httpie"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
 # Command-line benchmarking tool
@@ -252,9 +252,9 @@ cask "raycast"
 cask "rectangle"
 # Media player based on MPlayer and mplayer2
 cask "stolendata-mpv"
+# Utility to hide the notch
+cask "topnotch"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
-# HTML to PDF renderer
-cask "wkhtmltopdf"
