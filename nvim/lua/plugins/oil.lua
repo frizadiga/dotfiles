@@ -22,10 +22,24 @@ return {
           end
         end,
       },
+      -- act as enter key
+      -- cater memory muscle slip
+      [';'] = {
+        'actions.select',
+        desc = 'Open file or directory',
+      },
+      ['L'] = {
+        'actions.select',
+        desc = 'Open file or directory',
+      },
       -- to cater specific muscle memory case
       ['<Esc>'] = {
         desc = 'Close oil',
         callback = oil.close,
+      },
+      ['H'] = {
+        'actions.parent',
+        desc = 'Up one directory',
       },
       ['<C-f>'] = {
         desc = 'Live grep in current working directory',
