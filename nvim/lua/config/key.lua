@@ -38,6 +38,8 @@ vim.keymap.set('n', '<Space><Space>', '<CMD>update<CR>')
 -- @end buffer
 
 -- @start split view
+-- swap split view position
+vim.keymap.set('n', '<leader>SS', '<C-w>r')
 -- switch to other split view
 vim.keymap.set('n', '<leader>S', '<C-w><C-w>')
 -- @end split view

@@ -6,22 +6,6 @@ return {
     local state_detail = false
 
     local keymaps = {
-      ['gd'] = {
-        desc = 'Toggle file detail view',
-        callback = function()
-          state_detail = not state_detail
-          if state_detail then
-            oil.set_columns({
-              'icon',
-              'permissions',
-              'size',
-              'mtime'
-            })
-          else
-            oil.set_columns({ 'icon' })
-          end
-        end,
-      },
       -- act as enter key
       -- cater memory muscle slip
       [';'] = {
@@ -41,8 +25,44 @@ return {
         'actions.parent',
         desc = 'Up one directory',
       },
-      ['<C-f>'] = {
-        desc = 'Live grep in current working directory',
+      ['gd'] = {
+        desc = 'Oil: Toggle file detail view',
+        callback = function()
+          state_detail = not state_detail
+          if state_detail then
+            oil.set_columns({
+              'icon',
+              'permissions',
+              'size',
+              'mtime'
+            })
+          else
+            oil.set_columns({ 'icon' })
+          end
+        end,
+      },
+      ['gs'] = {
+        desc = 'Oil: Search in directory via Grug',
+        callback = function()
+          local prefills = { paths = oil.get_current_dir() }
+
+          local grug = require 'grug-far'
+          if not grug.has_instance 'explorer' then
+            grug.open {
+              instanceName = 'explorer',
+              prefills = prefills,
+              staticTitle = 'Find and Replace from Explorer',
+              windowCreationCommand = 'new', -- must be `new` to prevent opening in oil buffer
+            }
+          else
+            grug.open_instance 'explorer'
+            -- updating the prefills without clearing the search and other fields
+            grug.update_instance_prefills('explorer', prefills, false)
+          end
+        end,
+      },
+      ['gf'] = {
+        desc = 'Oil: Live grep in current working directory via Telescope',
         callback = function()
           local path = oil.get_current_dir()
           oil.close() -- need to close oil to prevent result from opening in oil buffer
