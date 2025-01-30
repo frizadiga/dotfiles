@@ -22,6 +22,7 @@ return {
         -- @NOTES: localLeader = ',',
         -- Default keymaps:
         -- replace = { n = '<localleader>r' },
+        -- qflist = { n = '<localleader>q' },
         -- syncLocations = { n = '<localleader>s' },
         -- syncLine = { n = '<localleader>l' },
         -- close = { n = '<localleader>c' },
@@ -37,23 +38,29 @@ return {
         -- help = { n = 'g?' },
         -- toggleShowCommand = { n = '<localleader>p' },
         -- swapEngine = { n = '<localleader>e' },
+        -- previewLocation = { n = '<localleader>i' },
         -- swapReplacementInterpreter = { n = '<localleader>x' },
+        -- applyNext = { n = '<localleader>j' },
+        -- applyPrev = { n = '<localleader>k' },
         -- Custom keymaps:
         qflist = { n = 'qq' },
-        previewLocation = { n = '<enter>' },
+        historyOpen = { n = 'H' },
+      },
+      openTargetWindow = {
+        preferredLocation = 'below',
       },
       previewWindow = {
         height = 25,
       },
+      helpWindow = {
+        height = vim.o.lines,
+      },
+      historyWindow = {
+        height = vim.o.lines,
+      },
       icons = {
         enabled = true,
-        -- actionEntryBullet = '•',
-        -- searchInput = ' ',
-        -- replaceInput = ' ',
-        -- filesFilterInput = ' ',
-        -- flagsInput = '󰮚 ',
-        -- pathsInput = '/ ',
-        resultsEngineLeft = '',
+        resultsEngineLeft = '⚙️',
         resultsEngineRight = '',
       },
     });

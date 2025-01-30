@@ -84,8 +84,9 @@ vim.cmd [[
 ]]
 vim.opt.termguicolors = true
 
--- new split windows below
-vim.opt.splitbelow = true
+-- new split windows behavior
+vim.opt.splitright = true
+vim.opt.splitbelow = false
 
 -- @start lsp
 -- show lsp diagnostics on popup
