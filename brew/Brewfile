@@ -169,6 +169,8 @@ brew "sleepwatcher"
 brew "tcpdump"
 # Terminal multiplexer
 brew "tmux"
+# Plugin manager for tmux
+brew "tpm"
 # Command-line translator using Google Translate and more
 brew "translate-shell"
 # Display directories as trees (with optional color/HTML output)
@@ -235,9 +237,11 @@ cask "cloudflare-warp"
 cask "displaylink"
 # Web browser
 cask "firefox"
-cask "font-meslo-lg"
+cask "font-hack-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
+cask "google-chrome"
 # Web browser
 cask "google-chrome@canary"
 # Desktop automation application

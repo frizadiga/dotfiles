@@ -17,7 +17,7 @@ source "${TOOLS_DIR}/ansi-utils.sh"
 #   echo "Script is being sourced"
 # fi
 
-local brewfile_path="${_self_path_dir_}/Brewfile"
+declare -r brewfile_path="${_self_path_dir_}/Brewfile"
 
 fn_brewfile() {
   # echo $(yellow $(bold 'fn_brewfile'))
