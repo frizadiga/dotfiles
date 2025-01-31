@@ -43,6 +43,8 @@ brew "colima"
 brew "consul"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
+# Power of curl, ease of use of httpie
+brew "curlie"
 # DDC monitor controls (brightness) for Mac OSX command-line
 brew "ddcctl"
 # Good-lookin' diffs with diff-highlight and more

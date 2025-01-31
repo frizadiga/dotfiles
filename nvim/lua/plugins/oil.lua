@@ -47,17 +47,17 @@ return {
           local prefills = { paths = oil.get_current_dir() }
 
           local grug = require 'grug-far'
-          if not grug.has_instance 'explorer' then
+          if grug.has_instance 'explorer' then
+            grug.open_instance 'explorer'
+            -- updating the prefills without clearing the search and other fields
+            grug.update_instance_prefills('explorer', prefills, false)
+          else
             grug.open {
               instanceName = 'explorer',
               prefills = prefills,
               staticTitle = 'Find and Replace from Explorer',
               windowCreationCommand = 'new', -- must be `new` to prevent opening in oil buffer
             }
-          else
-            grug.open_instance 'explorer'
-            -- updating the prefills without clearing the search and other fields
-            grug.update_instance_prefills('explorer', prefills, false)
           end
         end,
       },

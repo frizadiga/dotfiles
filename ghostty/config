@@ -1,6 +1,6 @@
 # normal: 16 broadcast: 22
 font-size = 16
-font-family = "MesloLGS NF"
+font-family = "Hack Nerd Font"
 
 # fullscreen
 window-width = 9999
