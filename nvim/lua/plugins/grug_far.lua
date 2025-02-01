@@ -10,7 +10,7 @@ return {
       -- engine = 'ripgrep' is default, but 'astgrep' can be specified
       startInInsertMode = false,
       windowCreationCommand = 'new', -- new | enew | split
-      disableBufferLineNumbers = false, -- if `enew` -> false to prevent line numbers issue
+      disableBufferLineNumbers = true, -- if `enew` -> false to prevent line numbers issue
       -- help line config
       helpLine = {
         -- whether to show the help line at the top of the buffer
@@ -60,11 +60,11 @@ return {
       },
       icons = {
         enabled = true,
-        searchInput = '     ',
-        replaceInput = '     ',
-        filesFilterInput = '     ',
-        flagsInput = '    󰮚 ',
-        pathsInput = '     ',
+        searchInput = '    ',
+        replaceInput = '    ',
+        filesFilterInput = '    ',
+        flagsInput = '  󰮚  ',
+        pathsInput = '    ',
         resultsEngineLeft = '⚙️',
         resultsEngineRight = '',
       },

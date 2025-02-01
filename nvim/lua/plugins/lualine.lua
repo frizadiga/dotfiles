@@ -6,7 +6,7 @@ return {
 
     local common_sections = {
       lualine_a = { 'mode' },
-      lualine_b = {{ 'branch', icon = { '', align='right', }}},
+      lualine_b = { { 'branch', icon = { '', align = 'right', } } },
       lualine_c = { 'filename', 'diff', 'diagnostics' },
       lualine_x = {
         'selectioncount',
@@ -21,9 +21,17 @@ return {
         --   color = { fg = fg_color },
         -- },
       },
-      lualine_y = { 'location' },
-      lualine_z = { 'fileformat' },
-      -- lualine_z = { { 'location', color = { bg = '#9c3333' } } },
+      lualine_y = { 'fileformat', 'encoding', 'filetype' },
+      lualine_z = {
+        {
+          'location',
+          color = { fg = '#FFFFFF', bg = '#D25858' },
+          fmt = function(ln_col)
+            local col = tonumber(ln_col:match(':(%d+)'))
+            return string.format("%03d", col) -- 3 digits zero-padded
+          end,
+        }
+      },
     }
 
     require('lualine').setup({

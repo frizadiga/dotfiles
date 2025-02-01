@@ -60,7 +60,7 @@ vim.opt.guicursor = 'n-c-sm:block,i-ci-ve:hor100,v:hor100,r-cr-o:hor100'
 
 -- show line numbers
 vim.opt.rnu = true -- relative line numbers
-vim.wo.number = false -- dont show absolute line numbers
+vim.wo.number = true -- absolute current cursor line numbers
 
 -- set fill characters for end of buffer
 vim.opt.fillchars = { eob = ' ' }
