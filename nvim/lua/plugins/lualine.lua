@@ -7,7 +7,7 @@ return {
     local common_sections = {
       lualine_a = { 'mode' },
       lualine_b = { { 'branch', icon = { '', align = 'right', } } },
-      lualine_c = { 'filename', 'diff', 'diagnostics' },
+      lualine_c = { 'diff', 'diagnostics', 'filename' },
       lualine_x = {
         'selectioncount',
         -- {
@@ -27,8 +27,8 @@ return {
           'location',
           color = { fg = '#FFFFFF', bg = '#D25858' },
           fmt = function(ln_col)
-            local col = tonumber(ln_col:match(':(%d+)'))
-            return string.format("%03d", col) -- 3 digits zero-padded
+            local col = ln_col:match(':(%d+)')
+            return string.format('%03d', col) -- 3 digits zero-padded
           end,
         }
       },
