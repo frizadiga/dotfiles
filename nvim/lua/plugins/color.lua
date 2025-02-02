@@ -37,7 +37,7 @@ return {
 
         local ColorMainRed = '#D25858'
         local ColorSecondaryRed = '#9c3333'
-        local Color243 = '#625E5A'
+        local ColorLineNumber = '#625E5A'
         -- local ColorCursorLineDef = '#393836'
 
         return {
@@ -47,9 +47,7 @@ return {
           -- highlight colors
           -- Visual = { bg = '#4f3333' },
           Visual = { fg = 'white', bg = ColorMainRed },
-          LineNr = { fg = Color243 }, -- regular line number
-          -- CursorLine = { bg = 'none' }, -- current line
-          -- CursorLineNr = { fg = ColorSecondaryRed }, -- current line number
+          LineNr = { fg = ColorLineNumber }, -- regular line number
           NormalFloat = { bg = 'none' },
           FloatBorder = { bg = 'none' },
           FloatFooter = { bg = 'none' },
