@@ -1,5 +1,15 @@
+keybinding:
+  universal:
+    goInto: L
+    return: H
+    prevItem: k
+    nextItem: j
+    prevItem-alt: <up>
+    nextItem-alt: <down>
+    scrollLeft: ''
+    scrollRight: ''
 gui:
-  border: "single"
+  border: 'single'
   showBottomLine: true
   theme:
     activeBorderColor:
@@ -7,7 +17,6 @@ gui:
       - bold
     inactiveBorderColor:
       - '#969896'
-      # - '#424242'
     selectedLineBgColor:
       - '#4d4d4d'
 git:

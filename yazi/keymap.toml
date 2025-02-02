@@ -1,0 +1,5 @@
+[manager]
+prepend_keymap = [
+  { on = "L", run = 'enter', desc = "Enter child dir" },
+  { on = "H" , run = 'back', desc = "Back to parent dir" },
+]

@@ -27,6 +27,8 @@ return {
         'html',
         'ts_ls',
         'jsonls',
+        'taplo',
+        'yamlls',
         'lua_ls',
         'pyright',
         'rust_analyzer',
@@ -89,6 +91,17 @@ return {
       -- json
       lspconfig.jsonls.setup({
         capabilities = capabilities
+      })
+
+      -- toml
+      lspconfig.taplo.setup({
+        capabilities = capabilities,
+      })
+
+      -- yaml
+      lspconfig.yamlls.setup({
+        capabilities = capabilities,
+        filetypes = { 'yml', 'yaml' }, -- yml is not the default
       })
 
       -- html

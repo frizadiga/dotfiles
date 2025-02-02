@@ -213,8 +213,6 @@ brew "jesseduffield/lazynpm/lazynpm"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
-# Modular developer CLI tool
-brew "modularml/packages/modular"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 # Command-line interface for 1Password
