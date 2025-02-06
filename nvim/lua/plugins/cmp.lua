@@ -1,123 +1,62 @@
 return {
-  {
-    'hrsh7th/cmp-cmdline',
-    event = 'CmdlineEnter',
-  },
-  {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
-      {
-        'saadparwaiz1/cmp_luasnip',
-        after = 'L3MON4D3/LuaSnip',
+  'saghen/blink.cmp',
+  -- optional: provides snippets for the snippet source
+  -- dependencies = 'rafamadriz/friendly-snippets',
+
+  -- use a release tag to download pre-built binaries
+  version = '*',
+  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+  -- build = 'cargo build --release',
+  -- if you use nix, you can build from source using latest nightly rust with:
+  -- build = 'nix run .#build-plugin',
+
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  opts = {
+    keymap = {
+      -- use `super-tab` preset (set explicitly for self-docs)
+      ['<Tab>'] = {
+        function(cmp)
+          if cmp.snippet_active() then
+            return cmp.accept()
+          else
+            return cmp.select_and_accept()
+          end
+        end,
+        'snippet_forward',
+        'fallback'
       },
-      {
-        'L3MON4D3/LuaSnip',
-        dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    see the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
-        },
-      },
+      ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+
+      ['<Up>'] = { 'select_prev', 'fallback' },
+      ['<Down>'] = { 'select_next', 'fallback' },
+      ['<C-p>'] = { 'select_prev', 'fallback' },
+      ['<C-n>'] = { 'select_next', 'fallback' },
+
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+      ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+
+      ['<C-e>'] = { 'hide', 'fallback' },
+      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
     },
-    config = function()
-      local cmp = require 'cmp'
-      local luasnip = require 'luasnip'
 
-      luasnip.config.setup {}
+    appearance = {
+      -- sets the fallback highlight groups to nvim-cmp's highlight groups
+      -- useful for when your theme doesn't support blink.cmp
+      -- will be removed in a future release
+      use_nvim_cmp_as_default = true,
+      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- adjusts spacing to ensure icons are aligned
+      nerd_font_variant = 'normal'
+    },
 
-      -- base cmp setup
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        mapping = cmp.mapping.preset.insert({
-          -- accept ([y]es) the completion.
-          -- auto-import if your LSP supports it.
-          -- expand snippets if the LSP sent a snippet.
-          ['<CR>'] = cmp.mapping.confirm { select = true },
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
-
-          -- prevent conflict with copilot <Tab>
-          ['<S-Tab>'] = cmp.mapping.select_next_item(),
-
-          -- scroll the documentation window [b]ack / [f]orward
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-
-          -- manually trigger a completion from nvim-cmp.
-          -- generally you don't need this, because nvim-cmp will display
-          -- completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
-
-          -- think of <c-l> as moving to the right of your snippet expansion.
-          -- so if you have a snippet that's like:
-          -- function $name($args)
-          --   $body
-          -- end
-          --
-          -- <c-l> will move you to the right of each of the expansion locations.
-          -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, { 'i', 's' }),
-
-          -- advanced Luasnip keymaps (e.g. selecting choice nodes, expansion)
-          -- see: https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-        }),
-        sources = {
-          { name = "path", group_index = 2 },
-          { name = "buffer", group_index = 2 },
-          { name = "luasnip", group_index = 2 },
-          { name = "copilot", group_index = 2 },
-          { name = "nvim_lsp", group_index = 2 },
-        },
-      })
-
-      -- `/` cmdline search.
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' }
-        }
-      })
-
-      -- `:` cmdline command.
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' }
-        }, {
-            {
-              name = 'cmdline',
-              option = {
-                ignore_cmds = { 'Man', '!' }
-              }
-            }
-          })
-      })
-    end,
+    -- default list of enabled providers defined so that you can extend it
+    -- elsewhere in your config, without redefining it, due to `opts_extend`
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
   },
+  opts_extend = { 'sources.default' }
 }

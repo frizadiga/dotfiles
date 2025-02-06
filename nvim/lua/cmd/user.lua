@@ -44,9 +44,9 @@ vim.api.nvim_create_user_command(
   'GL',
   function()
     -- local output = vim.fn.system({'git', 'log', '--oneline', '--graph', '--decorate', '--all'})
-    local output = vim.fn.system({'git', 'log', '--pretty=format:- %h %ad %ae %s', '--date=format:%Y-%m-%d %H:%M'})
+    local output = vim.fn.system({'git', 'log', '--pretty=format:- %h %ad %ae\n  msg: %s', '--date=format:%Y-%m-%d %H:%M'})
 
-    open_floating_window('# Git Log:\n' .. output, 80, 20)
+    open_floating_window('# Git Log:\n' .. output, 60, 20)
   end,
   {}
 )

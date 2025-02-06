@@ -2,6 +2,8 @@ return {
   'nvim-lualine/lualine.nvim',
   config = function()
     -- local fg_color = '#a7c080'
+    -- local b_bg_color = '#3c474d'
+    -- local c_bg_color = '#4e585e'
     -- local noice = require('noice')
 
     local common_sections = {
@@ -21,7 +23,7 @@ return {
         --   color = { fg = fg_color },
         -- },
       },
-      lualine_y = { 'fileformat', 'encoding', 'filetype' },
+      lualine_y = { 'filetype', 'encoding', 'fileformat' },
       lualine_z = {
         {
           'location',
