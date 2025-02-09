@@ -15,8 +15,6 @@ brew "ansible"
 brew "giflib"
 # Library for manipulating PNG images
 brew "libpng"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -29,6 +27,8 @@ brew "brightness"
 brew "btop"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# Console Bonsai is a bonsai tree generator, written in C using ncurses
+brew "cbonsai"
 # Ultralightweight JSON parser in ANSI C
 brew "cjson"
 # Cross-platform make
@@ -41,6 +41,8 @@ brew "lima"
 brew "colima"
 # Tool for service discovery, monitoring and configuration
 brew "consul"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
 # Power of curl, ease of use of httpie

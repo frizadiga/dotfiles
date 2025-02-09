@@ -2,6 +2,8 @@
 
 local float_win = require 'shared.float_window'
 local open_floating_window = float_win.open_floating_window
+local clipboard = require 'shared.clipboard'
+local copy_to_clip = clipboard.copy_to_clip
 
 -- lazy.nvim dashboard alias
 vim.api.nvim_create_user_command(
@@ -32,9 +34,71 @@ vim.api.nvim_create_user_command(
   'Todo',
   function()
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
-    local output = vim.fn.system({'bash', tools_dir .. '/todo.sh'})
+    local output = vim.fn.system({ 'bash', tools_dir .. '/todo.sh' })
 
     open_floating_window('# Todo:\n' .. output, 80, 15)
+  end,
+  {}
+)
+
+-- copy current file path to clipboard
+vim.api.nvim_create_user_command(
+  'CopyPath',
+  function()
+    local file_path = vim.fn.expand('%:p')
+    copy_to_clip(file_path)
+  end,
+  {}
+)
+
+-- copy current file name to clipboard
+vim.api.nvim_create_user_command(
+  'CopyName',
+  function()
+    local file_name = vim.fn.expand('%:t')
+    copy_to_clip(file_name)
+  end,
+  {}
+)
+
+-- copy current directory path to clipboard
+vim.api.nvim_create_user_command(
+  'CopyDir',
+  function()
+    local dir_path = vim.fn.expand('%:p:h')
+    copy_to_clip(dir_path)
+  end,
+  {}
+)
+
+-- @TODO: support for git submodules
+-- copy current filepath in remote url to clipboard
+vim.api.nvim_create_user_command(
+  'CopyRemoteUrl',
+  function()
+    local file_path = vim.fn.expand('%:p')
+    local git_root = vim.fn.system({ 'git', 'rev-parse', '--show-toplevel' }):gsub('\n', '')
+    local relative_file_path = file_path:sub(#git_root + 2)
+    local remote_url = vim.fn.system({ 'git', 'remote', 'get-url', 'origin' }):gsub('\n', '')
+    local current_branch = vim.fn.system({ 'git', 'rev-parse', '--abbrev-ref', 'HEAD' }):gsub('\n', '')
+
+    if remote_url:match('^git@') then
+      -- handle SSH URL (e.g., git@github.com:user/repo.git)
+      remote_url = remote_url:gsub(':', '/')
+      remote_url = remote_url:gsub('%.git', '')
+      remote_url = remote_url:gsub('git@', 'https://')
+    end
+
+    if remote_url:match('^https://') then
+      -- handle HTTPS URL (e.g., https://github.com/user/repo.git)
+      remote_url = remote_url:gsub('%.git', '')
+      -- remove any token or authentication part (e.g., https://token@github.com/user/repo.git)
+      remote_url = remote_url:gsub('https://[^@]+@', 'https://')
+    end
+
+    local final_url = remote_url .. '/blob/' .. current_branch .. '/' .. relative_file_path
+
+    copy_to_clip(final_url)
   end,
   {}
 )
@@ -44,7 +108,7 @@ vim.api.nvim_create_user_command(
   'GL',
   function()
     -- local output = vim.fn.system({'git', 'log', '--oneline', '--graph', '--decorate', '--all'})
-    local output = vim.fn.system({'git', 'log', '--pretty=format:- %h %ad %ae\n  msg: %s', '--date=format:%Y-%m-%d %H:%M'})
+    local output = vim.fn.system({ 'git', 'log', '--pretty=format:- %h %ad %ae\n  msg: %s', '--date=format:%Y-%m-%d %H:%M' })
 
     open_floating_window('# Git Log:\n' .. output, 60, 20)
   end,
@@ -56,7 +120,7 @@ vim.api.nvim_create_user_command(
   'D',
   function()
     local notes_dir = vim.fn.expand('$NOTES_DIR')
-    local output = vim.fn.system({'bash', notes_dir .. '/app/schd-new-daily.sh'})
+    local output = vim.fn.system({ 'bash', notes_dir .. '/app/schd-new-daily.sh' })
 
     -- get last line of output
     local lines = vim.fn.split(output, '\n')
@@ -77,7 +141,7 @@ vim.api.nvim_create_user_command(
   'DL',
   function()
     local notes_dir = vim.fn.expand('$NOTES_DIR')
-    local output = vim.fn.system({'bash', notes_dir .. '/app/finder/finder-latest.sh'})
+    local output = vim.fn.system({ 'bash', notes_dir .. '/app/finder/finder-latest.sh' })
 
     -- get last line of output
     local lines = vim.fn.split(output, '\n')
@@ -98,7 +162,7 @@ vim.api.nvim_create_user_command(
   'DP',
   function()
     local notes_dir = vim.fn.expand('$NOTES_DIR')
-    local output = vim.fn.system({'bash', notes_dir .. '/app/finder/finder-prev.sh'})
+    local output = vim.fn.system({ 'bash', notes_dir .. '/app/finder/finder-prev.sh' })
 
     -- get last line of output
     local lines = vim.fn.split(output, '\n')
@@ -119,7 +183,7 @@ vim.api.nvim_create_user_command(
   'TicketDetail',
   function()
     local tools_dir = vim.fn.expand('$TOOLS_DIR')
-    local output = vim.fn.system({'bash', tools_dir .. '/jira-curl/curl-issue-find-one.sh'})
+    local output = vim.fn.system({ 'bash', tools_dir .. '/jira-curl/curl-issue-find-one.sh' })
 
     open_floating_window('# Ticket Detail:\n' .. output, 80, 10)
   end,
@@ -131,7 +195,7 @@ vim.api.nvim_create_user_command(
   'TicketMd',
   function()
     local notes_dir = vim.fn.expand('$NOTES_DIR')
-    local output = vim.fn.system({'bash', notes_dir .. '/projects/products/open-md-product.sh', '--path'})
+    local output = vim.fn.system({ 'bash', notes_dir .. '/projects/products/open-md-product.sh', '--path' })
 
     -- get last line of output
     local lines = vim.fn.split(output, '\n')
@@ -152,7 +216,7 @@ vim.api.nvim_create_user_command(
   'TicketTabs',
   function()
     local notes_dir = vim.fn.expand('$NOTES_DIR')
-    local output = vim.fn.system({'bash', notes_dir .. '/app/browser-tabs/mod-tabs-by-ticket-id.sh'})
+    local output = vim.fn.system({ 'bash', notes_dir .. '/app/browser-tabs/mod-tabs-by-ticket-id.sh' })
 
     vim.notify('\n' .. output)
   end,

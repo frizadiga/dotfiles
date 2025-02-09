@@ -56,13 +56,7 @@ vim.keymap.set('v', '<leader>r', ':<C-u>%s/<C-r><C-w>//gc<Left><Left><Left>')
 -- @end search buffer
 
 -- copy to clipboard current file path
-local function copy_current_buffer_path()
-  vim.cmd('let @+=expand("%:p")')
-  -- vim.cmd('echo "copied: " .. expand("%:p")')
-  -- notify user
-  vim.notify('copied: ' .. vim.fn.expand('%:p'))
-end
-vim.keymap.set('n', '<leader>cp', copy_current_buffer_path)
+vim.keymap.set('n', '<leader>cp', '<CMD>CopyPath<CR>')
 
 -- open quickfix window
 vim.keymap.set('n', '<leader>Oq', '<CMD>copen<CR>')

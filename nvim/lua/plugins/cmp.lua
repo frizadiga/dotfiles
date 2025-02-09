@@ -38,8 +38,8 @@ return {
 
       ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 
-      ['<C-e>'] = { 'hide', 'fallback' },
-      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<C-x>'] = { 'hide', 'fallback' },
+      ['<C-d>'] = { 'show', 'show_documentation', 'hide_documentation' },
     },
 
     appearance = {

@@ -68,7 +68,7 @@ vim.opt.fillchars = { eob = ' ' }
 
 -- set listchars
 vim.opt.list = true
-vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '>', precedes = '<', nbsp = '␣' }
+vim.opt.listchars = { tab = '→ ', trail = '·', extends = '›', precedes = '‹', nbsp = '␣' }
 
 vim.opt.timeoutlen = 1000 -- default is 1000
 vim.opt.updatetime = 4000 -- default is 4000

@@ -17,6 +17,6 @@ function Status:name()
   return ui.Line(' ' .. h.name .. linked)
 end
 
-require 'full-border' :setup {
+require 'full-border':setup {
   type = ui.Border.ROUNDED, -- PLAIN | ROUNDED
 }
