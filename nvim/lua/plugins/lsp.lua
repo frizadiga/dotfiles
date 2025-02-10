@@ -42,7 +42,7 @@ return {
     config = function()
       local lspconfig = require 'lspconfig'
       local lspconfig_util = require 'lspconfig.util'
-      local capabilities = require 'blink.cmp' .get_lsp_capabilities()
+      local capabilities = require 'blink.cmp'.get_lsp_capabilities()
 
       local get_git_root = function(fname)
         return lspconfig_util.root_pattern '.git' (fname)
@@ -115,22 +115,22 @@ return {
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {
-            completion = {
-              callSnippet = 'Replace',
+            telemetry = { enable = false },
+            workspace = {
+              -- disable third-party library check prompt
+              checkThirdParty = false,
+              -- add Neovim runtime and config paths to lua_ls workspace
+              library = {
+                vim.fn.expand('$VIMRUNTIME/lua'),
+                vim.fn.stdpath('config') .. '/lua'
+              }
             },
             -- @ARCHIVED:
             -- diagnostics = {
             --   globals = { 'vim', 'hs', 'ui' }, -- use .luarc.json instead
             --   disable = { 'missing-fields' }
             -- },
-            -- workspace = {
-            --   -- tell lua_ls to use .luarc.json from the project directory
-            --   checkThirdParty = false,
-            --   library = {
-            --     vim.fn.expand('$VIMRUNTIME/lua'),
-            --     vim.fn.stdpath('config') .. '/lua'
-            --   }
-            -- },
+            format = { enable = true }, -- @NOTE: decided to use lua_ls instead of stylua
           }
         },
         capabilities = capabilities,
