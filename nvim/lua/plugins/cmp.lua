@@ -13,8 +13,8 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    -- use `super-tab` preset with some customization (set explicitly for self-docs)
     keymap = {
-      -- use `super-tab` preset (set explicitly for self-docs)
       ['<Tab>'] = {
         function(cmp)
           if cmp.snippet_active() then
@@ -26,30 +26,28 @@ return {
         'snippet_forward',
         'fallback'
       },
-      ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+      ['<S-Tab>'] = { 'hide', 'fallback' },
 
       ['<Up>'] = { 'select_prev', 'fallback' },
       ['<Down>'] = { 'select_next', 'fallback' },
       ['<C-p>'] = { 'select_prev', 'fallback' },
       ['<C-n>'] = { 'select_next', 'fallback' },
 
-      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-
       ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 
-      ['<C-x>'] = { 'hide', 'fallback' },
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
       ['<C-d>'] = { 'show', 'show_documentation', 'hide_documentation' },
     },
 
     appearance = {
+      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- adjusts spacing to ensure icons are aligned
+      nerd_font_variant = 'mono',
       -- sets the fallback highlight groups to nvim-cmp's highlight groups
       -- useful for when your theme doesn't support blink.cmp
       -- will be removed in a future release
       use_nvim_cmp_as_default = true,
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'normal'
     },
 
     -- default list of enabled providers defined so that you can extend it

@@ -41,6 +41,17 @@ return {
           end
         end,
       },
+      ['gcp'] = {
+        desc = 'Oil: Copy path (directory or file)',
+        callback = function()
+          local path
+          local entry = oil.get_cursor_entry()
+          local dir_path = oil.get_current_dir()
+          path = entry and (dir_path .. entry.name) or dir_path
+          path = path:gsub('/%..$', '') -- @NOTE: why?? handle dir
+          require 'shared.clipboard' .copy_to_clip(path)
+        end,
+      },
       ['gs'] = {
         desc = 'Oil: Search in directory via Grug',
         callback = function()

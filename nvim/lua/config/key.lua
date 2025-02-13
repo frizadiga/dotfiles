@@ -11,6 +11,9 @@ vim.keymap.set({'n', 'v', 'c'}, '<leader>qq', '<CMD>q<CR>')
 -- redo
 vim.keymap.set('n', 'r', '<C-r>')
 
+-- replace char under cursor
+vim.keymap.set('n', 'R', 'r')
+
 -- @start buffer
 -- select all text in buffer
 vim.keymap.set('n', '<leader>a', 'ggVG')
@@ -49,7 +52,7 @@ vim.keymap.set('n', '<leader>S', '<C-w><C-w>')
 -- copy selected text to search input when pressing `/`
 vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
 
--- replace
+-- replace in buffer
 vim.keymap.set('n', '<leader>r', ':%s//gc<Left><Left><Left>')
 -- in visual mode prefill search with selected text
 vim.keymap.set('v', '<leader>r', ':<C-u>%s/<C-r><C-w>//gc<Left><Left><Left>')
