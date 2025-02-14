@@ -10,20 +10,20 @@ return {
       -- cater memory muscle slip
       [';'] = {
         'actions.select',
-        desc = 'Open file or directory',
+        desc = 'Oil: Open file or directory',
       },
       ['L'] = {
         'actions.select',
-        desc = 'Open file or directory',
+        desc = 'Oil: Open file or directory',
       },
       -- to cater specific muscle memory case
       ['<Esc>'] = {
-        desc = 'Close oil',
+        desc = 'Oil: Close oil',
         callback = oil.close,
       },
       ['H'] = {
         'actions.parent',
-        desc = 'Up one directory',
+        desc = 'Oil: Up one directory',
       },
       ['gd'] = {
         desc = 'Oil: Toggle file detail view',
@@ -39,17 +39,6 @@ return {
           else
             oil.set_columns({ 'icon' })
           end
-        end,
-      },
-      ['gcp'] = {
-        desc = 'Oil: Copy path (directory or file)',
-        callback = function()
-          local path
-          local entry = oil.get_cursor_entry()
-          local dir_path = oil.get_current_dir()
-          path = entry and (dir_path .. entry.name) or dir_path
-          path = path:gsub('/%..$', '') -- @NOTE: why?? handle dir
-          require 'shared.clipboard' .copy_to_clip(path)
         end,
       },
       ['gs'] = {
@@ -78,6 +67,16 @@ return {
           local path = oil.get_current_dir()
           oil.close() -- need to close oil to prevent result from opening in oil buffer
           require('telescope.builtin').live_grep({ prompt_title = 'Live Grep - CWD', cwd = path })
+        end,
+      },
+      ['gcp'] = {
+        desc = 'Oil: Copy path (file or directory)',
+        callback = function()
+          local entry = oil.get_cursor_entry()
+          local dir_path = oil.get_current_dir()
+          -- @NOTE: rm trailing `/..` if it's a directory
+          local final_path = (dir_path .. entry.name):gsub('/%..$', '')
+          require'shared.clipboard'.copy_to_clip(final_path)
         end,
       },
     }

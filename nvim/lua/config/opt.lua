@@ -89,26 +89,26 @@ vim.opt.termguicolors = true
 vim.opt.splitright = true
 vim.opt.splitbelow = false
 
--- @start lsp
--- show lsp diagnostics on popup
--- ref: https://stackoverflow.com/a/70760302/6893303
-vim.diagnostic.config({
-  virtual_text = false
-})
-
--- show line diagnostics automatically in hover window
-vim.opt.updatetime = 250 -- default: 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
--- @end lsp
-
 -- @start_section indent
 -- set tabstop and shiftwidth
-vim.opt.expandtab = true -- Convert tabs to spaces
-vim.opt.tabstop = 2      -- Default spaces for tab
-vim.opt.softtabstop = 2  -- Default spaces when editing
-vim.opt.shiftwidth = 2   -- Default spaces for auto indent
+vim.opt.expandtab = true -- convert tabs to spaces
+vim.opt.tabstop = 2      -- default spaces for tab
+vim.opt.softtabstop = 2  -- default spaces when editing
+vim.opt.shiftwidth = 2   -- default spaces for auto indent
 
 -- optional: add indent detection for better results
 vim.g.detect_indent = true
 vim.g.detect_indent_max_lines = 1000
 -- @end_section indent
+
+vim.opt.mouse = '' -- scroll by cursor movement
+
+-- @start lsp
+-- show lsp diagnostics on popup
+-- ref: https://stackoverflow.com/a/70760302/6893303
+vim.diagnostic.config({ virtual_text = false })
+
+-- show line diagnostics automatically in hover window
+vim.opt.updatetime = 250 -- default: 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- @end lsp

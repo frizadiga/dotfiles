@@ -182,8 +182,8 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
   'TicketDetail',
   function()
-    local tools_dir = vim.fn.expand('$TOOLS_DIR')
-    local output = vim.fn.system({ 'bash', tools_dir .. '/jira-curl/curl-issue-find-one.sh' })
+    local notes_dir = vim.fn.expand('$NOTES_DIR')
+    local output = vim.fn.system({ 'bun', notes_dir .. '/app/tasks/what_task.ts' })
 
     open_floating_window('# Ticket Detail:\n' .. output, 80, 10)
   end,

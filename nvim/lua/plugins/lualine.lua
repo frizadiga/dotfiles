@@ -46,5 +46,6 @@ return {
       inactive_sections = common_sections,
     })
   end,
-  event = 'VimEnter', -- must be loaded just before `UIEnter` (`VimEnter`) for "instant" impact on UI perceived performance
+  event = 'UIEnter', -- aiming for faster startup time
+  -- event = 'VimEnter', -- loaded just before `UIEnter` (`VimEnter`) for "instant" impact on UI perceived performance
 }

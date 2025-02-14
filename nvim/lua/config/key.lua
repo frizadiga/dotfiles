@@ -37,7 +37,7 @@ vim.keymap.set('n', '<leader>h', '<CMD>bp<CR>')
 vim.keymap.set('n', '<leader>H', '<CMD>bn<CR>')
 
 -- write to fs if only buffer is modified
-vim.keymap.set('n', '<Space><Space>', '<CMD>update<CR>')
+vim.keymap.set({ 'n', 'x' }, '<Space><Space>', '<CMD>update<CR>')
 -- @end buffer
 
 -- @start split view
