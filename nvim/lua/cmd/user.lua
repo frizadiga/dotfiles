@@ -77,10 +77,10 @@ vim.api.nvim_create_user_command(
   'CopyRemoteUrl',
   function()
     local file_path = vim.fn.expand('%:p')
-    local git_root = vim.fn.system({ 'git', 'rev-parse', '--show-toplevel' }):gsub('\n', '')
+    local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
     local relative_file_path = file_path:sub(#git_root + 2)
-    local remote_url = vim.fn.system({ 'git', 'remote', 'get-url', 'origin' }):gsub('\n', '')
-    local current_branch = vim.fn.system({ 'git', 'rev-parse', '--abbrev-ref', 'HEAD' }):gsub('\n', '')
+    local remote_url = vim.fn.system('git remote get-url origin'):gsub('\n', '')
+    local current_branch = vim.fn.system('git branch --show-current'):gsub('\n', '')
 
     if remote_url:match('^git@') then
       -- handle SSH URL (e.g., git@github.com:user/repo.git)
