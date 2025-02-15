@@ -71,16 +71,51 @@ vim.api.nvim_create_user_command(
   {}
 )
 
--- @TODO: support for git submodules
 -- copy current filepath in remote url to clipboard
 vim.api.nvim_create_user_command(
   'CopyRemoteUrl',
   function()
     local file_path = vim.fn.expand('%:p')
+
+    -- get the git root of the main repository
     local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
-    local relative_file_path = file_path:sub(#git_root + 2)
-    local remote_url = vim.fn.system('git remote get-url origin'):gsub('\n', '')
-    local current_branch = vim.fn.system('git branch --show-current'):gsub('\n', '')
+
+    -- check if the file is in a submodule
+    local is_submodule = false
+    local submodule_root = ''
+    local submodule_path = ''
+
+    -- get list of submodules and their paths
+    local submodules = vim.fn.system('git config --file .gitmodules --get-regexp path'):gsub('\n$', '')
+    if submodules ~= '' then
+      for line in submodules:gmatch('[^\n]+') do
+        local _, path = line:match('submodule%.(.-)%.path%s+(.*)')
+        if path then
+          local full_path = git_root .. '/' .. path
+          if file_path:sub(1, #full_path) == full_path then
+            is_submodule = true
+            submodule_path = path
+            -- get the submodule root
+            submodule_root = vim.fn.system('cd ' .. full_path .. ' && git rev-parse --show-toplevel'):gsub('\n', '')
+            break
+          end
+        end
+      end
+    end
+
+    local relative_file_path, remote_url, current_branch
+
+    if is_submodule then
+      -- handle submodule case
+      relative_file_path = file_path:sub(#submodule_root + 2)
+      remote_url = vim.fn.system('cd ' .. git_root .. '/' .. submodule_path .. ' && git remote get-url origin'):gsub('\n', '')
+      current_branch = vim.fn.system('cd ' .. git_root .. '/' .. submodule_path .. ' && git branch --show-current'):gsub('\n', '')
+    else
+      -- handle main repository case
+      relative_file_path = file_path:sub(#git_root + 2)
+      remote_url = vim.fn.system('git remote get-url origin'):gsub('\n', '')
+      current_branch = vim.fn.system('git branch --show-current'):gsub('\n', '')
+    end
 
     if remote_url:match('^git@') then
       -- handle SSH URL (e.g., git@github.com:user/repo.git)
@@ -97,7 +132,6 @@ vim.api.nvim_create_user_command(
     end
 
     local final_url = remote_url .. '/blob/' .. current_branch .. '/' .. relative_file_path
-
     copy_to_clip(final_url)
   end,
   {}
