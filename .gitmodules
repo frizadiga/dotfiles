@@ -1,0 +1,3 @@
+[submodule "v"]
+	path = v
+	url = https://github.com/frizadiga/v.git
