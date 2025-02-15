@@ -19,12 +19,12 @@ My daily driver public dotfiles.
   docker terminal UI
 - `lazygit`  
   git terminal UI
-- `nvim`  
-  highly customizable text editor that sucks less
 - `skhd`  
   hotkey daemon
 - `tmux`  
   terminal multiplexer
+- `v`  
+    highly customizable text editor that sucks less
 - `yabai`  
   window manager
 - `yazi`  
