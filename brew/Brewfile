@@ -97,6 +97,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Git extension for versioning large files
+brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -252,6 +254,8 @@ cask "hammerspoon"
 cask "httpie"
 # Keyboard customiser
 cask "karabiner-elements"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
