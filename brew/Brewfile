@@ -31,6 +31,8 @@ brew "cairo"
 brew "cbonsai"
 # Ultralightweight JSON parser in ANSI C
 brew "cjson"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
@@ -129,6 +131,8 @@ brew "jq"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# TUI for logs from journalctl, file system, Docker, Podman and Kubernetes pods
+brew "lazyjournal"
 # Library to render SVG files using Cairo
 brew "librsvg"
 # Next-gen compiler infrastructure
@@ -227,6 +231,8 @@ cask "alacritty"
 cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Allows connection to a computer remotely
+cask "anydesk"
 # Chromium based browser
 cask "arc"
 # Web browser focusing on privacy
@@ -256,6 +262,8 @@ cask "httpie"
 cask "karabiner-elements"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# Imaging utility to install operating systems to a microSD card
+cask "raspberry-pi-imager"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
