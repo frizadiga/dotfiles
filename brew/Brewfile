@@ -260,6 +260,8 @@ cask "hammerspoon"
 cask "httpie"
 # Keyboard customiser
 cask "karabiner-elements"
+# Minimal installer for conda
+cask "miniconda"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # Imaging utility to install operating systems to a microSD card
