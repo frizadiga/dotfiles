@@ -139,6 +139,8 @@ brew "librsvg"
 brew "llvm"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Apple Silicon Monitor Top written in Golang
+brew "mactop"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Lightweight PDF and XPS viewer
@@ -154,11 +156,13 @@ brew "nmap"
 # Manage multiple Node.js versions
 brew "nvm"
 # Create, run, and share large language models (LLMs)
-brew "ollama"
+brew "ollama", restart_service: :changed
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Your Gateway to Embedded Software Development Excellence
 brew "platformio"
+# Tool for managing OCI containers and pods
+brew "podman"
 # Theme for zsh
 brew "powerlevel10k"
 # Show ps output as a tree
@@ -260,6 +264,8 @@ cask "hammerspoon"
 cask "httpie"
 # Keyboard customiser
 cask "karabiner-elements"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Minimal installer for conda
 cask "miniconda"
 # Reverse proxy, secure introspectable tunnels to localhost
