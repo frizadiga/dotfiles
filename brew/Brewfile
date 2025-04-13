@@ -61,12 +61,12 @@ brew "docker"
 brew "docker-buildx"
 # Isolated development environments using Docker
 brew "docker-compose"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # OpenType text shaping engine
 brew "harfbuzz"
 # Platform built on V8 to build network applications
 brew "node"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Perl lib for reading and writing EXIF metadata
@@ -156,7 +156,7 @@ brew "nmap"
 # Manage multiple Node.js versions
 brew "nvm"
 # Create, run, and share large language models (LLMs)
-brew "ollama", restart_service: :changed
+brew "ollama"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Your Gateway to Embedded Software Development Excellence
@@ -247,6 +247,8 @@ cask "brave-browser@nightly"
 cask "chromium"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
+# Universal database tool and SQL client
+cask "dbeaver-community"
 # Drivers for DisplayLink docks, adapters and monitors
 cask "displaylink"
 # Web browser
