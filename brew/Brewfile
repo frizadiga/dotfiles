@@ -4,6 +4,7 @@ tap "homebrew/services"
 tap "jesseduffield/lazynpm"
 tap "koekeishiya/formulae"
 tap "modularml/packages"
+tap "netbirdio/tap"
 tap "teamookla/speedtest"
 # Command-line interface for SQLite
 brew "sqlite"
@@ -163,6 +164,8 @@ brew "pkgconf"
 brew "platformio"
 # Tool for managing OCI containers and pods
 brew "podman"
+# Object-relational database system
+brew "postgresql@14"
 # Theme for zsh
 brew "powerlevel10k"
 # Show ps output as a tree
@@ -179,8 +182,12 @@ brew "rust-analyzer"
 brew "sd"
 # Monitors sleep, wakeup, and idleness of a Mac
 brew "sleepwatcher"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
 # Command-line packet analyzer
 brew "tcpdump"
+# User interface to the TELNET protocol
+brew "telnet"
 # Terminal multiplexer
 brew "tmux"
 # Plugin manager for tmux
@@ -225,6 +232,8 @@ brew "jesseduffield/lazynpm/lazynpm"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# Netbird project.
+brew "netbirdio/tap/netbird"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 # Command-line interface for 1Password
@@ -239,6 +248,8 @@ cask "alt-tab"
 cask "anydesk"
 # Chromium based browser
 cask "arc"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Web browser focusing on privacy
@@ -254,8 +265,12 @@ cask "displaylink"
 # Web browser
 cask "firefox"
 cask "font-hack-nerd-font"
+# 3D parametric modeller
+cask "freecad"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Free and open-source image editor
+cask "gimp"
 # Web browser
 cask "google-chrome"
 # Web browser
