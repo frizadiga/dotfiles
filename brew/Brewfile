@@ -122,6 +122,8 @@ brew "hyperfine"
 brew "imagemagick"
 # Modular IRC client
 brew "irssi"
+# Git-compatible distributed version control system
+brew "jj"
 # Convert JPG images to ASCII
 brew "jp2a"
 # Image manipulation library
