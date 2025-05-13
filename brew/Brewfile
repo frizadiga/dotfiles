@@ -160,6 +160,8 @@ brew "nmap"
 brew "nvm"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Your Gateway to Embedded Software Development Excellence
