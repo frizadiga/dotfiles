@@ -6,8 +6,6 @@ tap "koekeishiya/formulae"
 tap "modularml/packages"
 tap "netbirdio/tap"
 tap "teamookla/speedtest"
-# Command-line interface for SQLite
-brew "sqlite"
 # GNU debugger for aarch64-elf cross development
 brew "aarch64-elf-gdb"
 # Automate deployment, configuration, and upgrading
@@ -16,6 +14,8 @@ brew "ansible"
 brew "giflib"
 # Library for manipulating PNG images
 brew "libpng"
+# Distributed revision control system
+brew "git"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -96,8 +96,6 @@ brew "fzf"
 brew "fzy"
 # GitHub command-line tool
 brew "gh"
-# Distributed revision control system
-brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Git extension for versioning large files
@@ -113,7 +111,7 @@ brew "htop"
 # Simple zero-configuration command-line HTTP server
 brew "http-server"
 # User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
+brew "httpie", link: false
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
 # Command-line benchmarking tool
@@ -144,10 +142,14 @@ brew "llvm"
 brew "lsd"
 # Apple Silicon Monitor Top written in Golang
 brew "mactop"
+# Drop-in replacement for MySQL
+brew "mariadb"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Lightweight PDF and XPS viewer
 brew "mupdf"
+# Open source relational database management system
+brew "mysql-client"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
@@ -244,6 +246,8 @@ brew "teamookla/speedtest/speedtest"
 cask "1password-cli"
 # GPU-accelerated terminal emulator
 cask "alacritty"
+# Menu bar tool to limit maximum charging percentage
+cask "aldente"
 # Application launcher and productivity software
 cask "alfred"
 # Enable Windows-like alt-tab
@@ -279,10 +283,10 @@ cask "gimp"
 cask "google-chrome"
 # Web browser
 cask "google-chrome@canary"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "google-cloud-sdk"
 # Desktop automation application
 cask "hammerspoon"
-# Testing client for REST, GraphQL, and HTTP APIs
-cask "httpie"
 # Keyboard customiser
 cask "karabiner-elements"
 # Discover, download, and run local LLMs
