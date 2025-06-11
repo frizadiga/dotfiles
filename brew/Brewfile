@@ -100,6 +100,8 @@ brew "gh"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
+# Render markdown on the CLI
+brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -164,6 +166,8 @@ brew "nvm"
 brew "ollama"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Your Gateway to Embedded Software Development Excellence
@@ -202,6 +206,8 @@ brew "tpm"
 brew "translate-shell"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Simple terminal image viewer written in Rust
+brew "viu"
 # Internet file retriever
 brew "wget"
 # Network analyzer and capture tool - without graphical user interface
@@ -307,5 +313,3 @@ cask "stolendata-mpv"
 cask "topnotch"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
