@@ -8,9 +8,12 @@ keybinding:
     nextItem-alt: <down>
     scrollLeft: ''
     scrollRight: ''
+    nextScreenMode: '+'
+    prevScreenMode: '_'
 gui:
-  border: 'single'
+  border: single
   showBottomLine: true
+  portraitMode: always
   theme:
     activeBorderColor:
       - green

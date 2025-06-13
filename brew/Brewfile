@@ -94,6 +94,8 @@ brew "figlet"
 brew "fzf"
 # Fast, simple fuzzy text selector with an advanced scoring algorithm
 brew "fzy"
+# GNU debugger
+brew "gdb"
 # GitHub command-line tool
 brew "gh"
 # Syntax-highlighting pager for git and diff output
@@ -113,7 +115,7 @@ brew "htop"
 # Simple zero-configuration command-line HTTP server
 brew "http-server"
 # User-friendly cURL replacement (command-line HTTP client)
-brew "httpie", link: false
+brew "httpie"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
 # Command-line benchmarking tool
