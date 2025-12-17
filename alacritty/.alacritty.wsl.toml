@@ -1,0 +1,46 @@
+[font]
+size = 16 # normal: 16 broadcast: 22
+
+normal = { family = "Hack Nerd Font", style = "Regular" }
+bold = { family = "Hack Nerd Font", style = "Bold" }
+italic = { family = "Hack Nerd Font", style = "Italic" }
+bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
+
+[env]
+TERM = "xterm-256color"
+# TERM = "xterm"
+
+[colors.cursor]
+text = "#ffffff"
+cursor = "#d25858" # red
+
+[window]
+title="sh-0"
+dynamic_title = false
+padding = { x = 16, y = 8 }
+dynamic_padding = true
+decorations = "None"
+startup_mode = "Maximized"
+blur = false
+opacity = 0.85 # default: 0.85
+
+[mouse]
+hide_when_typing = true
+
+# [keyboard]
+# bindings = [
+#   { key = "Right", mods = "Alt", chars = "\u001BF" }, # alt + right to move to end of word
+#   { key = "Left",  mods = "Alt", chars = "\u001BB" }, # alt + left to move to beginning of word
+#   { key = "Backspace", mods = "Command", chars = "\u0015" }, # cmd + backspace to delete all line
+#   { key = "Left", mods = "Command", chars = "\u0001" }, # cmd + left to move to beginning/end of line
+#   { key = "Right", mods = "Command", chars = "\u0005" }, # cmd + right to move to beginning/end of line
+#   { key = "Up", mods = "Command", chars = "\u0001" }, # cmd + up to move to beginning/end of buffer
+#   { key = "Down", mods = "Command", chars = "\u0005" }, # cmd + down to move to beginning/end of buffer
+# ]
+
+[keyboard]
+bindings = [
+#  { key = "V", mods = "Control", action = "Paste" },
+#  { key = "C", mods = "Control|Shift", action = "Copy" },
+   { key = "Space", mods = "Control", chars = "\u0000" },
+]
