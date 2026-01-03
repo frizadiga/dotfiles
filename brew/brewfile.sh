@@ -17,11 +17,12 @@ source "${TOOLS_DIR}/ansi-utils.sh"
 #   echo "Script is being sourced"
 # fi
 
-declare -r brewfile_path="${_self_path_dir_}/Brewfile"
 
 fn_brewfile() {
   # echo $(yellow $(bold 'fn_brewfile'))
   local arg_1=$1
+  local filename=${2:-'Brewfile'}
+  local brewfile_path="${_self_path_dir_}/${filename}"
 
   # if no args
   if [ -z "${arg_1}" ]; then

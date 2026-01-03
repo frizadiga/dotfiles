@@ -1,0 +1,44 @@
+tap "teamookla/speedtest"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Fast and simple Node.js version manager
+brew "fnm"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Language server for the Go language
+brew "gopls"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Extraction utility for .zip compressed archives
+brew "unzip"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Theme for zsh
+brew "powerlevel10k"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Terminal multiplexer
+brew "tmux"
+# Command-line program for getting and setting the contents of the X selection
+brew "xsel"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
+cask "font-hack-nerd-font"
