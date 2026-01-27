@@ -1,0 +1,39 @@
+{
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "~\\scoop\\buckets\\main",
+            "Updated": "2026-01-01T22:51:29.5976224+07:00",
+            "Manifests": 1412
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2025-12-31T02:20:46+07:00",
+            "Manifests": 367
+        }
+    ],
+    "apps": [
+        {
+            "Name": "7zip",
+            "Version": "25.01",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2026-01-01T22:52:32.6707308+07:00"
+        },
+        {
+            "Name": "git",
+            "Version": "2.52.0",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2026-01-01T22:53:32.9673574+07:00"
+        },
+        {
+            "Name": "Hack-NF",
+            "Version": "3.4.0",
+            "Source": "nerd-fonts",
+            "Info": "",
+            "Updated": "2026-01-01T22:53:55.686731+07:00"
+        }
+    ]
+}
