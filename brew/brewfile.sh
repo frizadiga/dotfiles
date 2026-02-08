@@ -21,7 +21,14 @@ source "${TOOLS_DIR}/ansi-utils.sh"
 fn_brewfile() {
   # echo $(yellow $(bold 'fn_brewfile'))
   local arg_1=$1
-  local filename=${2:-'Brewfile'}
+
+  # detect OS and set appropriate Brewfile
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    local filename=${2:-'Brewfile'}
+  else
+    local filename=${2:-'LinuxBrewfile'}
+  fi
+
   local brewfile_path="${_self_path_dir_}/${filename}"
 
   # if no args
