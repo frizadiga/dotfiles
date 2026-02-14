@@ -1,13 +1,19 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-01-27T22:02:39.614-00:00",
+	"CreationDate" : "2026-02-14T20:27:30.778-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
+					"PackageIdentifier" : "CPUID.HWMonitor"
+				},
+				{
+					"PackageIdentifier" : "REALiX.HWiNFO"
+				},
+				{
+					"PackageIdentifier" : "RARLab.WinRAR"
 				},
 				{
 					"PackageIdentifier" : "mitmproxy.mitmproxy"
@@ -19,6 +25,9 @@
 					"PackageIdentifier" : "Cloudflare.Warp"
 				},
 				{
+					"PackageIdentifier" : "Netbird.Netbird"
+				},
+				{
 					"PackageIdentifier" : "Zoom.Zoom"
 				},
 				{
@@ -28,22 +37,10 @@
 					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
 				},
 				{
-					"PackageIdentifier" : "Google.Chrome.EXE"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
-					"PackageIdentifier" : "Netbird.Netbird"
-				},
-				{
 					"PackageIdentifier" : "OBSProject.OBSStudio"
-				},
-				{
-					"PackageIdentifier" : "RARLab.WinRAR"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Teams.Classic"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
@@ -53,6 +50,15 @@
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
+				},
+				{
+					"PackageIdentifier" : "Google.Chrome.EXE"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Teams.Classic"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerToys"
@@ -73,10 +79,13 @@
 					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.WSL"
+				},
+				{
 					"PackageIdentifier" : "TheBrowserCompany.Arc"
 				},
 				{
-					"PackageIdentifier" : "TradingView.TradingViewDesktop"
+					"PackageIdentifier" : "Debian.Debian"
 				}
 			],
 			"SourceDetails" : 
