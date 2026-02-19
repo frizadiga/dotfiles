@@ -1,5 +1,5 @@
 [font]
-size = 16 # normal: 16 broadcast: 22
+size = 18 # normal: 18 broadcast: 22
 
 normal = { family = "Hack Nerd Font", style = "Regular" }
 bold = { family = "Hack Nerd Font", style = "Bold" }
