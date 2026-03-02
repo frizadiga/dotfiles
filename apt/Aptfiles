@@ -7,8 +7,10 @@ base-files
 base-passwd
 bash
 bc
+bind9-dnsutils
 bsdutils
 build-essential
+ca-certificates
 coreutils
 cpio
 cron
@@ -142,6 +144,7 @@ ncal
 ncurses-base
 ncurses-bin
 netbase
+netbird
 nftables
 openssl-provider-legacy
 passwd
