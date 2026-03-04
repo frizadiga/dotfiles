@@ -13,6 +13,8 @@ brew "fnm"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Language server for the Go language
@@ -37,6 +39,8 @@ brew "ripgrep"
 brew "rust"
 # Terminal multiplexer
 brew "tmux"
+# Plugin manager for tmux
+brew "tpm"
 # Command-line translator using Google Translate and more
 brew "translate-shell"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -53,3 +57,4 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
+go "github.com/projectdiscovery/httpx/cmd/httpx"
