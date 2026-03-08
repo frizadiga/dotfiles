@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-02-22T04:22:40.526-00:00",
+	"CreationDate" : "2026-03-08T22:10:13.027-00:00",
 	"Sources" : 
 	[
 		{
@@ -31,10 +31,10 @@
 					"PackageIdentifier" : "Zoom.Zoom"
 				},
 				{
-					"PackageIdentifier" : "Cloudflare.Warp"
+					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
 				},
 				{
-					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
+					"PackageIdentifier" : "Cloudflare.Warp"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
@@ -62,6 +62,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Teams.Classic"
+				},
+				{
+					"PackageIdentifier" : "Telegram.TelegramDesktop"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerToys"
@@ -124,5 +127,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.460"
+	"WinGetVersion" : "1.12.470"
 }
