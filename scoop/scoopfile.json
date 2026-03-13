@@ -1,30 +1,30 @@
 {
     "apps": [
         {
-            "Name": "7zip",
             "Updated": "2026-02-08T18:24:45.1918291+07:00",
             "Version": "25.01",
+            "Name": "7zip",
             "Source": "main",
             "Info": ""
         },
         {
-            "Name": "cmder-full",
             "Updated": "2026-03-08T22:08:35.0493753+07:00",
             "Version": "1.3.25",
+            "Name": "cmder-full",
             "Source": "main",
             "Info": ""
         },
         {
-            "Name": "git",
             "Updated": "2026-02-08T18:26:36.959202+07:00",
             "Version": "2.53.0",
+            "Name": "git",
             "Source": "main",
             "Info": ""
         },
         {
-            "Name": "Hack-NF",
             "Updated": "2026-02-08T18:32:07.7825389+07:00",
             "Version": "3.4.0",
+            "Name": "Hack-NF",
             "Source": "nerd-fonts",
             "Info": ""
         }

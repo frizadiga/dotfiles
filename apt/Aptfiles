@@ -137,9 +137,9 @@ login
 login.defs
 logrotate
 logsave
+man-db
 mawk
 mount
-nano
 ncal
 ncurses-base
 ncurses-bin
@@ -151,6 +151,7 @@ passwd
 perl-base
 procps
 readline-common
+rsync
 sed
 sensible-utils
 speedtest
@@ -166,5 +167,6 @@ util-linux
 vim-common
 vim-tiny
 whiptail
+xdotool
 zlib1g
 zsh
