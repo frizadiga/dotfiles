@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-03-13T21:55:27.087-00:00",
+	"CreationDate" : "2026-03-17T01:44:25.409-00:00",
 	"Sources" : 
 	[
 		{
@@ -52,7 +52,13 @@
 					"PackageIdentifier" : "Kensington.KensingtonWorks"
 				},
 				{
+					"PackageIdentifier" : "DBeaver.DBeaver.Community"
+				},
+				{
 					"PackageIdentifier" : "Discord.Discord"
+				},
+				{
+					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
 				},
 				{
 					"PackageIdentifier" : "Google.Chrome.EXE"

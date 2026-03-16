@@ -19,22 +19,26 @@ brew "git-delta"
 brew "go"
 # Language server for the Go language
 brew "gopls"
+# Extraction utility for .zip compressed archives
+brew "unzip"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Extraction utility for .zip compressed archives
-brew "unzip"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Theme for zsh
-brew "powerlevel10k"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
+# Theme for zsh
+brew "powerlevel10k"
 # Safe, concurrent, practical language
 brew "rust"
 # Terminal multiplexer
