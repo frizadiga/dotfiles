@@ -15,13 +15,13 @@ int main() {
 	for (int i = 0; datetime[i]; i++)
 		datetime[i] = tolower(datetime[i]);
 	// get battery level (works on both Linux and macOS)
-	char batt[8] = "🔌"; // fallback symbol for AC power if battery info is unavailable
+	char batt[8] = "";
 
 #ifdef __APPLE__
 	FILE *fp = popen("pmset -g batt | grep -o '[0-9]*%' | head -1 | tr -d '%'", "r");
 #else
 	FILE *fp = popen("cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || cat "
-	                 "/sys/class/power_supply/BAT1/capacity 2>/dev/null || echo '🔌'",
+	                 "/sys/class/power_supply/BAT1/capacity 2>/dev/null",
 	                 "r");
 #endif
 
@@ -33,7 +33,8 @@ int main() {
 	}
 	// using write() for direct output for performance
 	char output[64];
-	int len = snprintf(output, sizeof(output), "%s %s\n", datetime, batt);
+	int len = batt[0] ? snprintf(output, sizeof(output), "%s %s\n", datetime, batt)
+	                  : snprintf(output, sizeof(output), "%s\n", datetime);
 	write(STDOUT_FILENO, output, len);
 	return 0;
 }
