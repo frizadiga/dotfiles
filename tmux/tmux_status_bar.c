@@ -4,7 +4,6 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include <stdlib.h>
 
 int main() {
 	struct timespec ts;
@@ -16,13 +15,16 @@ int main() {
 	for (int i = 0; datetime[i]; i++)
 		datetime[i] = tolower(datetime[i]);
 	// get battery level (works on both Linux and macOS)
-	char batt[8] = "?";
-	#ifdef __APPLE__
-		FILE *fp = popen("pmset -g batt | grep -o '[0-9]*%' | head -1 | tr -d '%'", "r");
-	#else
-		FILE *fp = popen("cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo '?'", "r");
-	#endif
-	
+	char batt[8] = "🔌"; // fallback symbol for AC power if battery info is unavailable
+
+#ifdef __APPLE__
+	FILE *fp = popen("pmset -g batt | grep -o '[0-9]*%' | head -1 | tr -d '%'", "r");
+#else
+	FILE *fp = popen("cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || cat "
+	                 "/sys/class/power_supply/BAT1/capacity 2>/dev/null || echo '🔌'",
+	                 "r");
+#endif
+
 	if (fp) {
 		if (fgets(batt, sizeof(batt), fp)) {
 			batt[strcspn(batt, "\n")] = 0;
