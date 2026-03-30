@@ -20,11 +20,9 @@ dynamic_title = false
 padding = { x = 16, y = 8 }
 dynamic_padding = true
 decorations = "None"
-startup_mode = "Fullscreen"
 blur = false
 opacity = 0.85 # default: 0.85
-position = "100:0"
-dimensions = { columns = 100, lines = 30 }
+dimensions = { columns = 150, lines = 50 }
 
 [mouse]
 hide_when_typing = true
