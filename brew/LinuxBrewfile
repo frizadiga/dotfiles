@@ -76,6 +76,8 @@ brew "tpm"
 brew "translate-shell"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Lookup tool for domain names and other internet resources
+brew "whois"
 # CLI for Git worktree management, designed for parallel AI agent workflows
 brew "worktrunk"
 # HTTP benchmarking tool

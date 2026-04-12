@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-03-31T05:24:29.369-00:00",
+	"CreationDate" : "2026-04-11T03:55:27.283-00:00",
 	"Sources" : 
 	[
 		{
@@ -25,13 +25,16 @@
 					"PackageIdentifier" : "Alacritty.Alacritty"
 				},
 				{
+					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
+				},
+				{
 					"PackageIdentifier" : "Netbird.Netbird"
 				},
 				{
 					"PackageIdentifier" : "Zoom.Zoom"
 				},
 				{
-					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
+					"PackageIdentifier" : "gerardog.gsudo"
 				},
 				{
 					"PackageIdentifier" : "Cloudflare.Warp"
@@ -107,6 +110,12 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.5"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.7"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.8"
