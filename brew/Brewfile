@@ -216,6 +216,8 @@ brew "tpm"
 brew "translate-shell"
 # Simple terminal image viewer written in Rust
 brew "viu"
+# Sends magic packets to wake up network-devices
+brew "wakeonlan"
 # Internet file retriever
 brew "wget"
 # Network analyzer and capture tool - without graphical user interface
