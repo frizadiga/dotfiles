@@ -156,6 +156,8 @@ brew "lsd"
 brew "mactop"
 # Drop-in replacement for MySQL
 brew "mariadb"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # OCR (Optical Character Recognition) engine
@@ -172,8 +174,8 @@ brew "nginx"
 brew "ngrep"
 # Port scanning utility for large networks
 brew "nmap"
-# Manage multiple Node.js versions
-brew "nvm"
+# Interactive GPU process monitor
+brew "nvtop"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Swiss-army knife of markup format conversion
