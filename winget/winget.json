@@ -1,17 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-04-11T03:55:27.283-00:00",
+	"CreationDate" : "2026-04-15T03:26:24.601-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
-				{
-					"PackageIdentifier" : "BlueStack.BlueStacks"
-				},
-				{
-					"PackageIdentifier" : "CPUID.HWMonitor"
-				},
 				{
 					"PackageIdentifier" : "REALiX.HWiNFO"
 				},
@@ -20,9 +14,6 @@
 				},
 				{
 					"PackageIdentifier" : "mitmproxy.mitmproxy"
-				},
-				{
-					"PackageIdentifier" : "Alacritty.Alacritty"
 				},
 				{
 					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
@@ -46,10 +37,16 @@
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
+					"PackageIdentifier" : "Alacritty.Alacritty"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "OBSProject.OBSStudio"
+				},
+				{
+					"PackageIdentifier" : "Nervosys.Nvtop"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
@@ -125,9 +122,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WSL"
-				},
-				{
-					"PackageIdentifier" : "TheBrowserCompany.Arc"
 				},
 				{
 					"PackageIdentifier" : "Debian.Debian"
