@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-04-15T03:26:24.601-00:00",
+	"CreationDate" : "2026-04-17T03:28:35.609-00:00",
 	"Sources" : 
 	[
 		{
@@ -65,6 +65,9 @@
 				},
 				{
 					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
+				},
+				{
+					"PackageIdentifier" : "FreeCAD.FreeCAD"
 				},
 				{
 					"PackageIdentifier" : "GIMP.GIMP.3"
