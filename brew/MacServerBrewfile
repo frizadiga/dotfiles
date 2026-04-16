@@ -1,0 +1,254 @@
+tap "achannarasappa/tap"
+tap "danielgatis/imgcat"
+tap "homebrew/bundle"
+tap "homebrew/services"
+tap "jesseduffield/lazynpm"
+tap "koekeishiya/formulae"
+tap "modularml/packages"
+tap "netbirdio/tap"
+tap "opencode-ai/tap"
+tap "teamookla/speedtest"
+# GNU debugger for aarch64-elf cross development
+brew "aarch64-elf-gdb"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Library for manipulating PNG images
+brew "libpng"
+# Vector graphics library with cross-device output support
+brew "cairo"
+# Ultralightweight JSON parser in ANSI C
+brew "cjson"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# Cross-platform make
+brew "cmake"
+# Interactive terminal based UI application for tracking cryptocurrencies
+brew "cointop"
+# Linux virtual machines
+brew "lima"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# Tool for service discovery, monitoring and configuration
+brew "consul"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Power of curl, ease of use of httpie
+brew "curlie"
+# Good-lookin' diffs with diff-highlight and more
+brew "diff-so-fancy"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Library and utilities for processing GIFs
+brew "giflib"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
+# LLVM bytecode to JavaScript compiler
+brew "emscripten"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Efficient similarity search and clustering of dense vectors
+brew "faiss"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Banner-like program prints strings as ASCII art
+brew "figlet"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU debugger
+brew "gdb"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# Git extension for versioning large files
+brew "git-lfs"
+# Render markdown on the CLI
+brew "glow"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Language server for the Go language
+brew "gopls"
+# Improved top (interactive process viewer)
+brew "htop"
+# Simple zero-configuration command-line HTTP server
+brew "http-server"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# Command-line benchmarking tool
+brew "hyperfine"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Modular IRC client
+brew "irssi"
+# Convert JPG images to ASCII
+brew "jp2a"
+# Image manipulation library
+brew "jpeg"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Lazier way to manage everything docker
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
+# TUI for logs from journalctl, file system, Docker, Podman and Kubernetes pods
+brew "lazyjournal"
+# Framework for layout and rendering of i18n text
+brew "pango"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# LLM inference in C/C++
+brew "llama.cpp"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Apple Silicon Monitor Top written in Go Lang
+brew "mactop"
+# Drop-in replacement for MySQL
+brew "mariadb"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Lightweight PDF and XPS viewer
+brew "mupdf"
+# Open source relational database management system
+brew "mysql-client"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
+brew "nginx"
+# Network grep
+brew "ngrep"
+# Port scanning utility for large networks
+brew "nmap"
+# Interactive GPU process monitor
+brew "nvtop"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Your Gateway to Embedded Software Development Excellence
+brew "platformio"
+# Tool for managing OCI containers and pods
+brew "podman"
+# Object-relational database system
+brew "postgresql@14"
+# Theme for zsh
+brew "powerlevel10k"
+# Show ps output as a tree
+brew "pstree"
+# Python version management
+brew "pyenv"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
+# Experimental Rust compiler front-end for IDEs
+brew "rust-analyzer"
+# Intuitive find & replace CLI
+brew "sd"
+# Monitors sleep, wakeup, and idleness of a Mac
+brew "sleepwatcher"
+# Command-line packet analyzer
+brew "tcpdump"
+# Terminal multiplexer
+brew "tmux"
+# Plugin manager for tmux
+brew "tpm"
+# Command-line translator using Google Translate and more
+brew "translate-shell"
+# Sends magic packets to wake up network-devices
+brew "wakeonlan"
+# Internet file retriever
+brew "wget"
+# Network analyzer and capture tool - without graphical user interface
+brew "wireshark"
+# HTTP benchmarking tool
+brew "wrk"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
+brew "zsh-completions"
+# Zsh port of Fish shell's history search
+brew "zsh-history-substring-search"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# Better and friendly vi(vim) mode plugin for ZSH
+brew "zsh-vi-mode"
+# ZSH plugin that reminds you to use existing aliases for commands you just typed
+brew "zsh-you-should-use"
+# Terminal stock ticker with live updates and position tracking
+brew "achannarasappa/tap/ticker"
+# A simple terminal UI for git commands, written in Go
+brew "jesseduffield/lazynpm/lazynpm"
+# Netbird project.
+brew "netbirdio/tap/netbird"
+brew "opencode-ai/tap/opencode"
+# Ookla Speedtest
+brew "teamookla/speedtest/speedtest"
+# Command-line interface for 1Password
+cask "1password-cli"
+# GPU-accelerated terminal emulator
+cask "alacritty"
+# Menu bar tool to limit maximum charging percentage
+cask "aldente"
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
+cask "font-hack-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Minimal installer for conda
+cask "miniconda"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
+go "github.com/air-verse/air"
+go "github.com/swaggo/swag/cmd/swag"
+go "tailscale.com/cmd/tailscale"
+go "tailscale.com/cmd/tailscaled"
+cargo "cargo-modules"
+cargo "cargo-update"
