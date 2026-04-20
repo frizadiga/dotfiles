@@ -14,8 +14,6 @@ brew "aarch64-elf-gdb"
 brew "tree"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -157,7 +155,7 @@ brew "nmap"
 # Interactive GPU process monitor
 brew "nvtop"
 # Create, run, and share large language models (LLMs)
-brew "ollama"
+brew "ollama", restart_service: :changed
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Execute binaries from Python packages in isolated environments
@@ -174,8 +172,6 @@ brew "postgresql@14"
 brew "powerlevel10k"
 # Show ps output as a tree
 brew "pstree"
-# Python version management
-brew "pyenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
