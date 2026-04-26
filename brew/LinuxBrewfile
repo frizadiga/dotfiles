@@ -30,6 +30,8 @@ brew "git-delta"
 brew "go"
 # Language server for the Go language
 brew "gopls"
+# Client library for huggingface.co hub
+brew "hf"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Tools and libraries to manipulate images in select formats
