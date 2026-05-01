@@ -7,6 +7,7 @@ tap "koekeishiya/formulae"
 tap "modularml/packages"
 tap "netbirdio/tap"
 tap "opencode-ai/tap"
+tap "steipete/tap"
 tap "teamookla/speedtest"
 # GNU debugger for aarch64-elf cross development
 brew "aarch64-elf-gdb"
@@ -96,6 +97,8 @@ brew "gnutls"
 brew "go"
 # Language server for the Go language
 brew "gopls"
+# Client library for huggingface.co hub
+brew "hf"
 # Improved top (interactive process viewer)
 brew "htop"
 # Simple zero-configuration command-line HTTP server
@@ -147,7 +150,7 @@ brew "mysql-client"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
-brew "nginx"
+brew "nginx", restart_service: :changed
 # Network grep
 brew "ngrep"
 # Port scanning utility for large networks
@@ -178,6 +181,8 @@ brew "ripgrep"
 brew "rust"
 # Experimental Rust compiler front-end for IDEs
 brew "rust-analyzer"
+# Rust toolchain installer
+brew "rustup"
 # Intuitive find & replace CLI
 brew "sd"
 # Monitors sleep, wakeup, and idleness of a Mac
