@@ -1,25 +1,12 @@
 #!/usr/bin/env bash
 # alias: 'n/a'
-# desc: fn_brewfile description.
-# usage: fn_brewfile.sh [args]
-# flags: @WIP:0 @TODO:0 @FIXME:0 @BUG:0 @OPTIMIZE:0 @REFACTOR:0 @DEPRECATED:0
+# desc: Manage Homebrew Bundle operations (dump/install) with OS-aware Brewfile selection.
+# usage: fn_brewfile.sh [--dump | -d | --install | -i] [Brewfile_name]
 
 declare -r _self_path_file_=$(readlink -f "$0")
 declare -r _self_path_dir_=$(dirname "${_self_path_file_}")
 
-source "${TOOLS_DIR}/ansi-utils.sh"
-# source "$HOME/Documents/main/tools/aliases.sh"
-
-# check if script run directly or indirect
-# if [ "${0}" = "${BASH_SOURCE}" ]; then
-#   echo "Script is being run directly"
-# else
-#   echo "Script is being sourced"
-# fi
-
-
 fn_brewfile() {
-  # echo $(yellow $(bold 'fn_brewfile'))
   local arg_1=$1
 
   # detect OS and set appropriate Brewfile

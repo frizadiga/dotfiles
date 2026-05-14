@@ -33,7 +33,7 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "delete", function()
     .new("/usr/bin/osascript", nil, {
       "-l",
       "JavaScript",
-      os.getenv("HOME") .. "/Documents/main/dotfiles/hammerspoon/notifications.js",
+      os.getenv("HOME") .. "/workspace/main/dotfiles/hammerspoon/notifications.js",
     })
     :start()
 end)
