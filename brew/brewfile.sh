@@ -20,34 +20,34 @@ fn_brewfile() {
 
   # if no args
   if [ -z "${arg_1}" ]; then
-    echo $(red $(bold 'No arguments provided.'))
-    echo $(yellow $(bold 'Usage: fn_brewfile.sh [args]'))
-    echo $(yellow $(bold 'Args:'))
-    echo $(yellow $(bold '  --dump or -d'))
-    echo $(yellow $(bold '  --install or -i'))
+    echo 'No arguments provided.'
+    echo 'Usage: fn_brewfile.sh [args]'
+    echo 'Args:'
+    echo '  --dump or -d'
+    echo '  --install or -i'
     return
   fi
 
   # if arg = --dump or -d
   if [ "${arg_1}" = "--dump" ] || [ "${arg_1}" = "-d" ]; then
-    echo $(green $(bold 'Dumping Brewfile..'))
+    echo 'Dumping Brewfile..'
     fn_brewfile_dump
   fi
 
   # if arg = --install or -i
   if [ "${arg_1}" = "--install" ] || [ "${arg_1}" = "-i" ]; then
-    echo $(green $(bold 'Installing Brewfile..'))
+    echo 'Installing Brewfile..'
     fn_brewfile_install
   fi
 }
 
 fn_brewfile_install() {
-  echo $(yellow $(bold 'fn_brewfile_install'))
+  echo 'fn_brewfile_install'
   brew bundle --verbose --file="${brewfile_path}"
 }
 
 fn_brewfile_dump() {
-  echo $(yellow $(bold 'fn_brewfile_dump'))
+  echo 'fn_brewfile_dump'
   brew bundle dump --force --file="${brewfile_path}" --describe
 }
 
