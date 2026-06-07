@@ -10,6 +10,7 @@ keybinding:
     scrollRight: ''
     nextScreenMode: '+'
     prevScreenMode: '_'
+
 gui:
   border: single
   showBottomLine: true
@@ -22,6 +23,7 @@ gui:
       - '#969896'
     selectedLineBgColor:
       - '#4d4d4d'
+
 git:
   pagers:
     - colorArg: always
