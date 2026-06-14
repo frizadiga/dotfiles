@@ -1,5 +1,5 @@
-tap "anomalyco/tap"
-tap "teamookla/speedtest"
+tap "anomalyco/tap", trusted: true
+tap "teamookla/speedtest", trusted: true
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -11,7 +11,7 @@ brew "unzip"
 # CLI tool for Cloudflare Workers
 brew "cloudflare-wrangler"
 # Pack, ship and run any application as a lightweight container
-brew "docker"
+brew "docker", link: false
 # Efficient similarity search and clustering of dense vectors
 brew "faiss"
 # Like neofetch, but much faster because written mostly in C
@@ -24,6 +24,8 @@ brew "ffmpeg"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Blazing fast terminal-ui for git written in rust
@@ -44,6 +46,8 @@ brew "jc"
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
+# LLM inference in C/C++
+brew "llama.cpp"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LLVM Project Linker
@@ -58,6 +62,12 @@ brew "neovim"
 brew "nmap"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
+# Shell command parallelization utility
+brew "parallel"
 # Draw UML diagrams
 brew "plantuml"
 # Object-relational database system
@@ -66,8 +76,6 @@ brew "postgresql@18", link: true
 brew "powerlevel10k"
 # Persistent key-value database, with built-in net interface
 brew "redis"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
 # Rust toolchain installer
@@ -104,11 +112,40 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
 go "github.com/projectdiscovery/httpx/cmd/httpx"
 cargo "cargo-watch"
+winget "Alacritty.Alacritty"
+winget "Anthropic.Claude"
+winget "aristocratos.btop4win"
+winget "Canonical.Ubuntu"
+winget "Cloudflare.Warp"
+winget "DBeaver.DBeaver.Community"
+winget "Debian.Debian"
+winget "Discord.Discord"
+winget "Fastfetch-cli.Fastfetch"
+winget "FreeCAD.FreeCAD"
+winget "gerardog.gsudo"
+winget "GIMP.GIMP.3"
+winget "Google.Chrome.Beta.EXE"
+winget "Google.Chrome.EXE"
+winget "Inkscape.Inkscape"
+winget "Kensington.KensingtonWorks"
+winget "Microsoft.PowerShell"
+winget "Microsoft.PowerToys"
+winget "Microsoft.Teams.Classic"
+winget "Microsoft.WindowsTerminal"
+winget "mitmproxy.mitmproxy"
+winget "Nervosys.Nvtop"
+winget "Netbird.Netbird"
+winget "OBSProject.OBSStudio"
+winget "OpenJS.NodeJS.LTS"
+winget "RARLab.WinRAR"
+winget "REALiX.HWiNFO"
+winget "SST.OpenCodeDesktop"
+winget "Telegram.TelegramDesktop"
+winget "Zoom.Zoom"
 npm "@google/clasp"
+npm "md-to-pdf"
 npm "pnpm"
