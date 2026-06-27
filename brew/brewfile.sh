@@ -48,7 +48,7 @@ fn_brewfile_install() {
 
 fn_brewfile_dump() {
   echo 'fn_brewfile_dump'
-  brew bundle dump --force --file="${brewfile_path}"
+  brew bundle dump --force --no-winget --file="${brewfile_path}"
 }
 
 fn_brewfile "$@"
