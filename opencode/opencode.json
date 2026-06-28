@@ -1,5 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "color": "#FF0000"
+    }
+  },
   "default_agent": "plan",
   "provider": {
     "ollama": {
