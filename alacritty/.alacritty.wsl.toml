@@ -1,3 +1,6 @@
+[terminal]
+osc52 = "CopyPaste"
+
 [terminal.shell]
 program = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
 
@@ -17,13 +20,13 @@ text = "#ffffff"
 cursor = "#d25858" # red
 
 [window]
-title="sh-0"
+title = "sh-0"
 dynamic_title = false
 padding = { x = 16, y = 8 }
 dynamic_padding = true
 decorations = "None"
 blur = false
-opacity = 0.85 # default: 0.85
+opacity = 0.85                            # default: 0.85
 dimensions = { columns = 60, lines = 10 } # act as gateway for terminal window manager.
 
 [mouse]
@@ -31,9 +34,12 @@ hide_when_typing = true
 
 [keyboard]
 bindings = [
-#  { key = "V", mods = "Control", action = "Paste" },
-#  { key = "C", mods = "Control|Shift", action = "Copy" },
-   { key = "Space", mods = "Control", chars = "\u0000" },
+  # { key = "V", mods = "Control", action = "Paste" },
+  # { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "Space", mods = "Control", chars = "\u0000" },
+  # { key = "Return", mods = "Control", chars = '\x1b[13;5u' },
+  # { key = "Return", mods = "Shift",   chars = '\x1b[13;2u' },
+  { key = "Return", mods = "Control", action = "ReceiveChar" },
 ]
 
 # @NOTE: run `win.alacritty.config.deploy` after editing to sync it to the Windows side.
