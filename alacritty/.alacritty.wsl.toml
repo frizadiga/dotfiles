@@ -1,8 +1,14 @@
 [terminal]
 osc52 = "CopyPaste"
 
+# direct boot
 [terminal.shell]
-program = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+program = "wsl.exe"
+args = ["--exec", "/usr/bin/zsh"]
+
+# safe boot
+# [terminal.shell]
+# program = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
 
 [font]
 size = 16 # normal: 16 broadcast: 22
@@ -34,11 +40,7 @@ hide_when_typing = true
 
 [keyboard]
 bindings = [
-  # { key = "V", mods = "Control", action = "Paste" },
-  # { key = "C", mods = "Control|Shift", action = "Copy" },
   { key = "Space", mods = "Control", chars = "\u0000" },
-  # { key = "Return", mods = "Control", chars = '\x1b[13;5u' },
-  # { key = "Return", mods = "Shift",   chars = '\x1b[13;2u' },
   { key = "Return", mods = "Control", action = "ReceiveChar" },
 ]
 
