@@ -10,7 +10,6 @@ keybinding:
     scrollRight: ''
     nextScreenMode: '+'
     prevScreenMode: '_'
-
 gui:
   border: single
   showBottomLine: true
@@ -23,10 +22,9 @@ gui:
       - '#969896'
     selectedLineBgColor:
       - '#4d4d4d'
-
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
       # pager: diff-so-fancy
       # delta has more granular diffing capabilities & support pin-pointing to the exact line of the change
-      pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      command: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
