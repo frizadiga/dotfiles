@@ -19,3 +19,4 @@ pnpm-lock.yaml
 .opencode/
 *.local.json
 roadmap*.json
+service.json

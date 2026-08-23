@@ -1,0 +1,23 @@
+{
+  "theme": {
+    "name": "sepuh-theme",
+    "mode": "dark"
+  },
+  "keybinds": {
+    "leader": "ctrl+x",
+    "session.line.up": "alt+k",
+    "session.line.down": "alt+j",
+    "session.first": "alt+h",
+    "session.last": "alt+l",
+    "input.newline": "shift+enter"
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "hide",
+    "scrollbar": false,
+    "thinking": "show"
+  },
+  "animations": true
+}
