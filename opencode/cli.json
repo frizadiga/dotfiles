@@ -19,5 +19,10 @@
     "scrollbar": false,
     "thinking": "show"
   },
-  "animations": true
+  "animations": false,
+  "tabs": {
+    "enabled": false,
+    "scope": "cwd",
+    "layout": "vertical"
+  }
 }

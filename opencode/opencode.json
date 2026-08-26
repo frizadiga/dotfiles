@@ -19,5 +19,9 @@
         "baseURL": "{env:OLLAMA_TOKEN_FACTORY_URL}"
       }
     }
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow"
   }
 }
