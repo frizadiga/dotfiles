@@ -1,4 +1,4 @@
-.PHONY: all dev clean release debug build format
+.PHONY: all dev clean release debug build format install install-tpm
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c2x
@@ -24,6 +24,17 @@ debug: build
 
 clean:
 	rm -rf ./$(BIN_NAME) /*.o *.dSYM
+
+install: install-tpm
+	@test -d ~/.tmux/plugins/tmux-float-term || \
+	    git clone https://github.com/frizadiga/tmux-float-term.git ~/.tmux/plugins/tmux-float-term
+
+install-tpm:
+	@if uname -s | grep -q Darwin; then \
+	    test -f /opt/homebrew/opt/tpm/share/tpm/tpm || brew install tpm; \
+	else \
+	    test -f /home/linuxbrew/.linuxbrew/opt/tpm/share/tpm/tpm || brew install tpm; \
+	fi
 
 format:
 	clang-format -i $(SRCS) $(wildcard ./*.h)
