@@ -6,6 +6,33 @@
     }
   },
   "default_agent": "plan",
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--headless",
+        "--user-data-dir",
+        "{env:HOME}/.cache/playwright-profile"
+      ]
+    },
+    "browser-attach": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--cdp-endpoint",
+        "http://localhost:9222"
+      ]
+    }
+  },
   "provider": {
     "ollama": {
       "models": {
