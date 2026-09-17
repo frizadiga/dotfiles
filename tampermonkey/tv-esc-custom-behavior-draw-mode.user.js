@@ -34,10 +34,32 @@
     if (arrowBtn) arrowBtn.click();
   }
 
+  function isElementVisible(el) {
+    if (!el || !el.isConnected) return false;
+    if (el.getClientRects().length === 0) return false;
+    const style = window.getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden';
+  }
+
+  function isSymbolSearchOpen() {
+    const dialog = document.querySelector(
+      '[data-name="symbol-search-items-dialog"], [data-dialog-name="Symbol search"]'
+    );
+    if (isElementVisible(dialog)) return true;
+
+    const active = document.activeElement;
+    return !!(
+      active &&
+      typeof active.closest === 'function' &&
+      active.closest('[data-name="symbol-search-items-dialog"]')
+    );
+  }
+
   window.addEventListener(
     'keydown',
     function (e) {
       if (e.key !== 'Escape') return;
+      if (isSymbolSearchOpen()) return; // let native Esc dismiss the Symbol Search popup
       if (!isRealDrawingToolActive()) return; // let normal Esc (exit workspace) happen
 
       e.stopImmediatePropagation();
