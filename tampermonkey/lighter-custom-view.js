@@ -54,11 +54,6 @@ div.react-grid-layout.w-full {
   overflow: hidden;
 }
 
-/* deposit bottom bar */
-div.react-grid-item.react-resizable-hide.react-resizable:nth-child(5) {
-  display: none;
-}
-
 /* combo box chart top right */
 button[aria-haspopup="menu"] {
   max-width: 8ch;
