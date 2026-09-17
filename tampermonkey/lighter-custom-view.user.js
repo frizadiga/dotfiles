@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lighter DEX
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @author       Frizadiga
 // @description  Lighter Custom View Modifier
 // @match        https://app.lighter.xyz/trade/*

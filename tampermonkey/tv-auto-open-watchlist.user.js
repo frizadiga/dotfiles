@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TradingView Auto Open Watchlist (Cmd/Ctrl+K)
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @author       Frizadiga
 // @description  Opens the command palette and selects "open watchlist" only on one specific chart
 // @match        https://www.tradingview.com/*

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TradingView - Esc Stays in Draw Mode
 // @namespace    tv-esc-custom-behavior-draw-mode
-// @version      1.0
+// @version      1.0.0
 // @author       Frizadiga
 // @description  When a drawing tool is active, Esc exits the tool instead of exiting Workspace-only mode.
 // @match        https://www.tradingview.com/chart/*

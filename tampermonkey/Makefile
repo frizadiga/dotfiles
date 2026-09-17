@@ -2,11 +2,17 @@
 # Auto-discovers every *.user.js file in this directory.
 #
 # Usage:
-#   make list                      list all tracked userscripts + their raw URLs
-#   make deploy                    bump @version in ALL scripts, then git push
-#   make deploy FILE=name.user.js  bump @version in just one script, then git push
-#   make open FILE=name.user.js    open one script's raw URL (first-time install)
-#   make open                      list raw URLs without opening (pick one manually)
+#   make list                          list all tracked userscripts + their raw URLs
+#   make deploy                        bump @version in ALL scripts, then git push
+#   make deploy FILE=name.user.js      bump @version in just one script, then git push
+#   make deploy VERSION=x.y.z          set ALL scripts to exactly x.y.z, then git push
+#   make open FILE=name.user.js        open one script's raw URL (first-time install)
+#   make open                          list raw URLs without opening (pick one manually)
+#
+# @version follows semver, bumped per script:
+#   X.Y.Z  -> X.Y.(Z+1)   (patch bump)
+#   X.Y    -> X.Y.0       (e.g. "1.0" becomes "1.0.0")
+#   other  -> 1.0.0       (e.g. date-style versions get normalized)
 
 REPO     := frizadiga/dotfiles
 BRANCH   := main
@@ -14,7 +20,6 @@ DIR      := tampermonkey
 RAW_BASE := https://raw.githubusercontent.com/$(REPO)/$(BRANCH)/$(DIR)
 
 SCRIPTS  := $(wildcard *.user.js)
-VERSION  := $(shell date +%Y.%m.%d.%H%M)
 
 .PHONY: deploy bump-version open _open list
 
@@ -24,18 +29,24 @@ list:
 
 # Bump @version so Tampermonkey treats the next fetch as a real update.
 # (Tampermonkey compares @version; unchanged version = silently ignored.)
-bump-version:
-ifdef FILE
-	@sed -i.bak "s/^\(\/\/ @version[[:space:]]*\).*/\1$(VERSION)/" "$(FILE)"
-	@rm -f "$(FILE).bak"
-	@echo "Bumped $(FILE) -> $(VERSION)"
-else
-	@for f in $(SCRIPTS); do \
-		sed -i.bak "s/^\(\/\/ @version[[:space:]]*\).*/\1$(VERSION)/" "$$f"; \
+# Pass VERSION=x.y.z to force an exact version instead of auto-bumping.
+FILES := $(if $(FILE),$(FILE),$(SCRIPTS))
+
+define bump-files
+	@for f in $(FILES); do \
+		cur=$$(sed -n 's#^//[[:space:]]*@version[[:space:]]*##p' "$$f" | head -1); \
+		$(if $(VERSION),new=$(VERSION),new=$$(printf '%s\n' "$$cur" | awk -F. ' \
+		  $$1 ~ /^[0-9]+$$/ && $$2 ~ /^[0-9]+$$/ && $$3 ~ /^[0-9]+$$/ { v=$$3+1; printf "%s.%s.%d\n", $$1, $$2, v; exit } \
+		  $$1 ~ /^[0-9]+$$/ && $$2 ~ /^[0-9]+$$/ { printf "%s.%s.0\n", $$1, $$2; exit } \
+		  { printf "1.0.0\n" }')); \
+		sed -i.bak 's#^\(\/\/[[:space:]]*@version[[:space:]]*\).*#\1'"$$new"'#' "$$f"; \
 		rm -f "$$f.bak"; \
-		echo "Bumped $$f -> $(VERSION)"; \
+		echo "Bumped $$f -> $$new"; \
 	done
-endif
+endef
+
+bump-version:
+	$(bump-files)
 
 deploy: bump-version
 	git push origin $(BRANCH)
