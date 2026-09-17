@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         TradingView - Esc Stays in Draw Mode
 // @namespace    tv-esc-custom-behavior-draw-mode
-// @version      1.0.0
+// @version      2026.09.18.020253
 // @author       Frizadiga
-// @description  When a drawing tool is active, Esc exits the tool instead of exiting Workspace-only mode.
+// @description  When a drawing tool is active, Esc exits the tool instead of exiting Workspace-only mode. Symbol Search (and text inputs) are excluded so Esc dismisses those first.
 // @match        https://www.tradingview.com/chart/*
 // @match        https://*.tradingview.com/chart/*
 // @run-at       document-start
@@ -41,24 +41,49 @@
     return style.display !== 'none' && style.visibility !== 'hidden';
   }
 
+  const SYMBOL_SEARCH_SELECTORS = [
+    '[data-name*="symbol-search"]',
+    '[data-dialog-name*="symbol search" i]',
+    '[data-role*="symbol-search"]',
+    '[class*="tv-symbol-search-dialog"]',
+    '[class*="symbolSearch"]',
+  ];
+
   function isSymbolSearchOpen() {
-    const dialog = document.querySelector(
-      '[data-name="symbol-search-items-dialog"], [data-dialog-name="Symbol search"]'
-    );
-    if (isElementVisible(dialog)) return true;
+    for (const sel of SYMBOL_SEARCH_SELECTORS) {
+      for (const el of document.querySelectorAll(sel)) {
+        if (isElementVisible(el) && el.getAttribute('aria-hidden') !== 'true') {
+          return true;
+        }
+      }
+    }
 
     const active = document.activeElement;
-    return !!(
-      active &&
-      typeof active.closest === 'function' &&
-      active.closest('[data-name="symbol-search-items-dialog"]')
-    );
+    if (active && typeof active.closest === 'function') {
+      for (const sel of SYMBOL_SEARCH_SELECTORS) {
+        if (active.closest(sel)) return true;
+      }
+    }
+    return false;
+  }
+
+  function isEditableElement(target) {
+    if (!target || typeof target.tagName !== 'string') return false;
+    if (target.isContentEditable) return true;
+    const tag = target.tagName;
+    if (tag === 'TEXTAREA' || tag === 'SELECT') return true;
+    if (tag === 'INPUT') {
+      const type = (target.getAttribute('type') || 'text').toLowerCase();
+      return !['button', 'checkbox', 'color', 'file', 'hidden', 'image', 'radio', 'range', 'reset', 'submit'].includes(type);
+    }
+    return false;
   }
 
   window.addEventListener(
     'keydown',
     function (e) {
       if (e.key !== 'Escape') return;
+      if (isEditableElement(e.target)) return; // typing in a text field (e.g. Symbol Search input)
       if (isSymbolSearchOpen()) return; // let native Esc dismiss the Symbol Search popup
       if (!isRealDrawingToolActive()) return; // let normal Esc (exit workspace) happen
 

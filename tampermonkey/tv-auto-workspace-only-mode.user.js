@@ -2,7 +2,7 @@
 // @name         TradingView Auto Workspace-Only Mode
 // @match        https://www.tradingview.com/chart/*
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      2026.09.18.020253
 // @author       Frizadiga
 // @description  Automatically switches the TradingView chart to workspace-only (fullscreen) mode via Shift+F once the chart loads.
 // @run-at       document-idle
