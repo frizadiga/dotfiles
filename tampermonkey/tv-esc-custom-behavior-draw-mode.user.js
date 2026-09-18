@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         TradingView - Esc Stays in Draw Mode
 // @namespace    tv-esc-custom-behavior-draw-mode
-// @version      2026.09.18.020253
+// @version      2026.09.19.004841
 // @author       Frizadiga
-// @description  When a drawing tool is active, Esc exits the tool instead of exiting Workspace-only mode. Symbol Search (and text inputs) are excluded so Esc dismisses those first.
+// @description  When a drawing tool is active, Esc exits the tool instead of exiting Workspace-only mode (typing in a drawing's text still exits the tool). Symbol Search is excluded so Esc dismisses it first.
 // @match        https://www.tradingview.com/chart/*
 // @match        https://*.tradingview.com/chart/*
 // @run-at       document-start
@@ -67,26 +67,14 @@
     return false;
   }
 
-  function isEditableElement(target) {
-    if (!target || typeof target.tagName !== 'string') return false;
-    if (target.isContentEditable) return true;
-    const tag = target.tagName;
-    if (tag === 'TEXTAREA' || tag === 'SELECT') return true;
-    if (tag === 'INPUT') {
-      const type = (target.getAttribute('type') || 'text').toLowerCase();
-      return !['button', 'checkbox', 'color', 'file', 'hidden', 'image', 'radio', 'range', 'reset', 'submit'].includes(type);
-    }
-    return false;
-  }
-
   window.addEventListener(
     'keydown',
     function (e) {
       if (e.key !== 'Escape') return;
-      if (isEditableElement(e.target)) return; // typing in a text field (e.g. Symbol Search input)
-      if (isSymbolSearchOpen()) return; // let native Esc dismiss the Symbol Search popup
-      if (!isRealDrawingToolActive()) return; // let normal Esc (exit workspace) happen
-
+      if (isSymbolSearchOpen()) return; // let native Esc dismiss the Symbol Search popup first
+      if (!isRealDrawingToolActive()) return; // no drawing tool active: let native Esc run (typing in plain inputs, exit Workspace-only, etc.)
+      // A real drawing tool IS active, even if focus sits in its text/label box:
+      // deactivate the tool instead of letting TV exit Workspace-only mode.
       e.stopImmediatePropagation();
       e.stopPropagation();
       e.preventDefault();
