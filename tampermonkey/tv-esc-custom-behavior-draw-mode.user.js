@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TradingView - Esc Stays in Draw Mode
 // @namespace    tv-esc-custom-behavior-draw-mode
-// @version      2026.09.19.004841
+// @version      2026.09.20.001300
 // @author       Frizadiga
 // @description  When a drawing tool is active, Esc exits the tool instead of exiting Workspace-only mode (typing in a drawing's text still exits the tool). Symbol Search is excluded so Esc dismisses it first.
 // @match        https://www.tradingview.com/chart/*
@@ -67,10 +67,16 @@
     return false;
   }
 
+  function isToolSearchOpen() {
+    const el = document.querySelector('[data-dialog-name="Search tool or function"]');
+    return el && isElementVisible(el) && el.getAttribute('aria-hidden') !== 'true';
+  }
+
   window.addEventListener(
     'keydown',
     function (e) {
       if (e.key !== 'Escape') return;
+      if (isToolSearchOpen()) return; // let native Esc dismiss the tool search popup first
       if (isSymbolSearchOpen()) return; // let native Esc dismiss the Symbol Search popup first
       if (!isRealDrawingToolActive()) return; // no drawing tool active: let native Esc run (typing in plain inputs, exit Workspace-only, etc.)
       // A real drawing tool IS active, even if focus sits in its text/label box:
