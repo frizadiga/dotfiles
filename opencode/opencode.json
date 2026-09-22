@@ -18,7 +18,10 @@
         "--headless",
         "--user-data-dir",
         "{env:HOME}/.cache/playwright-profile"
-      ]
+      ],
+      "environment": {
+        "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
+      }
     },
     "browser-attach": {
       "type": "local",
@@ -30,7 +33,10 @@
         "chromium",
         "--cdp-endpoint",
         "http://localhost:9222"
-      ]
+      ],
+      "environment": {
+        "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
+      }
     }
   },
   "provider": {
