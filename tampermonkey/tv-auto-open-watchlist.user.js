@@ -16,7 +16,7 @@
 
   // Only run the watchlist procedure on this exact chart + symbol
   const isTargetChart = location.pathname === '/chart/PIvKxujq/'
-    && new URLSearchParams(location.search).get('symbol') === 'FRED:WALCL';
+    && new URLSearchParams(location.search).get('symbol') === 'TVC:ID10Y'; // FRED:WALCL
 
   if (!isTargetChart) {
     return; // any other chart or symbol — do nothing
