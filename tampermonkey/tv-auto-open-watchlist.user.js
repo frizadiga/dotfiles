@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TradingView Auto Open Watchlist (Cmd/Ctrl+K)
 // @namespace    http://tampermonkey.net/
-// @version      2026.09.18.020253
+// @version      2026.09.24.225154
 // @author       Frizadiga
 // @description  Opens the command palette and selects "open watchlist" only on one specific chart
 // @match        https://www.tradingview.com/*
@@ -16,7 +16,7 @@
 
   // Only run the watchlist procedure on this exact chart + symbol
   const isTargetChart = location.pathname === '/chart/PIvKxujq/'
-    && new URLSearchParams(location.search).get('symbol') === 'TVC:ID10Y'; // FRED:WALCL
+    && new URLSearchParams(location.search).get('symbol') === 'TVC:ID10Y'; // prev: FRED:WALCL
 
   if (!isTargetChart) {
     return; // any other chart or symbol — do nothing
