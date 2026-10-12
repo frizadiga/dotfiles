@@ -3,7 +3,7 @@
 # Deploy window-switch.ahk to Windows and register a Startup shortcut.
 #
 # Source of truth: window-switch.ahk in this directory (dotfiles repo).
-# Deployed artifact: %USERPROFILE%\Documents\ahk\window-switch.ahk (a real
+# Deployed artifact: %LOCALAPPDATA%\ahk\window-switch.ahk (a real
 # file copy, never a WSL symlink, so it works at login before WSL starts).
 #
 # Idempotent and safe to re-run. Skips gracefully when not running under WSL.
@@ -58,7 +58,7 @@ if [ -z "$POWERSHELL_EXE" ]; then
 fi
 
 # 1. Copy the script (real copy, not a symlink).
-TARGET_DIR="$WIN_HOME/Documents/ahk"
+TARGET_DIR="$WIN_HOME/AppData/Local/ahk"
 TARGET_FILE="$TARGET_DIR/window-switch.ahk"
 mkdir -p "$TARGET_DIR"
 cp "$SRC_FILE" "$TARGET_FILE"
@@ -96,7 +96,7 @@ if [ -n "$POWERSHELL_EXE" ]; then
     fi
 
     # Windows-style path of the deployed script for the shortcut argument
-    # (e.g. /mnt/c/Users/friza/Documents/ahk/window-switch.ahk -> C:\Users\friza\...).
+    # (e.g. /mnt/c/Users/friza/AppData/Local/ahk/window-switch.ahk -> C:\Users\friza\...).
     MNT_REST="${TARGET_FILE#/mnt/}"
     DRIVE_LETTER="$(echo "${MNT_REST%%/*}" | tr '[:lower:]' '[:upper:]')"
     REST="${MNT_REST#*/}"

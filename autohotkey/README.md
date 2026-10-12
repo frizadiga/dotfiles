@@ -10,7 +10,7 @@ so you can immediately type a window name and switch to it.
     Alt+Space (PowerToys Run) and `<` (Window Walker keyword).
   - Plain Alt+Tab is unaffected.
 - `install.sh` — idempotent, WSL-aware deploy: copies the script to
-  `%USERPROFILE%\Documents\ahk\window-switch.ahk` (real copy, never a WSL
+  `%LOCALAPPDATA%\ahk\window-switch.ahk` (real copy, never a WSL
   symlink) and creates a `window-switch.lnk` in the Windows Startup folder
   pointing at the deployed copy with the AutoHotkey v2 exe explicitly.
   Skips gracefully outside WSL.

@@ -13,7 +13,7 @@ deploy: install
 
 status:
 	@echo "== repo vs deployed =="
-	@deployed="/mnt/c/Users/$$(ls /mnt/c/Users 2>/dev/null | grep -v -E '^(Public|Default|Default User|All Users|desktop\.ini)$$' | head -1)/Documents/ahk/window-switch.ahk"; \
+	@deployed="/mnt/c/Users/$$(ls /mnt/c/Users 2>/dev/null | grep -v -E '^(Public|Default|Default User|All Users|desktop\.ini)$$' | head -1)/AppData/Local/ahk/window-switch.ahk"; \
 	if [ ! -f "$$deployed" ]; then \
 		echo "not deployed (or not on WSL)"; \
 	elif diff -q window-switch.ahk "$$deployed" >/dev/null; then \
