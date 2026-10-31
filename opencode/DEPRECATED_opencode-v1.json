@@ -1,0 +1,63 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "color": "#FF0000"
+    }
+  },
+  "default_agent": "plan",
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--headless",
+        "--user-data-dir",
+        "{env:HOME}/.cache/playwright-profile"
+      ],
+      "environment": {
+        "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
+      }
+    },
+    "browser-attach": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--cdp-endpoint",
+        "http://localhost:9222"
+      ],
+      "environment": {
+        "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
+      }
+    }
+  },
+  "provider": {
+    "ollama": {
+      "models": {
+        "gemma4:e2b": {
+          "name": "gemma4:e2b"
+        }
+      },
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "{env:OLLAMA_TOKEN_FACTORY_URL}"
+      }
+    }
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow"
+  },
+  "plugins": [
+    "opencode-add-dir"
+  ]
+}

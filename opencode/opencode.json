@@ -1,45 +1,47 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "agent": {
+  "agents": {
     "build": {
       "color": "#FF0000"
     }
   },
   "default_agent": "plan",
   "mcp": {
-    "playwright": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@playwright/mcp@latest",
-        "--browser",
-        "chromium",
-        "--headless",
-        "--user-data-dir",
-        "{env:HOME}/.cache/playwright-profile"
-      ],
-      "environment": {
-        "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
-      }
-    },
-    "browser-attach": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@playwright/mcp@latest",
-        "--browser",
-        "chromium",
-        "--cdp-endpoint",
-        "http://localhost:9222"
-      ],
-      "environment": {
-        "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
+    "servers": {
+      "playwright": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@playwright/mcp@latest",
+          "--browser",
+          "chromium",
+          "--headless",
+          "--user-data-dir",
+          "{env:HOME}/.cache/playwright-profile"
+        ],
+        "environment": {
+          "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
+        }
+      },
+      "browser-attach": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@playwright/mcp@latest",
+          "--browser",
+          "chromium",
+          "--cdp-endpoint",
+          "http://localhost:9222"
+        ],
+        "environment": {
+          "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
+        }
       }
     }
   },
-  "provider": {
+  "providers": {
     "ollama": {
       "models": {
         "gemma4:e2b": {
@@ -47,14 +49,25 @@
         }
       },
       "name": "Ollama",
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
+      "package": "aisdk:@ai-sdk/openai-compatible",
+      "settings": {
         "baseURL": "{env:OLLAMA_TOKEN_FACTORY_URL}"
       }
     }
   },
-  "permission": {
-    "edit": "allow",
-    "bash": "allow"
-  }
+  "permissions": [
+    {
+      "action": "edit",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "allow"
+    }
+  ],
+  "plugins": [
+    "opencode-add-dir"
+  ]
 }
