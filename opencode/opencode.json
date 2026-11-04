@@ -38,6 +38,10 @@
         "environment": {
           "PATH": "/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:{env:PATH}"
         }
+      },
+      "pluang": {
+        "type": "remote",
+        "url": "https://mcp.pluang.com/mcp"
       }
     }
   },
