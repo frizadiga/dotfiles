@@ -36,6 +36,10 @@ Re-running is safe. If AutoHotkey is already running, right-click the green
 ## Troubleshooting
 
 - Nothing happens: check the green "H" tray icon (script running on Windows?).
+- `Script file not found` popup at login pointing at
+  `%LOCALAPPDATA%\ahk\window-switch.ahk`: the deployed copy is missing or the
+  Startup shortcut is stale. Re-run `./install.sh` (it now recreates the
+  shortcut with verified arguments).
 - Language switcher pops up on Alt+Shift: disable Alt+Shift under
   *Settings, Time & language, Typing, Advanced keyboard settings,
   Input language hot keys*.

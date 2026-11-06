@@ -106,12 +106,18 @@ if [ -n "$POWERSHELL_EXE" ]; then
 \$ahk = '$AHK_WIN'
 \$script = '$SCRIPT_WIN'
 \$lnk = Join-Path \$env:APPDATA 'Microsoft\Windows\Start Menu\Programs\Startup\window-switch.lnk'
+if (-not (Test-Path \$script)) { throw 'Deployed script missing: ' + \$script }
 \$s = (New-Object -ComObject WScript.Shell).CreateShortcut(\$lnk)
 \$s.TargetPath = \$ahk
-\$s.Arguments = '\`\"' + \$script + '\`\"'
+\$s.Arguments = '\"' + \$script + '\"'
 \$s.WorkingDirectory = Split-Path \$script
 \$s.Save()
-Write-Output \"Startup shortcut: \$lnk\"
+\$v = (New-Object -ComObject WScript.Shell).CreateShortcut(\$lnk)
+if (\$v.Arguments -ne ('\"' + \$script + '\"')) {
+    throw 'Shortcut arguments mismatch: ' + \$v.Arguments
+}
+Write-Output ('Startup shortcut: ' + \$lnk)
+Write-Output ('  arguments: ' + \$v.Arguments)
 "
 fi
 
