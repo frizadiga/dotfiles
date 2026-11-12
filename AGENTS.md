@@ -38,6 +38,14 @@ chore: update v submodule to 012dcab
 
 Mark breaking changes with `!` after the type/scope (`feat(tmux)!: ...`) or a `BREAKING CHANGE:` footer.
 
+## Sync
+Use `make sync` instead of a plain `git pull`. `btop` rewrites the tracked
+`btop/btop.conf` at runtime (it is symlinked from `~/.config/btop/btop.conf`),
+which leaves the worktree dirty and makes `git pull` abort with
+"local changes would be overwritten". `make sync` preserves the live config,
+pulls, then restores it. See `Makefile`.
+
 ## Notes
 - Symlinking is handled by external tooling (see README)
 - Some files may be gitignored or tracked with assumptions (see `Makefile`)
+- Use `make sync` (not `git pull`) to update this repo
