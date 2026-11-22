@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mermaid - Full Screen Diagrams
 // @namespace    mermaid-fullscreen
-// @version      2026.11.22.191418
+// @version      2026.11.22.195626
 // @author       Frizadiga
 // @description  Adds a full screen button to each rendered Mermaid diagram in the local Markdown preview (gh markdown-preview, MdOpen).
 // @match        http://localhost:3333/*
@@ -19,10 +19,12 @@
 
   var css = [
     '.mmd-fs-host{position:relative}',
-    '.mmd-fs-btn{position:absolute;top:6px;right:6px;z-index:2;font:13px/1 system-ui,sans-serif;padding:5px 8px;',
+    '.mmd-fs-btn{position:absolute;top:8px;right:8px;z-index:2;font:13px/1 system-ui,sans-serif;padding:5px 8px;',
     'border-radius:6px;border:1px solid rgba(128,128,128,.45);background:rgba(128,128,128,.15);color:inherit;',
     'cursor:pointer;opacity:.55;transition:opacity .15s}',
     '.mmd-fs-host:hover .mmd-fs-btn,.mmd-fs-btn:focus{opacity:1}',
+    // gh markdown-preview puts a 28px copy button at top:8px right:8px; sit to its left
+    '.mmd-fs-host:has(> .copy-button) .mmd-fs-btn{right:44px}',
     '.mmd-fs{position:fixed;inset:0;z-index:2147483647;display:flex;flex-direction:column}',
     '.mmd-fs-bar{display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:8px 12px;font:12px system-ui,sans-serif;opacity:.8}',
     '.mmd-fs-bar span{flex:1;opacity:.7}',
