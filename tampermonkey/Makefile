@@ -5,13 +5,14 @@
 #   make list                          list all tracked userscripts + their raw URLs
 #   make deploy [FILE=name.user.js]    stamp @version on one script, then git push
 #   make bump-version [FILE=...]       stamp @version on one script, no push
-#   make open [FILE=name.user.js]      open one script's raw URL (first-time install)
+#   make install [FILE=name.user.js]   open one script's Tampermonkey install/update page
+#                                      (raw URL at its last pushed commit, skips CDN cache)
 #
 # Without FILE=, an interactive shell picks the script with fzf (changed scripts
 # marked "*" and listed first); a non-interactive run fails and asks for FILE=.
 #
 # Bulk (every changed script, modified or untracked; ALL=1 = every script):
-#   make deploy-all | bump-version-all | open-all | list-changed
+#   make deploy-all | bump-version-all | install-all | list-changed
 #
 # @version is stamped with the current time (YYYY.MM.DD.HHMMSS) so Tampermonkey
 # treats every push as a real update.
@@ -24,11 +25,11 @@ RAW_BASE := https://raw.githubusercontent.com/$(REPO)/$(BRANCH)/$(DIR)
 SCRIPTS   := $(wildcard *.user.js)
 TIMESTAMP := $(shell date +%Y.%m.%d.%H%M%S)
 
-.PHONY: help list deploy bump-version open \
-	list-changed bump-version-all deploy-all open-all _require-files
+.PHONY: help list deploy bump-version install \
+	list-changed bump-version-all deploy-all install-all _require-files
 
 help:
-	@sed -n '3,15p' $(firstword $(MAKEFILE_LIST)) | sed 's/^# \{0,1\}//'
+	@sed -n '3,16p' $(firstword $(MAKEFILE_LIST)) | sed 's/^# \{0,1\}//'
 
 list:
 	@echo "Tracked userscripts:"
@@ -76,13 +77,33 @@ deploy:
 	echo ""; \
 	echo "NOTE: the @version stamp above is uncommitted. Fold it into the summ: commit workflow."
 
-open:
-	@$(resolve-file); \
+# Sets $$url to the raw URL at the last pushed commit that touched $$f, so the
+# install page gets exactly that version, not a stale CDN copy of $(BRANCH).
+# Falls back to the $(BRANCH) URL when $$f was never pushed.
+define install-url
+git fetch -q origin $(BRANCH) 2>/dev/null || true; \
+sha="$$(git log -1 --format=%h origin/$(BRANCH) -- "$$f")"; \
+if [ -n "$$sha" ]; then \
+	url="https://raw.githubusercontent.com/$(REPO)/$$sha/$(DIR)/$$f"; \
+	git diff --quiet origin/$(BRANCH) -- "$$f" || echo "Note: $$f has changes not on origin/$(BRANCH); installing $$sha." >&2; \
+else \
 	url="$(RAW_BASE)/$$f"; \
-	cmd.exe /c start "" "$$url" 2>/dev/null || \
-	open "$$url" 2>/dev/null || \
-	xdg-open "$$url" 2>/dev/null || \
-	echo "Could not auto-open. Paste this URL into your browser: $$url"
+	echo "Note: $$f is not on origin/$(BRANCH) yet; push it first." >&2; \
+fi; \
+echo "Installing $$f @ $${sha:-$(BRANCH)}"
+endef
+
+define open-url
+cmd.exe /c start "" "$$url" 2>/dev/null || \
+open "$$url" 2>/dev/null || \
+xdg-open "$$url" 2>/dev/null || \
+echo "Could not auto-open. Paste this URL into your browser: $$url"
+endef
+
+install:
+	@$(resolve-file); \
+	$(install-url); \
+	$(open-url)
 
 # ---- bulk -----------------------------------------------------------------
 
@@ -107,11 +128,8 @@ deploy-all: bump-version-all
 	echo ""; \
 	echo "NOTE: the @version stamps above are uncommitted. Fold them into the summ: commit workflow."
 
-open-all: _require-files
+install-all: _require-files
 	@for f in $(FILES); do \
-		url="$(RAW_BASE)/$$f"; \
-		cmd.exe /c start "" "$$url" 2>/dev/null || \
-		open "$$url" 2>/dev/null || \
-		xdg-open "$$url" 2>/dev/null || \
-		echo "Could not auto-open: $$url"; \
+		$(install-url); \
+		$(open-url); \
 	done
